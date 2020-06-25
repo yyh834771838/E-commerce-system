@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<link rel="stylesheet" type="text/css" href="css.css" />
+<title>商品主页</title>
+</head>
+<body>
+<div class="menu">
+<ul>
+<li style="width:0px;"><a></a></li>
+<li><a href="index.html" class="home">首页</a></li>
+<li class="active"><a href="wishlist.html" class="wishlist">商城主页</a></li>
+<li><a href="account.html" class="account">我的账户</a></li>
+<li><a href="cart.html" class="cart">购物车</a></li>
+<li><a class="checkout">商品结算</a></li>
+<li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li>
+</ul>
+</div>
+
+<div style="width:700px;margin:700 auto;">
+      
+	<div id="search">
+    <div class="button-search"></div>
+        <input type="text" name="filter_name" value=""  onkeydown="this.style.color = '#888';" />
+    </div>
+</div>
+
+<div class="header">
+<div class="logo_img">LOVESHOP</div></div>
+
+<!-- 商品分类 -->
+<div id="menu">
+<ul>  
+<li><a href="#">衣装服饰</a>
+	<div>
+	<ul>	
+	<li><a href="default.htm">外套</a></li>
+	<li><a href="default.htm">裤子</a></li>
+	<li><a href="default.htm">鞋子</a></li>
+	<li><a href="default.htm">内衣</a></li>
+	</ul>
+	</div>
+</li>
+<li><a href="#">吃货圣地</a>
+	<div>
+	<ul>	
+	<li><a href="default.htm">酒乳饮品</a></li>
+	<li><a href="default.htm">蔬菜菌类</a></li>
+	<li><a href="default.htm">休闲食品</a></li>
+	<li><a href="default.htm">时令水果</a></li>
+	</ul>
+	</div>
+</li>
+<li><a href="index.html">电子设备</a>
+	<div>
+	<ul>	
+	<li><a href="default.htm">电脑</a></li>
+	<li><a href="default.htm">电视</a></li>
+	<li><a href="default.htm">手机</a></li>
+	<li><a href="default.htm">配件</a></li>
+	</ul>
+	</div>
+</li>
+<li><a href="index.html">生活用品</a>
+	<div>
+	<ul>	
+	<li><a href="default.htm">学习用品</a></li>
+	<li><a href="default.htm">体育用品</a></li>
+	<li><a href="default.htm">厨房用具</a></li>
+	<li><a href="default.htm">客厅摆式</a></li>
+	</ul>
+	</div>
+</li>
+</ul>
+</div>
+
+
+<div style="width:1000px;margin: 0 auto;margin-top:10px;">
+<div class="linktree">
+    
+    <a href="#">首页</a>&raquo; <a href="#">商城主页</a>
+
+
+
+<br>
+<h1 style="margin-top:0px;">欢迎光临！</h1>
+
+<br>
+ 
+<div id="column-right">
+    <div class="box">
+  <div class="box-heading_left">分类</div>
+  <div class="box-content" style="background:none;border: solid 1px #E3E3E2;"><div class="box-category">
+    <ul>
+        <li><a href="#">外套</a></li>
+        <li><a href="#">裤子</a></li>
+      	<li><a href="#">鞋类</a></li>
+        <li><a href="#">内衣</a></li>
+          </ul>
+  </div>
+</div>
+</div>
+  </div>
+<div id="content">  
+    <form action="#" method="post" id="wishlist">
+    <div class="wishlist-product">
+      <table>
+        <thead>
+          <tr>
+			<td class="remove">批量添加</td>
+            <td class="image">图片</td>
+            <td class="name">商品名称</td>
+            <td class="model">已销售份数</td>
+            <td class="stock">会员特价</td>
+            <td class="price">商品单价</td>
+            <td class="cart">立即购买</td>
+          </tr>
+        </thead>
+        <tbody>
+                    <tr>
+            <td class="remove"><input type="checkbox" name="remove[]" value="41" /></td>
+            <td class="image"><a href="#"><img src="images/imac_1-50x50.jpg" alt="iMac" title="iMac" /></a>
+              </td>
+            <td class="name"><a href="#">电脑</a></td>
+            <td class="model">14</td>
+            <td class="stock">$99.00</td>
+            <td class="price"><div class="price">$100.00</div>
+              </td>
+            <td class="cart"><a class="button"><span>加入购物车</span></a></td>
+          </tr>
+                    <tr>
+            <td class="remove"><input type="checkbox" name="remove[]" value="40" /></td>
+            <td class="image"><a href="#"><img src="images/20070919010738-99-50x50.jpg" alt="iPhone" title="iPhone" /></a>
+              </td>
+            <td class="name"><a href="../../oc.spthemes.us/index.php@route=product_2Fproduct&product_id=40">手机</a></td>
+            <td class="model">11</td>
+            <td class="stock">$100.00</td>
+            <td class="price"><div class="price">$105.00</div>
+              </td>
+            <td class="cart"><a class="button"><span>加入购物车</span></a></td>
+          </tr>
+                    <tr>
+            <td class="remove"><input type="checkbox" name="remove[]" value="36" /></td>
+            <td class="image"><a href="#"><img src="images/ipod_nano_1-50x50.jpg" alt="iPod Nano" title="iPod Nano" /></a>
+              </td>
+            <td class="name"><a href="#">耳机</a></td>
+            <td class="model">9</td>
+            <td class="stock">$20.50</td>
+            <td class="price"><div class="price">$22.00</div>
+              </td>
+            <td class="cart"><a class="button"><span>加入购物车</span></a></td>
+          </tr>
+                  </tbody>
+      </table>
+    </div>
+  </form>
+  <div class="buttons">
+    <div class="left"><a href="#" class="button"><span>返回首页</span></a></div>
+    <div class="right"><a class="button"><span>刷新页面</span></a></div>
+  </div>
+    </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="get">
+			<table>
+				<tr>
+					<td>商品名:</td>
+					<td>
+						<input type="text" name="pro_name" id="pro_name" placeholder="请输入商品名" />
+					</td>
+				</tr>
+				<tr>
+					<td>商品类别：</td>
+					<td>
+						<select name="pro_class" id="pro_class" >
+							<option value="男">男</option>
+							<option value="女">女</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>商品价格:</td>
+					<td>
+						<input type="text" name="pro_price" id="pro_price" placeholder="请输入商品价格" />
+					</td>
+				</tr>
+				<tr>
+					<td>是否推荐:</td>
+					<td>
+						<input type="radio" name="pro" id="yes" value="是" checked="checked" />是
+						<input type="radio" name="pro" id="no" value="否" />否
+					</td>
+				</tr>
+				<tr>
+					<td>图片:</td>
+					<td>
+						<input type="file" name="photo" id="photo" />
+					</td>
+				</tr>
+				<tr>
+					<td>商品描述:</td>
+					<td>
+						<textarea name="pro_des" id="pro_des" rows="5" cols="40"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>商品库存:</td>
+					<td>
+						<input type="text" name="pro_number" id="pro_number"/>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<button type="submit">确定</button>
+						<button type="reset">重置</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

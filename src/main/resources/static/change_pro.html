@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			#container{
+				width: 70%;
+				padding: 30px;
+			}
+			td{
+				text-align: center!important;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 通过div控制内容出现的位置 -->
+		<div id="container">
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<td>
+							商品名
+						</td>
+						<td>
+							商品类别
+						</td>
+						<td>
+							商品价格
+						</td>
+						<td>
+							是否推荐
+						</td>
+						<td>
+							商品描述
+						</td>
+						<td>
+							库存
+						</td>
+						<td>
+							操作
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							苹果电脑
+						</td>
+						<td>
+							电脑
+						</td>
+						<td>
+							10000
+						</td>
+						<td>
+							是
+						</td>
+						<td>
+							good
+						</td>
+						<td>
+							3000
+						</td>
+						<td>
+							<a href="">删除</a>
+							<a href="">修改</a>
+						</td>
+					</tr>	
+				</tbody>
+			</table>
+		</div>
+	</body>
+	<script type="text/javascript">
+		
+		function selectAll(f)
+		{
+			//获取name为ids的所有控件，是一个数组
+			var chs=document.getElementsByName("ids");
+			for(var i=0;i<chs.length;i++)
+			{
+				//获取下标为i的控件
+				var ch=chs[i];
+				ch.checked=f;
+			}
+		}
+	</script>
+</html>

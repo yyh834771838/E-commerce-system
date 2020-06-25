@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+	<link rel="stylesheet" type="text/css" href="css.css" />
+	<title>iCart HTML Version</title>
+</head>
+<body>
+	<div class="menu">
+	<ul>
+	<li style="width:0px;"><a></a></li>
+	<li><a href="index.html" class="home">首页</a></li>
+	<li><a href="wishlist.html" class="wishlist">愿望单 (0)</a></li>
+	<li><a href="account.html" class="account">我的账户</a></li>
+	<li><a href="cat.html" class="cart">购物车</a></li>
+	<li><a class="checkout">登出</a></li>
+	<li style="float:right;"><a href="login.html" class="login">登录</a></li>
+	<li style="float:right;"><a class="register">注册</a></li>
+	</ul>
+</div>
+
+<div style="width:1000px;margin-left:-14px;">
+    <div id="cart">
+    <div class="content">
+	</div>
+  </div>
+	<div id="search">
+		<div class="button-search"></div>
+		<input type="text" name="filter_name" placeholder="Search"  onkeydown="this.style.color = '#888';" />
+	</div>
+</div>
+<!--icon of the website-->
+<div class="header">
+	<div class="logo_img">
+		<a href="index.html">
+			<img alt="Site Name" src="images/logo.png">
+		</a>
+	</div>
+</div>
+<!--left column-->
+<div id="menu">
+	<ul>
+		<li><a href="#">衣装服饰</a></li>
+		<li><a href="#">食品饮品</a></li>
+		<li><a href="index.html">电子设备</a></li>
+		<li><a href="index.html">生活用品</a></li>
+	</ul>
+</div>
+
+
+
+<div style="width:1000px;margin: 0 auto;margin-top:10px;">
+<div class="linktree">
+        <a href="#">首页</a>
+         &raquo; <a href="#">iMac</a>
+    </div>
+
+  <h1 style="margin-top:-10px;">iMac</h1>
+</div>
+<div id="container_bg">
+
+
+<style type="text/css">
+
+.linktree {
+	margin-top:0px;
+	margin-bottom:10px;
+	margin-left:3px;
+}
+
+.linktree a {
+	color:#666;
+	text-decoration:none;
+	font-size:11px;
+}
+
+#menu {
+	border-radius:5px;
+}
+</style>
+
+
+
+<div id="column-left">
+	<div class="box">
+		<div class="box-heading_left">
+			类别
+		</div>
+		<div class="box-content" style="background:none;border:none;">
+			<div class="box-category">
+				<ul>
+					<li><a href="#">台式机</a></li>
+					<li><a href="#">笔记本电脑</a></li>
+					<li><a href="#">组件</a></li>
+					<li><a href="#">软件</a></li>
+					<li><a href="#">手机</a></li>
+					<li><a href="#">相机</a></li>
+					<li><a href="#">MP3播放器</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+ 
+<div id="content">
+<div class="block-white"> 
+<div class="block-content">
+           
+</div>
+<div class="separator"></div>
+<div class="block-content">
+<div class="product-info">
+                                	
+<div class="left">                		                			
+	<div class="image">
+		<a href="#" title="iMac" >
+			<img src="images/imac_1-228x228.jpg" title="iMac" alt="iMac" id="image" />
+		</a>
+</div>
+				    			
+<div class="right" style="margin-left: -10px">
+<div id="tabs" class="tabs">
+<a href="#tab-information" class="selected"><img alt="Information" src="images/Info.png" style="margin-top:6px;" /><div></div></a>
+<a href="#tab-description">商品详情</a>
+<a href="#tab-review">评价 (0)</a>
+</div>
+  
+<div id="tab-information" class="tab-content">
+<div id="information"></div>
+			
+	
+<div class="description">
+<span>&raquo;&nbsp;品牌:</span> <a href="#">Apple</a><br />
+<span>&raquo;&nbsp;商品编码:</span> Product 14<br />
+<span>&raquo;&nbsp;是否有库存:</span> 有库存
+</div>
+                            
+<div class="price">
+<span class="price-new">$119.50</span>
+</div>
+<br>
+<div class="cart">
+<div>Qty:<input class="quantity" type="text" name="quantity" size="2" value="1" />
+<input type="hidden" name="product_id"  value="41" />
+&nbsp;<a id="button-cart" class="button"><span>添加到购物车</span></a>
+</div>
+<div>
+<span>&nbsp;&nbsp;&nbsp;- OR -&nbsp;&nbsp;&nbsp;</span>
+</div>
+<div>
+<a class="wishlist"><img src="images/wishlist.png" style="margin-top:6px;" title="Add to Wish List"/></a>
+<a class="compare"><img src="images/compare.png" style="margin-top:6px;" title="Add to Compare"/></a>
+</div>
+</div>
+<div class="review">
+<div>
+<img src="images/stars.png" alt="0 reviews" />&nbsp;&nbsp;
+<a onclick="$('a[href=\'#tab-review\']').trigger('click');#tab-review\']').trigger('click');">0 reviews</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+<a onclick="$('a[href=\'#tab-review\']').trigger('click');#tab-review\']').trigger('click');">Write a review</a>
+</div>
+</div>
+<div>
+	iMac 的背后，是我们始终不变的理想，那就是将强大而易用的科技融入优雅的一体式设计，令台式电脑的使用体验焕然改观。新款 iMac 将这一概念带上了更高境界，它提供更多绝妙的工具，让你能随心所欲自在发挥。新一代处理器、更快的内存、非凡的图形处理器，一切都在 Mac 迄今最明亮、最绚丽的视网膜显示屏上大放异彩，强势融于一身，
+	强大更上一层。
+</div>
+</div>
+<div class="price">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="icart-footer">
+<div class="icart-footer-top">
+	<div style="width:1000px; margin:0 auto;">	
+	</div>
+</div>
+<div class="icart-footer-container">
+	<div class="column_footer" style="width:350px;">
+		<h3>About Us</h3>
+		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vel ante felis, aliquet sagittis lacus. Etiam in purus vitae tortor lacinia pretium. Maecenas quam diam, porttitor bibendum lacinia a, feugiat sit amet felis. Praesent ut mi justo, a volutpat ligula. Praesent sodales felis sed odio consectetur eget cursus metus mollis. Proin sollicitudin accumsan lectus a ornare... .
+	</div>
+	
+	<div class="column_footer">
+		<h3>Customer Service</h3>
+		<ul>
+		<li><a href="#">About Us</a></li>
+      		<li><a href="#">Delivery Information</a></li>
+      		<li><a href="#">Privacy Policy</a></li>
+      		<li><a href="#">Terms &amp; Conditions</a></li>
+      		<li><a href="#">Contact Us</a></li>
+      		<li><a href="#">Returns</a></li>
+      		<li><a href="#">Site Map</a></li>
+		</ul>
+	</div>
+	
+	<div class="column_footer" style="width:150px;">
+		<h3>Extras</h3>
+		<ul>
+      		<li><a href="#">Brands</a></li>
+      		<li><a href="#">Gift Vouchers</a></li>
+      		<li><a href="#">Affiliates</a></li>
+      		<li><a href="#">Specials</a></li>
+		</ul>
+	</div>	
+	<div class="column_footer" style="width:150px;">
+		<h3>My Account</h3>
+		<ul>
+      		<li><a href="#">My Account</a></li>
+      		<li><a href="#">Order History</a></li>
+      		<li><a href="#">Wish List</a></li>
+      		<li><a href="#">Newsletter</a></li>
+		</ul>
+</div>
+		
+	<div class="column_footer" style="margin-right:0px;">
+		<h3>Social</h3>
+		<ul class="social">
+			<li class="twitter"><a href="../../twitter.com/twitter">Twitter Username</a></li>
+			<li class="facebook"><a href="../../facebook.com/Username/default.htm">Facebook</a></li>
+			<li class="rss"><a href="#">RSS Feed</a></li>
+		</ul>				
+	</div>		
+	<div class="clearfix"></div>
+	</div>		
+	<div class="icart-footer-bottom">
+		<div style="width:1000px; margin:0 auto;">				
+		<div class="icart-logo-footer"><a href="index.php"><img src="images/logo-footer.png" alt="Footer Logo"></a></div>	
+			<ul>
+			<li style="float:right;padding-top:10px;list-style:none;">&copy; Copyright &copy; 2013.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a> -  More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a></li>
+			</ul>		
+		<div class="clearfix"></div>
+		</div>
+
+</div>
+</div>
+
+</body>
+</html>

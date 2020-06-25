@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			/*
+				去除控件的边距和内填充
+			*/
+			*{
+				margin: 0px;
+				padding: 0px;
+				font-size: 12px;
+			}
+			#left{
+				width: 182px;
+			}
+			.menu_title{
+				/* background-image: url(img/menu_bgs.gif); */
+				height: 30px;
+				text-align: center;
+				line-height: 30px;
+				font-size: 14px;
+			}
+			.menu_title:hover{
+				cursor: pointer;
+			}
+			.menu_line{
+				/* background-image: url(img/menu_topline.gif); */
+				height: 5px;
+				background-repeat: no-repeat;				
+			}
+			/*
+				标识class样式为menu_item的控件中的子控件 a 
+				a 标签默认是包裹内容即可，不会充满整行
+				只有设置a标签的显示为块，才能控制高度和宽度
+			*/
+			.menu_item a{
+				/* background-image:url(img/menu_bg1.gif); */
+				height: 26px;
+				display: block;
+				text-align: center;
+				line-height: 26px;
+				text-decoration: none;
+			}
+			.menu_item a:hover{
+				/* background-image: url(img/menu_bg2.gif); */
+			}
+			.menu_item{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 控制菜单的宽度 -->
+		<div id="left">
+			<!-- 一个菜单 -->
+			<div class="menu">
+				<!-- 菜单标题 -->
+				<div class="menu_title">商品管理</div>
+				<!-- 菜单内容 -->
+				<div class="menu_item">
+					<!-- 菜单分割线 -->
+					<div class="menu_line" ></div>
+					<!-- 菜单项 -->
+					<ul>
+						<li><a href="add_pro.html" target="center">添加商品</a></li>
+						<li><a href="change_pro.html" target="center">修改商品</a></li>
+						<li><a href="pro_text.html" target="center">商品评论</a></li>
+					</ul>					
+				</div>
+			</div>
+			<!-- 第一个菜单结束 -->
+			<div class="menu">
+				<div class="menu_title">商品类别管理</div>
+				<div class="menu_item">
+					<div class="menu_line" ></div>
+					<ul>
+						<li><a href="add_class.html" target="center">添加类别</a></li>
+						<li><a href="change_class.html" target="center">修改类别</a></li>
+					</ul>					
+				</div>
+			</div>
+			<div class="menu">
+				<!-- 菜单标题 -->
+				<div class="menu_title">订单管理</div>
+				<!-- 菜单内容 -->
+				<div class="menu_item">
+					<!-- 菜单分割线 -->
+					<div class="menu_line" ></div>
+					<!-- 菜单项 -->
+					<ul>
+						<li><a href="order.html" target="center">修改订单</a></li>
+					</ul>					
+				</div>
+			</div>
+			<div class="menu">
+				<div class="menu_title">销售管理</div>
+				<div class="menu_item">
+					<div class="menu_line" ></div>
+					<ul>
+						<li><a href="sales.html" target="center">销售统计</a></li>
+					</ul>					
+				</div>
+			</div>
+			<div class="menu">
+				<div class="menu_title">会员管理</div>
+				<div class="menu_item">
+					<div class="menu_line" ></div>
+					<ul>
+						<li><a href="vip.html" target="center">修改会员</a></li>
+					</ul>					
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="jquery/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		//文件加载完毕后执行
+		jQuery(function(){
+			//把class样式为 menu_title 的控件绑定click事件
+			jQuery(".menu_title").click(function(){
+				
+				//获取自己的下一个使用menu_item样式的控件是什么状态
+				var s=jQuery(this).next(".menu_item").css("display");
+				
+				//把所有使用menu_item样式的控件收起来
+				jQuery(".menu_item").slideUp(200);
+				if(s=="none")
+				{
+					//找到自己的下一个使用menu_item样式的控件，展开
+					jQuery(this).next(".menu_item").slideDown(200);
+				}
+			});
+		})
+	</script>
+</html>
