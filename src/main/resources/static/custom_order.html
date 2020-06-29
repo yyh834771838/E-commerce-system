@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    <meta charset="UTF-8">
+    <title>销售订单</title>
+</head>
+<body>
+<!--the header of the page-->
+<div class="menu">
+    <ul>
+        <li style="width:0px;"><a></a></li>
+        <li><a href="index.html" class="home">首页</a></li>
+        <li><a href="wishlist.html" class="wishlist">愿望单 (0)</a></li>
+        <li><a href="account.html" class="account">我的账户</a></li>
+        <li><a href="cat.html" class="cart">购物车</a></li>
+        <li><a class="checkout">登出</a></li>
+        <li style="float:right;"><a href="login.html" class="login">登录</a></li>
+        <li style="float:right;"><a class="register">注册</a></li>
+    </ul>
+</div>
+<!--the search bar-->
+<div style="width:1000px;margin-left:-14px;">
+    <div id="cart">
+        <div class="content">
+        </div>
+    </div>
+    <div id="search">
+        <div class="button-search"></div>
+        <input type="text" name="filter_name" placeholder="Search"  onkeydown="this.style.color = '#888';" />
+    </div>
+</div>
+<!--icon of the website-->
+    <div class="header">
+            <div class="logo_img">LOVESHOP</div>
+    </div>
+
+<!-- 商品分类 -->
+    <div id="menu">
+    <ul>
+        <li>
+            <a href="#">衣装服饰</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">外套</a></li>
+                    <li><a href="default.htm">裤子</a></li>
+                    <li><a href="default.htm">鞋子</a></li>
+                    <li><a href="default.htm">内衣</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">吃货圣地</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">酒乳饮品</a></li>
+                    <li><a href="default.htm">蔬菜菌类</a></li>
+                    <li><a href="default.htm">休闲食品</a></li>
+                    <li><a href="default.htm">时令水果</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="index.html">电子设备</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">电脑</a></li>
+                    <li><a href="default.htm">电视</a></li>
+                    <li><a href="default.htm">手机</a></li>
+                    <li><a href="default.htm">配件</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="index.html">生活用品</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">学习用品</a></li>
+                    <li><a href="default.htm">体育用品</a></li>
+                    <li><a href="default.htm">厨房用具</a></li>
+                    <li><a href="default.htm">客厅摆式</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div style="margin:0 auto; width:1000px">
+    <button id="allorder" class="btn btn-default btn-primary">所有订单</button>
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function () {
+            jQuery("#allorder").click(function () {
+                alert("allorder!")
+            })
+        })
+    </script>
+    <button id="readyorder" class="btn btn-default btn-primary">待付款</button>
+    <button id="readyToDelievery" class="btn btn-default btn-primary">待发货</button>
+    <button id="readyToaccept" class="btn btn-default btn-primary">待收货</button>
+    <button id="readyTocomment" class="btn btn-default btn-primary">待收货</button>
+    <style>
+        .btn{
+            color: black;
+            font-size: 17px;
+        }
+    </style>
+</div>
+<!--订单详情部分-->
+<div class="custom_order">
+    <table class="table" style="margin:0 auto; width:1000px">
+        <tbody  style="display: table-row-group;
+                vertical-align: middle;
+                border-color: inherit;">
+        <tr>
+            <th class="tableheader_product">宝贝</th>
+            <th class="tableheader_price">单价</th>
+            <th class="tableheader_num">数量</th>
+            <th class="tableheader_productop">商品操作</th>
+            <th class="tableheader_state">交易状态</th>
+        </tr>
+        <tr>
+            <td class="table_product_des">
+                <img src="images/iphone.jpg" alt="图片一" class="product_img">
+                【狂欢价】绿联 hdmi转vga转换器hami带音频视接口hdim笔记本电脑台式机顶盒看电视投影仪显示器屏vja接头 [交易快照]
+            </td>
+            <td>李四</td>
+            <td>王五</td>
+            <td>陈六</td>
+        </tr>
+        <tr>
+            <td class="table_product_des">清华大学</td>
+            <td>北京大学</td>
+            <td>浙江大学</td>
+            <td>厦门大学</td>
+        </tr>
+        <tr>
+            <td class="table_product_des">13122222222</td>
+            <td>13233333333</td>
+            <td>15644444444</td>
+            <td>17866666666</td>
+        </tr>
+        <tr>
+            <td class="table_product_des">中国XX省XX市XX县</td>
+            <td>中国XX省XX市XX县</td>
+            <td>中国XX省XX市XX县</td>
+            <td>中国XX省XX市XX县</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+
+</div>
+
+</body>
+</html>
