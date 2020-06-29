@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -30,6 +31,13 @@ public class CustomOrderController {
     public Map<String, Object> getProNameAndPrice(@RequestParam Map<String, String>map)
     {
         Map<String, Object> result = customOrderService.getProNameAndPrice(map);
+        return result;
+    }
+
+    @RequestMapping("/getNameAndPrice")
+    public List<Map<String, Object>> getNameAndPrice(@RequestParam Map<String, String> map)
+    {
+        List<Map<String, Object>> result = customOrderService.getNameAndPrice(map);
         return result;
     }
 }

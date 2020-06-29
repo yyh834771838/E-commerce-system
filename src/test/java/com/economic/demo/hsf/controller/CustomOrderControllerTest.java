@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import javax.annotation.Resource;
 
+import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,6 +49,16 @@ class CustomOrderControllerTest {
         MockHttpServletRequestBuilder builder=
                 MockMvcRequestBuilders.post("/getProNameAndPrice")
                         .param("pro","11");
+        MvcResult rst=mockMvc.perform(builder).andReturn();
+        String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
+        System.out.println(str);
+    }
+
+    @Test
+    void getNameAndPrice() throws Exception {
+        MockHttpServletRequestBuilder builder=
+                MockMvcRequestBuilders.post("/getNameAndPrice")
+                        .param("user_id","1");
         MvcResult rst=mockMvc.perform(builder).andReturn();
         String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
         System.out.println(str);
