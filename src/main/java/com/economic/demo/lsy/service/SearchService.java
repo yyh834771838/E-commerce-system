@@ -13,24 +13,96 @@ public class SearchService {
 @Resource
 private SearchMapper searchMapper;
 
-    public List<Map<String,Object>> findAll(){
+    public List<Map<String,Object>> findAllLsy(){
         List<Map<String,Object>> list=null;
         try {
-            list=searchMapper.findAll();
+            list=searchMapper.findAllLsy();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
     }
 
-    public List<Map<String,Object>> findByName(Map<String,String> map){
+    public List<Map<String,Object>> findByNameUser(Map<String,String> map){
         List<Map<String,Object>> name=null;
         try {
-            String content=map.get("id");
-            name=searchMapper.findByName(content);
+            String content=map.get("name");
+            name=searchMapper.findByNameUser(content);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
         return name;
+    }
+
+    public List<Map<String,Object>> findByPrice1(){
+        List<Map<String,Object>> list=null;
+        try {
+            list=searchMapper.findByPrice1();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Map<String,Object>> findByPrice2(){
+        List<Map<String,Object>> list=null;
+        try {
+            list=searchMapper.findByPrice2();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Map<String,Object>> findByPrice3(){
+        List<Map<String,Object>> list=null;
+        try {
+            list=searchMapper.findByPrice3();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Map<String,Object>> findByPrice4(){
+        List<Map<String,Object>> list=null;
+        try {
+            list=searchMapper.findByPrice4();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Map<String,Object>> findByIdUser(Map<String,String> map){
+        List<Map<String,Object>> list=null;
+        try {
+            int content= Integer.parseInt(map.get("class2_id"));
+            list=searchMapper.findByIdUser(content);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Map<String,Object>> findAllC1(){
+        List<Map<String,Object>> list=null;
+        try {
+            list=searchMapper.findAllC1();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<Map<String,Object>> findByIdC2(Map<String,String> map){
+        List<Map<String,Object>> list=null;
+        try {
+            int content= Integer.parseInt(map.get("class1_id"));
+            list=searchMapper.findByIdC2(content);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
     }
 }
