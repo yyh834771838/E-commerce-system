@@ -16,7 +16,6 @@ public class CustomOrderController {
     @RequestMapping("/findOrderByUser")
     public int[] findOrder(@RequestParam Map<String, String> map){
         int[] list = customOrderService.findOrder(map);
-        System.out.println(Arrays.toString(list));
         return list;
     }
 }

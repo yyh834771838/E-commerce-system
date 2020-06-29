@@ -30,7 +30,12 @@ class CustomOrderServiceTest {
 
     @Test
     void findProductidByMenuid() {
-        boolean flag = customOrderService.findProductidByMenuid(1);
+        boolean flag  = false;
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("menu_id","1");
+        int[] list = customOrderService.findProductidByMenuid(map);
+        if (list != null)
+            flag = true;
         assertTrue(flag);
     }
 }

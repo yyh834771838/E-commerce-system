@@ -32,6 +32,5 @@ class CustomOrderMapperTest {
             System.out.print("pro_id: ");
             System.out.println(list[i]);
         }
-
     }
 }

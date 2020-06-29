@@ -20,7 +20,6 @@ public class CustomOrderService {
         try {
             Iterator<String> iter = map.keySet().iterator();
             if (iter.hasNext()) {
-                System.out.println(1);
                 list = customOrderMapper.findOrder(Integer.valueOf(map.get(iter.next())));
             }
         }
@@ -30,18 +29,21 @@ public class CustomOrderService {
         return list;
     }
 
-    public boolean findProductidByMenuid(int menu_id)
+    public int[] findProductidByMenuid(Map<String, String> map)
     {
-        boolean flag = true;
+        int[] list = null;
         try {
-            int[] list = customOrderMapper.findProductidByMenuid(menu_id);
+            Iterator<String> iter = map.keySet().iterator();
+            if(iter.hasNext())
+            {
+                list = customOrderMapper.findOrder(Integer.valueOf(map.get(iter.next())));
+            }
         }
         catch (Exception e)
         {
             e.printStackTrace();
-            flag = false;
         }
-        return flag;
+        return list;
     }
 
 }

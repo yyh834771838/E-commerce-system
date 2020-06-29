@@ -87,9 +87,10 @@
     <script src="jquery/jquery-3.4.1.min.js"></script>
     <script type="text/javascript">
         jQuery(function () {
+            //在单击全部订单的按钮执行事件
             jQuery("#allorder").click(function () {
                 jQuery.post("/findOrderByUser",{"user_id": 1}, function (orderdetaillist) {
-                    alert(orderdetaillist.length)
+                   
                 })
             })
         })
