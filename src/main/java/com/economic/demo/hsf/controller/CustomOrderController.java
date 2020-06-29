@@ -34,10 +34,10 @@ public class CustomOrderController {
         return result;
     }
 
-    @RequestMapping("/getNameAndPrice")
-    public List<Map<String, Object>> getNameAndPrice(@RequestParam Map<String, String> map)
+    @RequestMapping("/getOrderInfo")
+    public List<Map<String, Object>> getOrderInfo(@RequestParam Map<String, String> map)
     {
-        List<Map<String, Object>> result = customOrderService.getNameAndPrice(map);
+        List<Map<String, Object>> result = customOrderService.getOrderInfo(map);
         return result;
     }
 }

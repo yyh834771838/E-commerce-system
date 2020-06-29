@@ -20,10 +20,10 @@ public interface CustomOrderMapper {
     @Select("select name, price from product where pro_id = #{pro_id}")
     public Map<String, Object> getProNameAndPrice(int pro_id);
 
-    @Select("SELECT name, pro_price, pro_number " +
+    @Select("SELECT name, pro_price, pro_number, status " +
             "from menu a " +
             "INNER JOIN oderdetails b ON a.menu_id = b.menu_id " +
             "INNER JOIN product c ON c.pro_id = b.pro_id " +
             "WHERE a.user_id = #{user_id}")
-    public List<Map<String, Object>> getNameAndPrice(int user_id);
+    public List<Map<String, Object>> getOrderInfo(int user_id);
 }

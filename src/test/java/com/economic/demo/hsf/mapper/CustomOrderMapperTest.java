@@ -47,8 +47,8 @@ class CustomOrderMapperTest {
     }
 
     @Test
-    void getNameAndPrice() {
-        List<Map<String, Object>> map = customOrderMapper.getNameAndPrice(1);
+    void getOrderInfo() {
+        List<Map<String, Object>> map = customOrderMapper.getOrderInfo(1);
         Iterator<Map<String, Object>> iter = map.iterator();
         while (iter.hasNext())
         {
@@ -56,6 +56,7 @@ class CustomOrderMapperTest {
             System.out.println("the name of the product is: " + key.get("name"));
             System.out.println("the price is: " + key.get("pro_price"));
             System.out.println("the number of the product is: " + key.get("pro_number"));
+            System.out.println("the status of the product is: " + key.get("status"));
         }
     }
 }

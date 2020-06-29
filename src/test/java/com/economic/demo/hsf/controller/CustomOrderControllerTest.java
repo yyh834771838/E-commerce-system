@@ -55,9 +55,9 @@ class CustomOrderControllerTest {
     }
 
     @Test
-    void getNameAndPrice() throws Exception {
+    void getOrderInfo() throws Exception {
         MockHttpServletRequestBuilder builder=
-                MockMvcRequestBuilders.post("/getNameAndPrice")
+                MockMvcRequestBuilders.post("/getOrderInfo")
                         .param("user_id","1");
         MvcResult rst=mockMvc.perform(builder).andReturn();
         String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
