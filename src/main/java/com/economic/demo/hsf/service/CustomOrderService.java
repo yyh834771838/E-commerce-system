@@ -20,6 +20,7 @@ public class CustomOrderService {
         try {
             Iterator<String> iter = map.keySet().iterator();
             if (iter.hasNext()) {
+                System.out.println(1);
                 list = customOrderMapper.findOrder(Integer.valueOf(map.get(iter.next())));
             }
         }
