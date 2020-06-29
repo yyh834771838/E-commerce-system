@@ -125,6 +125,7 @@
 	<script src="/jquery/jquery-3.4.1.min.js"></script>
 	<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
+		var objUrl;
 		jQuery(function(){
 			//页面加载完毕，就去数据库中获取数据
 			//          /all 请求的地址
@@ -157,6 +158,13 @@
 				}
 				jQuery("#tbody").html(body);
 			},"json");//表示返回数据的格式
+			jQuery("#photo").change(function(){
+				var name=this.files[0].name;
+				objUrl="/pro_images/"+name;
+				if (objUrl) {
+					$("#img0").attr("src", objUrl) ;
+				}
+			}) ;
 		});
 
 		//如果是通过function定义的方法必须在jquery外面写
@@ -193,7 +201,7 @@
 			jQuery("#pro_number").val(number);
 			//jQuery(":file").accept(photo);
 			//jQuery(":file").val(photo);
-			//$("#img0").attr("src", photo) ;
+			$("#img0").attr("src", photo) ;
 			jQuery("#editModal").modal("show");
 		}
 		function doEdit() {
@@ -207,7 +215,7 @@
 			var details=jQuery("#pro_des").val();
 			var number=jQuery("#pro_number").val();
 			//var photo=jQuery("#photo").val();
-			var photo="";
+			var photo=objUrl;
 			jQuery.post("/pro_update",{"pro_id":pro_id,"class2_id":class2_id,"name":name,"price":price,"hot":hot,
 				"details":details,"number":number,"photo":photo},function (rst) {
 				alert(rst);
