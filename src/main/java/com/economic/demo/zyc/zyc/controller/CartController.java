@@ -1,4 +1,4 @@
-package com.economic.demo.zyc.controller;
+package com.economic.demo.zyc.zyc.controller;
 
 import com.economic.demo.zyc.service.CartService;
 import org.springframework.web.bind.annotation.RequestMapping;

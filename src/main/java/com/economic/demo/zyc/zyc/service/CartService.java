@@ -1,4 +1,4 @@
-package com.economic.demo.zyc.service;
+package com.economic.demo.zyc.zyc.service;
 
 import com.economic.demo.zyc.mapper.CartMapper;
 import org.springframework.stereotype.Service;

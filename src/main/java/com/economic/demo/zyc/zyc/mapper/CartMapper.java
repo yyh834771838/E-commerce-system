@@ -1,4 +1,4 @@
-package com.economic.demo.zyc.mapper;
+package com.economic.demo.zyc.zyc.mapper;
 
 import java.util.List;
 import java.util.Map;
@@ -15,12 +15,12 @@ public interface CartMapper {
 
     @Insert("insert into oderdetails(pro_id,menu_id,number,price)" +
             "value(#{pro_id},#{menu_id},#{number},#{price})")
-    public int save(@Param("order") Map<String,String> map);
+    public int save(@Param("order") Map<String, String> map);
 
     @Update("update oderdetails " +
             " set number=#{num}" +
             " where id=#{id}")
-    public int update(@Param("t") Map<String,String> tea);
+    public int update(@Param("t") Map<String, String> tea);
 
     @Delete("delete from oderdetails where id=#{id}")
     public int delete(int id);
