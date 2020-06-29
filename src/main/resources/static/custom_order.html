@@ -89,8 +89,24 @@
         jQuery(function () {
             //在单击全部订单的按钮执行事件
             jQuery("#allorder").click(function () {
-                jQuery.post("/findOrderByUser",{"user_id": 1}, function (orderdetaillist) {
 
+                jQuery.post("/findOrderByUser",{"user_id": 1}, function (orderdetaillist) {
+                   alert(orderdetaillist.length);
+                   var menu_id = orderdetaillist[0];
+                   console.log(menu_id);
+                   var dic = {"menu_id": menu_id};
+                    console.log(dic);
+                    jQuery.post("/findProidByMenu"),{"menu_id" : "1"},function (prolist) {
+                        console.log(prolist.length)
+                    }
+                    // for(int i = 0 ; i<orderdetaillist.length;i++)
+                    // {
+                    //
+                    //     var menu_id = orderdetaillist[i];
+                    //     console.log(menu_id)
+                    //     var dic = {"pro_id": menu_id};
+                    //     alert(dic)
+                    // }
                 })
             })
         })
