@@ -21,4 +21,16 @@ class CustomOrderMapperTest {
         List<Map<String, Object>> list = customOrderMapper.findOrder(1);
         System.out.println(list);
     }
+
+
+    @Test
+    void findProductidByMenuid() {
+        int[] list = customOrderMapper.findProductidByMenuid(1);
+        for(int i = 0 ; i< list.length;i++)
+        {
+            System.out.print("pro_id: ");
+            System.out.println(list[i]);
+        }
+
+    }
 }
