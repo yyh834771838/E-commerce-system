@@ -13,7 +13,8 @@
 <li class="active"><a href="account.html" class="account">我的账户</a></li>
 <li><a href="cart.html" class="cart">购物车</a></li>
 <li><a class="checkout">商品结算</a></li>
-<li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li>
+	<!--li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li-->
+	<li  style="float:right;" ><div id="top_page" class="login"></div></li>
 </ul>
 </div>
 <div style="width: 700px;">
@@ -45,30 +46,36 @@
 <div id="information" >
     <h2>我的账户</h2>
 	<h4>亲爱的会员，填写真实信息，有助于好友找到你哦。</h4>
-  <div class="content">
-    <ul>
-      	<li>
-		  	昵称:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_name">
-	  	</li>
-		<br/><br/>
-		<li>
-			密码:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_pwd">
-		</li>
-		<br/><br/>
-		<li>
-			电话:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_tel">
-		</li>
-		<br/><br/>
-		<li>
-			性别:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_sex">
-		</li>
-		<br/><br/>
-		<li>
-			邮箱:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_email">
-		</li>
-
-    </ul>
-  </div>
+	<form action="#" >
+		<div class="content">
+			<ul>
+				<li>
+					昵称:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_name">
+				</li>
+				<br/><br/>
+				<li>
+					密码:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_pwd">
+				</li>
+				<br/><br/>
+				<li>
+					电话:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_tel">
+				</li>
+				<br/><br/>
+				<li>
+					性别:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_sex">
+				</li>
+				<br/><br/>
+				<li>
+					邮箱:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_email">
+				</li>
+				<br/><br/>
+				<div class="form-group text-center">
+					<button type="button" id="btn_reg" class="btn btn-info">保存</button>
+					<button type="reset" class="btn btn-danger">重置</button>
+				</div>
+			</ul>
+	  	</div>
+	</form>
   </div>
 </div>
 </body>
