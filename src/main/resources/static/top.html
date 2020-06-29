@@ -5,14 +5,14 @@
 		<title></title>
 		<style type="text/css">
 			*{
-				margin: 0px;
 				padding: 0px;
-				font-size: 12px;
+				margin: 0px;
 			}
-			#top{
+
+			#topp{
 				/* background-image: url(img/top-right.gif); */
 				/* background-color:#122B40; */
-				background: url(img/catmenu.png);
+				background: url(images/catmenu.png);
 				height: 64px;
 				line-height: 60px;
 			}
@@ -22,20 +22,61 @@
 				font-size: 20px;
 				padding-left: 20px;
 			}
-			#info{
-				float: right;
-				color: white;
+			*{
+				padding: 0px;
+				margin: 0px;
+			}
+			.login{
 				padding-right: 20px;
 			}
+			#info{
+				display: inline;
+			}
+
 		</style>
 	</head>
 	<body>
-		<div id="top">
-			<div id="logo">Manager</div>
-			<div id="info">
-				欢迎【张三】
-				<a href="login.html" target="_top">注销</a>
-			</div>
-		</div> 
+		<table style="margin: -10px; padding: 0;height: 24px; line-height: 24px;">
+			<tr >
+			<td ><span id="info"></span></td>
+			<td ><a href="login.html" id="quit" style="color: #2aabd2" onclick="exit()" ></a></td>
+			<td ><a href="login.html" id="login" class="login" style="color: #2aabd2"></a></td>
+			</tr>
+		</table>
 	</body>
+
+	<script src="/jquery/jquery-3.4.1.min.js"></script>
+	<script>
+		function exit()
+		{
+			var d=new Date();
+			d.setTime(d.getTime()+ -1*24*60*60);
+			document.cookie="info="+123+"; expires="+d.toUTCString();
+			location.href="login.html";
+		}
+		function getCookie()
+		{
+			var cookies=document.cookie.split(";");
+			for(var i=0;i<cookies.length;i++)
+			{
+				var cookie=cookies[i].trim();
+				if(cookie.indexOf("info")==0)
+				{
+					var m=cookie.substring("info".length+1);
+					jQuery("#info").html(m);
+					jQuery("#quit").html("注销");
+					jQuery("#login").css("display","none");
+					jQuery("#info").css("display","incline");
+					jQuery("#quit").css("display","inline");
+					return;
+				}
+			}
+			jQuery("#login").html("登陆/注册");
+			jQuery("#login").css("display","inline");
+			jQuery("#info").css("display","none");
+			jQuery("#quit").css("display","none");
+		}
+
+		getCookie();
+	</script>
 </html>
