@@ -1,4 +1,4 @@
-package com.economic.demo.zyc.zyc.service;
+package com.economic.demo.zyc.service;
 
 import com.economic.demo.zyc.mapper.CartMapper;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class CartService {
         }
         return flag;
     }
-//
+
     public boolean doDelete(Map<String,String> map){
         boolean flag=false;
         try {

@@ -1,4 +1,4 @@
-package com.economic.demo.zyc.zyc.controller;
+package com.economic.demo.zyc.controller;
 
 import com.economic.demo.zyc.service.CartService;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,7 +40,7 @@ public class CartController {
         return msg;
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/edit")
     public String update(@RequestParam Map<String,String> map){
         String msg="修改失败";
         boolean flag=cartService.doUpdate(map);
