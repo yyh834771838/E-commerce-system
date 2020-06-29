@@ -36,7 +36,7 @@ public class CustomOrderService {
             Iterator<String> iter = map.keySet().iterator();
             if(iter.hasNext())
             {
-                list = customOrderMapper.findOrder(Integer.valueOf(map.get(iter.next())));
+                list = customOrderMapper.findProductidByMenuid(Integer.valueOf(map.get(iter.next())));
             }
         }
         catch (Exception e)

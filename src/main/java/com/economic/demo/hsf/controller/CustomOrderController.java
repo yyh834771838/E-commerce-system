@@ -18,4 +18,11 @@ public class CustomOrderController {
         int[] list = customOrderService.findOrder(map);
         return list;
     }
+
+    @RequestMapping("/findProidByMenu")
+    public int[] findProidByMenu(@RequestParam Map<String, String> map)
+    {
+        int[] list = customOrderService.findProductidByMenuid(map);
+        return list;
+    }
 }
