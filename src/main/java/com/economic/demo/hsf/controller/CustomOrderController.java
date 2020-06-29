@@ -12,8 +12,10 @@ public class CustomOrderController {
 
     @Resource
     private CustomOrderService customOrderService;
-    @RequestMapping("/findOrderById")
-    public String findOrder(@RequestParam int user_id){
-        return "";
+    @RequestMapping("/findOrderByUser")
+    public int[] findOrder(Map<String, String> map){
+
+        int[] list = customOrderService.findOrder(map);
+        return list;
     }
 }

@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -13,20 +14,19 @@ public class CustomOrderService {
     @Resource
     private CustomOrderMapper customOrderMapper;
 
-    public boolean findOrder(int userid){
+    public int[] findOrder(Map<String, String> map){
         boolean flag = false;
+        int[] list = null;
         try {
-            List<Map<String, Object>>  list = new ArrayList<Map<String, Object>>();
-            list = customOrderMapper.findOrder(userid);
-            if (list != null)
-                    flag = true;
+            Iterator<String> iter = map.keySet().iterator();
+            if (iter.hasNext()) {
+                list = customOrderMapper.findOrder(Integer.valueOf(map.get(iter.next())));
+            }
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             e.printStackTrace();
         }
-        return flag;
-
+        return list;
     }
 
     public boolean findProductidByMenuid(int menu_id)

@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import javax.annotation.Resource;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -18,8 +19,12 @@ class CustomOrderServiceTest {
     @Resource CustomOrderService customOrderService;
     @Test
     void findOrder() {
-        List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
-        boolean flag = customOrderService.findOrder(2);
+        boolean flag  = false;
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("userid","1");
+        int [] list= customOrderService.findOrder(map);
+        if (list!=null)
+            flag=true;
         assertTrue(flag);
     }
 

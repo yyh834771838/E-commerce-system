@@ -7,6 +7,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -18,8 +19,8 @@ class CustomOrderMapperTest {
     private CustomOrderMapper customOrderMapper;
     @Test
     void findOrder() {
-        List<Map<String, Object>> list = customOrderMapper.findOrder(1);
-        System.out.println(list);
+        int[] list = customOrderMapper.findOrder(1);
+        System.out.println(Arrays.toString(list));
     }
 
 

@@ -88,7 +88,9 @@
     <script type="text/javascript">
         jQuery(function () {
             jQuery("#allorder").click(function () {
-                alert("allorder!")
+                jQuery.post("/findOrderByUser",{"user_id": 1}, function (orderdetaillist) {
+                    alert(orderdetaillist.length)
+                })
             })
         })
     </script>
@@ -146,6 +148,13 @@
         </tbody>
     </table>
 </div>
+
+<script src="jquery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+
+    })
+</script>
 <div>
 
 </div>
