@@ -42,4 +42,14 @@ class CustomOrderControllerTest {
         String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
         System.out.println(str);
     }
+
+    @Test
+    void getProNameAndPrice() throws Exception {
+        MockHttpServletRequestBuilder builder=
+                MockMvcRequestBuilders.post("/getProNameAndPrice")
+                        .param("pro","11");
+        MvcResult rst=mockMvc.perform(builder).andReturn();
+        String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
+        System.out.println(str);
+    }
 }

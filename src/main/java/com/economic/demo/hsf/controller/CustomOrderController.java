@@ -25,4 +25,11 @@ public class CustomOrderController {
         int[] list = customOrderService.findProductidByMenuid(map);
         return list;
     }
+
+    @RequestMapping("/getProNameAndPrice")
+    public Map<String, Object> getProNameAndPrice(@RequestParam Map<String, String>map)
+    {
+        Map<String, Object> result = customOrderService.getProNameAndPrice(map);
+        return result;
+    }
 }
