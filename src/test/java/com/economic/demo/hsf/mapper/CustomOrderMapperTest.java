@@ -55,6 +55,7 @@ class CustomOrderMapperTest {
             Map<String, Object> key = iter.next();
             System.out.println("the name of the product is: " + key.get("name"));
             System.out.println("the price is: " + key.get("pro_price"));
+            System.out.println("the number of the product is: " + key.get("pro_number"));
         }
     }
 }
