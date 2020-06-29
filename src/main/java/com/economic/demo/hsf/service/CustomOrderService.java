@@ -4,10 +4,7 @@ import com.economic.demo.hsf.mapper.CustomOrderMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class CustomOrderService {
@@ -15,7 +12,6 @@ public class CustomOrderService {
     private CustomOrderMapper customOrderMapper;
 
     public int[] findOrder(Map<String, String> map){
-        boolean flag = false;
         int[] list = null;
         try {
             Iterator<String> iter = map.keySet().iterator();
@@ -46,4 +42,13 @@ public class CustomOrderService {
         return list;
     }
 
+    public Map<String, Object> getProNameAndPrice(Map<String, String>pro_id)
+    {
+        Map<String, Object> map = new HashMap<String, Object>();
+            Iterator<String> iter = pro_id.keySet().iterator();
+            if (iter.hasNext()) {
+                map = customOrderMapper.getProNameAndPrice(Integer.valueOf(pro_id.get(iter.next())));
+            }
+            return map;
+    }
 }

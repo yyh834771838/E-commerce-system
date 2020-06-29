@@ -38,4 +38,19 @@ class CustomOrderServiceTest {
             flag = true;
         assertTrue(flag);
     }
+
+    @Test
+    void getProNameAndPrice() {
+        boolean flag = false;
+        Map<String, String> map = new HashMap<String, String>();
+        map.put("pro_id", "12");
+        Map<String, Object> result = customOrderService.getProNameAndPrice(map);
+        if (result.size()!=0)
+        {
+            flag = true;
+            System.out.println(result.get("name"));
+            System.out.println(result.get("price"));
+        }
+        assertTrue(flag);
+    }
 }
