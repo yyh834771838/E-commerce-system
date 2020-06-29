@@ -29,4 +29,18 @@ public class CustomOrderService {
 
     }
 
+    public boolean findProductidByMenuid(int menu_id)
+    {
+        boolean flag = true;
+        try {
+            int[] list = customOrderMapper.findProductidByMenuid(menu_id);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            flag = false;
+        }
+        return flag;
+    }
+
 }

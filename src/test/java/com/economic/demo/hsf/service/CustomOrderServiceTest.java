@@ -22,4 +22,10 @@ class CustomOrderServiceTest {
         boolean flag = customOrderService.findOrder(2);
         assertTrue(flag);
     }
+
+    @Test
+    void findProductidByMenuid() {
+        boolean flag = customOrderService.findProductidByMenuid(1);
+        assertTrue(flag);
+    }
 }
