@@ -35,7 +35,7 @@
 </ul>
 </div>
 
-<div style="width:700px;margin:700 auto;">
+<div style="width:700px;">
       
 	<div id="search">
     <div class="button-search"></div>
@@ -98,9 +98,9 @@
 
 <div style="width:1000px;margin: 0 auto;margin-top:10px;">
 <div class="linktree">
-        <a href="../../oc.spthemes.us/index.php@route=common_2Fhome">Ö÷Ò³</a>
-         &raquo; <a href="../../oc.spthemes.us/index.php@route=account_2Faccount">ÕËºÅ</a>
-         &raquo; <a href="../../oc.spthemes.us/index.php@route=account_2Flogin">µÇÂ½</a>
+        <a href="index.html">Ö÷Ò³</a>
+         &raquo; <a href="account.html">ÕËºÅ</a>
+         &raquo; <a href="login.html">µÇÂ½</a>
     </div>
 
   <h1 style="margin-top:-10px;">µÇÂ½ÕËºÅ</h1>
@@ -123,15 +123,15 @@
         <div class="content">
           <p></p>
           <b>ÕËºÅ:</b><br />
-          <input type="text" name="email" value="" placeholder="ÓÊÏä/ÊÖ»úºÅ/ÓÃ»§Ãû"/>
+          <input type="text" name="u_name" id="u_name" value="" placeholder="ÓÊÏä/ÊÖ»úºÅ/ÓÃ»§Ãû"/>
           <br />
           <br />
           <b>ÃÜÂë:</b><br />
-          <input type="password" name="password" value="" placeholder="ÇëÊäÈëÃÜÂë"/>
+          <input type="password" name="u_pwd" id="u_pwd" value="" placeholder="ÇëÊäÈëÃÜÂë"/>
           <br />
-          <a href="../../oc.spthemes.us/index.php@route=account_2Fforgotten">Íü¼ÇÃÜÂë£¿</a><br />
+          <a href="">Íü¼ÇÃÜÂë£¿</a><br />
           <br />
-          <a onclick="$('#login').submit();" class="button"><span>µÇÂ½</span></a>
+          <a onclick="$('#login').submit();" id="btn_login" class="button"><span>µÇÂ½</span></a>
                   </div>
       </form>
     </div>
@@ -141,4 +141,22 @@
 </div>
 
 </body>
+
+<script src="/jquery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript">
+    jQuery(function(){
+        jQuery("#btn_login").click(function(){
+            var name=jQuery("#u_name").val();
+            var pwd=jQuery("#u_pwd").val();
+            jQuery.post("/login",{"u_name":name,"u_pwd":pwd},function (rst) {
+                if(rst=="µÇÂ¼³É¹¦")
+                {
+                    location.href="index.html";
+                }else{
+                    alert(rst);
+                }
+            });
+        });
+    });
+</script>
 </html>
