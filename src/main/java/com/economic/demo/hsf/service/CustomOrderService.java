@@ -51,4 +51,13 @@ public class CustomOrderService {
             }
             return map;
     }
+
+    public List<Map<String, Object>> getNameAndPrice(Map<String, String>user_id){
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+        Iterator<String> iter = user_id.keySet().iterator();
+        if (iter.hasNext()) {
+            result =customOrderMapper.getNameAndPrice(Integer.valueOf(user_id.get(iter.next())));
+        }
+        return result;
+    }
 }

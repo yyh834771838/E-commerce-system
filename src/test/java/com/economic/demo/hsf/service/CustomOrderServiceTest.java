@@ -53,4 +53,15 @@ class CustomOrderServiceTest {
         }
         assertTrue(flag);
     }
+
+    @Test
+    void getNameAndPrice() {
+        boolean flag = false;
+        Map<String, String> map = new HashMap<>();
+        map.put("user_id", "1");
+        List<Map<String, Object>> result = customOrderService.getNameAndPrice(map);
+        if (result != null)
+            flag = true;
+       assertTrue(flag);
+    }
 }
