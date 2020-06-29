@@ -19,11 +19,8 @@
 	margin-right:20px;
 
 }
-    *{
-        padding: 0px;
-        margin: 0px;
-    }
 </style>
+
 <div class="menu">
 <ul>
 <li style="width:0px;"><a></a></li>
@@ -32,8 +29,8 @@
 <li><a href="account.html" class="account">我的账户</a></li>
 <li><a href="cart.html" class="cart">购物车</a></li>
 <li><a class="checkout">商品结算</a></li>
-<!--li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li-->
-<li  style="float:right;" ><div id="top_page" class="login"></div></li>
+<li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li>
+
 
 </ul>
 </div>
@@ -126,15 +123,15 @@
         <div class="content">
           <p></p>
           <b>账号:</b><br />
-          <input type="text" name="u_name" id="u_name" placeholder="邮箱/手机号/用户名"/>
+          <input type="text" name="u_name" id="u_name" value="" placeholder="邮箱/手机号/用户名"/>
           <br />
           <br />
           <b>密码:</b><br />
-          <input type="password" name="u_pwd" id="u_pwd"  placeholder="请输入密码"/>
+          <input type="password" name="u_pwd" id="u_pwd" value="" placeholder="请输入密码"/>
           <br />
           <a href="">忘记密码？</a><br />
           <br />
-            <button type="button" id="btn_login" class="btn btn-info">登陆</button>
+          <a onclick="$('#login').submit();" id="btn_login" class="button"><span>登陆</span></a>
                   </div>
       </form>
     </div>
@@ -147,7 +144,6 @@
 
 <script src="/jquery/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
-    $("#top_page").load("top.html");
     jQuery(function(){
         jQuery("#btn_login").click(function(){
             var name=jQuery("#u_name").val();
@@ -155,13 +151,6 @@
             jQuery.post("/login",{"u_name":name,"u_pwd":pwd},function (rst) {
                 if(rst=="登录成功")
                 {
-                    //写Cookie，只能放入简单的字符串
-                    var msg="欢迎"+"【"+name+"】" + "登陆！";
-                    var d=new Date();
-                    d.setTime(d.getTime()+2*24*60*60);
-                    document.cookie="info="+msg+"; expires="+d.toUTCString();
-                    //跳转页面
-                    //location.href="top.html";
                     location.href="index.html";
                 }else{
                     alert(rst);

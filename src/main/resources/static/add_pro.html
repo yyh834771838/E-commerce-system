@@ -4,9 +4,6 @@
 		<meta charset="utf-8">
 		<title></title>
 	</head>
-	<script src="/jquery/jquery-3.4.1.min.js"></script>
-	<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<body>
 		<form action="" method="get">
 			<table>
@@ -20,8 +17,8 @@
 					<td>商品类别：</td>
 					<td>
 						<select name="pro_class" id="pro_class" >
-							<option value="1">1</option>
-							<option value="2">2</option>
+							<option value="男">男</option>
+							<option value="女">女</option>
 						</select>
 					</td>
 				</tr>
@@ -34,14 +31,14 @@
 				<tr>
 					<td>是否推荐:</td>
 					<td>
-						<input type="radio" name="yes"  value="是" checked="checked" />是
-						<input type="radio" name="yes"  value="否" />否
+						<input type="radio" name="pro" id="yes" value="是" checked="checked" />是
+						<input type="radio" name="pro" id="no" value="否" />否
 					</td>
 				</tr>
 				<tr>
 					<td>图片:</td>
 					<td>
-						<input type="file" name="photo" id="photo" /><br><img src="" id="img0" width="200px" height="100px"/>
+						<input type="file" name="photo" id="photo" />
 					</td>
 				</tr>
 				<tr>
@@ -58,74 +55,11 @@
 				</tr>
 				<tr>
 					<td>
-						<button type="button" name="confirm" id="confirm">确定</button>
+						<button type="submit">确定</button>
 						<button type="reset">重置</button>
 					</td>
 				</tr>
 			</table>
 		</form>
-		<div id="myModal" class="modal fade">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="gridSystemModalLabel">提示信息</h4>
-					</div>
-					<div class="modal-body">
-						<span id="reg_msg"></span>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" id="closeDilog">确定</button>
-					</div>
-				</div><!-- /.modal-content -->
-			</div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
 	</body>
-	<script>
-		jQuery(function(){
-			var objUrl;
-			jQuery("#photo").change(function(){
-				var name=this.files[0].name;
-				objUrl="/pro_images/"+name;
-				if (objUrl) {
-					$("#img0").attr("src", objUrl) ;
-				}
-			}) ;
-			jQuery("#confirm").click(function(){
-
-				var name=jQuery("#pro_name").val();
-				var class2_id=jQuery("#pro_class").val();
-				var price=jQuery("#pro_price").val();
-				var hot=jQuery("input[type='radio']:checked").val();
-				/*if(jQuery(":radio")){
-					hot=1;
-				}
-				else{
-					hot=0;
-				}*/
-
-				var photo=objUrl;
-
-				var details=jQuery("#pro_des").val();
-				var number=jQuery("#pro_number").val();
-
-				jQuery.post("/pro_save",{"name":name,"class2_id":class2_id,"price":price,
-					"hot":hot,"details":details,"photo":photo,"number":number},function(rst){
-					jQuery("#reg_msg").html(rst);
-					jQuery("#myModal").modal("show");
-
-				});
-
-			});
-			jQuery("#closeDilog").click(function(){
-				var rst=jQuery("#reg_msg").html();
-				if(rst=='添加成功')
-				{
-					//跳转页面
-					window.location.href="main.html";
-				}
-			});
-		});
-
-	</script>
 </html>
