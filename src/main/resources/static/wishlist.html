@@ -75,7 +75,8 @@
             <td >商品名称</td>
             <td >剩余库存量</td>
             <td >商品单价</td>
-            <td >立即购买</td>
+            <td >商品详情</td>
+              <td >立即购买</td>
           </tr>
         </thead>
         <tbody id="tbody">
@@ -101,19 +102,48 @@
             for(var i=0;i<rst.length;i++){
                 var json=rst[i];
                 body+="<li>";
-                body+="<a href='#'>"+json.name+"</a>";
+                body+="<a href='#'>"+json.name1+"</a>";
                 body+="<div>";
                 if(i==0)
-                    body+= "<ul id=\"menubody1\">";
-                else body+= "<ul>";
+                body+= "<ul id=\"menubody1\">";
+                else if(i==1)
+                    body+= "<ul id=\"menubody2\">";
+                else if(i==2)
+                    body+= "<ul id=\"menubody3\">";
+                else if(i==3)
+                    body+= "<ul id=\"menubody4\">";
+                else if(i==4)
+                    body+= "<ul id=\"menubody5\">";
+                else if(i==5)
+                    body+= "<ul id=\"menubody6\">";
+                else if(i==6)
+                    body+= "<ul id=\"menubody7\">";
+                else if(i==7)
+                    body+= "<ul id=\"menubody8\">";
+
 
                 jQuery.post("/idC2",{"class1_id": json.class1_id},function(rst2){
                     var body2="";
                     for(var j=0;j<rst2.length;j++){
                         var json2=rst2[j];
-                        body2+="<li><a href=\"#\">"+json2.name+"</a></li>";
+                        body2+="<li><a href=\"#\" onclick='doFindByIdC2(\""+json2.class2_id+"\")'>"+json2.name2+"</a></li>";
                     }
+                    if(json2.class1_id==1)
                     jQuery("#menubody1").html(body2);
+                    else if(json2.class1_id==2)
+                        jQuery("#menubody2").html(body2);
+                    else if(json2.class1_id==3)
+                        jQuery("#menubody3").html(body2);
+                    else if(json2.class1_id==4)
+                        jQuery("#menubody4").html(body2);
+                    else if(json2.class1_id==5)
+                        jQuery("#menubody5").html(body2);
+                    else if(json2.class1_id==6)
+                        jQuery("#menubody6").html(body2);
+                    else if(json2.class1_id==7)
+                        jQuery("#menubody7").html(body2);
+                    else if(json2.class1_id==8)
+                        jQuery("#menubody8").html(body2);
                 },"json");
 
 
@@ -136,7 +166,10 @@
                 body+="<td>"+json.number+"</td>";
                 body+="<td>"+json.price+"</td>";
                 body+="<td>";
-                body+="<a href='#' class=\"button\"><span>加入购物车</span></a>";
+                body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
+                body+="</td>";
+                body+="<td>";
+                body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
                 body+="</td>";
                 body+="</tr>";
             }
@@ -155,7 +188,10 @@
                         body += "<td>" + json.number + "</td>";
                         body += "<td>" + json.price + "</td>";
                         body += "<td>";
-                        body += "<a href='#' class=\"button\"><span>加入购物车</span></a>";
+                        body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
+                        body+="</td>";
+                        body+="<td>";
+                        body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
                         body += "</td>";
                         body += "</tr>";
                     }
@@ -174,7 +210,10 @@
                     body += "<td>" + json.number + "</td>";
                     body += "<td>" + json.price + "</td>";
                     body += "<td>";
-                    body += "<a href='#' class=\"button\"><span>加入购物车</span></a>";
+                    body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
+                    body+="</td>";
+                    body+="<td>";
+                    body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
                     body += "</td>";
                     body += "</tr>";
                 }
@@ -193,7 +232,10 @@
                     body += "<td>" + json.number + "</td>";
                     body += "<td>" + json.price + "</td>";
                     body += "<td>";
-                    body += "<a href='#' class=\"button\"><span>加入购物车</span></a>";
+                    body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
+                    body+="</td>";
+                    body+="<td>";
+                    body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
                     body += "</td>";
                     body += "</tr>";
                 }
@@ -212,7 +254,10 @@
                     body += "<td>" + json.number + "</td>";
                     body += "<td>" + json.price + "</td>";
                     body += "<td>";
-                    body += "<a href='#' class=\"button\"><span>加入购物车</span></a>";
+                    body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
+                    body+="</td>";
+                    body+="<td>";
+                    body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
                     body += "</td>";
                     body += "</tr>";
                 }
@@ -231,7 +276,10 @@
                     body += "<td>" + json.number + "</td>";
                     body += "<td>" + json.price + "</td>";
                     body += "<td>";
-                    body += "<a href='#' class=\"button\"><span>加入购物车</span></a>";
+                    body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
+                    body+="</td>";
+                    body+="<td>";
+                    body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
                     body += "</td>";
                     body += "</tr>";
                 }
@@ -250,16 +298,62 @@
                     body += "<td>" + json.number + "</td>";
                     body += "<td>" + json.price + "</td>";
                     body += "<td>";
-                    body += "<a href='#' class=\"button\"><span>加入购物车</span></a>";
+                    body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
+                    body+="</td>";
+                    body+="<td>";
+                    body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
                     body += "</td>";
                     body += "</tr>";
                 }
                 jQuery("#tbody").html(body);
             }, "json");
         });
-
-
     });
+
+    function doFindByIdC2(id)
+    {
+        jQuery.post("/pro_id2", {"class2_id": id}, function (rst) {
+            var body = "";
+            for (var i = 0; i < rst.length; i++) {
+                var json = rst[i];
+                body += "<tr>";
+                body += "<td>" + json.photo + "</td>";
+                body += "<td>" + json.name + "</td>";
+                body += "<td>" + json.number + "</td>";
+                body += "<td>" + json.price + "</td>";
+                body += "<td>";
+                body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
+                body+="</td>";
+                body+="<td>";
+                body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
+                body += "</td>";
+                body += "</tr>";
+            }
+            jQuery("#tbody").html(body);
+        }, "json");
+    }
+
+    function doAddCart(id,price) {
+        var check = 1;
+
+        jQuery.post("/idPro", {"pro_id": id, "user_id": 1}, function (rst) {
+            var json = rst;
+            if(json.pro_id==null)
+                check=0;
+            if(check==1) {
+                var pro_number = json.pro_number + 1;
+                jQuery.post("/editC", {"pro_id": id, "user_id": 1, "pro_number": pro_number}, function (rst2) {
+                    alert(rst2);
+                });
+            }
+        if(check==0) {
+            jQuery.post("/saveC", {"user_id": 1, "pro_id": id, "pro_number": 1, "pro_price": price}, function (rst3) {
+                alert(rst3);
+            });
+        }
+        });
+    }
+
 
 </script>
 </html>
