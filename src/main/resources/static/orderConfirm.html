@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    <script src="jquery/jquery-3.4.1.min.js"></script>
+    <title>确认订单</title>
+</head>
+<body>
+<!--the header of the page-->
+<div class="menu">
+    <ul>
+        <li style="width:0px;"><a></a></li>
+        <li><a href="index.html" class="home">首页</a></li>
+        <li><a href="wishlist.html" class="wishlist">愿望单 (0)</a></li>
+        <li><a href="account.html" class="account">我的账户</a></li>
+        <li><a href="cat.html" class="cart">购物车</a></li>
+        <li><a class="checkout">登出</a></li>
+        <li style="float:right;"><a href="login.html" class="login">登录</a></li>
+        <li style="float:right;"><a class="register">注册</a></li>
+    </ul>
+</div>
+<!--the search bar-->
+<div style="width: 700px;margin: 700 auto;">
+    <div id="cart">
+        <div class="content">
+        </div>
+    </div>
+    <div id="searchbox">
+        <div class="button-search"></div>
+        <input type="text" name="filter_name" placeholder="Please input the name of the product" id="searchbar"  onkeydown="this.style.color = '#888';" />
+        <button type="button" id="searchbutton"> 订单搜索</button>
+    </div>
+</div>
+<!--icon of the website-->
+<div class="header">
+    <div class="logo_img">LOVESHOP</div>
+</div>
+<!-- 商品分类 -->
+<div id="menu">
+    <ul>
+        <li>
+            <a href="#">衣装服饰</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">外套</a></li>
+                    <li><a href="default.htm">裤子</a></li>
+                    <li><a href="default.htm">鞋子</a></li>
+                    <li><a href="default.htm">内衣</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">吃货圣地</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">酒乳饮品</a></li>
+                    <li><a href="default.htm">蔬菜菌类</a></li>
+                    <li><a href="default.htm">休闲食品</a></li>
+                    <li><a href="default.htm">时令水果</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="index.html">电子设备</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">电脑</a></li>
+                    <li><a href="default.htm">电视</a></li>
+                    <li><a href="default.htm">手机</a></li>
+                    <li><a href="default.htm">配件</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="index.html">生活用品</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">学习用品</a></li>
+                    <li><a href="default.htm">体育用品</a></li>
+                    <li><a href="default.htm">厨房用具</a></li>
+                    <li><a href="default.htm">客厅摆式</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div style="width: 1000px; margin:0 auto">
+    <br/>
+    <br/>
+    <p style="font-size: 300%">Thanks for your purchase! </p>
+    <br/>
+    <br/>
+    <p style="font-size: 150%">以下是您的订单信息请您确认:</p>
+    <p style="font-size: 120%">用户: </p>
+</div>
+
+</body>
+</html>
