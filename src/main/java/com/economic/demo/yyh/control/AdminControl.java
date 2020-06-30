@@ -30,4 +30,9 @@ public class AdminControl {
         String info=adminInfoService.checkRegister(map);
         return info;
     }
+    @RequestMapping("/findUserDetails")
+    public Map<String, Object> findDetailById(@RequestParam Map<String,String> map){
+        Map<String, Object> info = adminInfoService.findDetailById(map);
+        return info;
+    }
 }
