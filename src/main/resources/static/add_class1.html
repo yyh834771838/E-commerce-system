@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <tr>
+        <td>
+        类名：
+        </td>
+        <td>
+        <input type="text" name="name1" id="name1" />
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <button type="button"name="confirm" id="confirm">确定</button>
+        </td>
+    </tr>
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">提示信息</h4>
+                </div>
+                <div class="modal-body">
+                    <span id="reg_msg"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="closeDilog">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</body>
+<script src="/jquery/jquery-3.4.1.min.js"></script>
+<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    jQuery(function () {
+        jQuery("#confirm").click(function(){
+            var name1=jQuery("#name1").val();
+            jQuery.post("/class1_save",{"name1":name1,},function(rst){
+                jQuery("#reg_msg").html(rst);
+                jQuery('#myModal').modal("show");
+
+            });
+        });
+
+        jQuery("#closeDilog").click(function(){
+            var rst=jQuery("#reg_msg").html();
+            if(rst=='添加成功')
+            {
+
+                location.reload();
+            }
+        });
+    });
+</script>
+</html>
