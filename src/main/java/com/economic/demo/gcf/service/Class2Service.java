@@ -30,7 +30,7 @@ public class Class2Service {
     public boolean doDelete(Map<String,String> map){
         boolean flag=false;
         try {
-            int id=Integer.parseInt(map.get("id"));
+            int id=Integer.parseInt(map.get("class2_id"));
             int r=class2Mapper.delete(id);
             if(r>0){
                 flag=true;
@@ -71,6 +71,16 @@ public class Class2Service {
         try {
             int id=Integer.parseInt(map.get("id"));
             tea=class2Mapper.findById(id);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return tea;
+    }
+    public Map<String,Object> findByName(Map<String,String> map){
+        Map<String,Object> tea=null;
+        try {
+            String name=map.get("name");
+            tea=class2Mapper.findByName(name);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
