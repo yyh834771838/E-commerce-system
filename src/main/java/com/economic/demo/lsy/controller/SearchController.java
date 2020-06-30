@@ -67,4 +67,30 @@ public class SearchController {
         List<Map<String,Object>> list=searchService.findByIdC2(map);
         return list;
     }
+
+    @RequestMapping("/idPro")
+    public Map<String,Object> findByIdPro(@RequestParam Map<String,String> map){
+        Map<String,Object> list=searchService.findByIdPro(map);
+        return list;
+    }
+
+    @RequestMapping("/editC")
+    public String update(@RequestParam Map<String,String> map){
+        String msg="修改失败";
+        boolean flag=searchService.doUpdate(map);
+        if(flag){
+            msg="添加成功";
+        }
+        return msg;
+    }
+
+    @RequestMapping("/saveC")
+    public String save(@RequestParam Map<String,String> map){
+        String msg="保存失败";
+        boolean flag=searchService.doSave(map);
+        if(flag){
+            msg="添加成功";
+        }
+        return msg;
+    }
 }
