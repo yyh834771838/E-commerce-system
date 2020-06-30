@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
-		<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
 		<style type="text/css">
 			#container{
 				width: 70%;
@@ -20,70 +20,202 @@
 			<table class="table table-bordered table-striped table-hover">
 				<thead>
 					<tr>
-						<td>
-							商品名
-						</td>
-						<td>
-							商品类别
-						</td>
-						<td>
-							商品价格
-						</td>
-						<td>
-							是否推荐
-						</td>
-						<td>
-							商品描述
-						</td>
-						<td>
-							库存
-						</td>
-						<td>
-							操作
-						</td>
+						<td>商品类别</td>
+						<td>商品名</td>
+						<td>商品价格</td>
+						<td>是否推荐</td>
+						<td>商品描述</td>
+						<td>库存</td>
+						<td>图片</td>
+						<td>操作</td>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>
-							苹果电脑
-						</td>
-						<td>
-							电脑
-						</td>
-						<td>
-							10000
-						</td>
-						<td>
-							是
-						</td>
-						<td>
-							good
-						</td>
-						<td>
-							3000
-						</td>
-						<td>
-							<a href="">删除</a>
-							<a href="">修改</a>
-						</td>
-					</tr>	
+				<tbody id="tbody">
+
 				</tbody>
 			</table>
 		</div>
+		<!-- 删除的模态框 -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="delModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">提示</h4>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" id="del_id">
+						<p id="del_msg"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" onclick="doDelete()">确定</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+		<!-- 修改的模态框 -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">提示</h4>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" id="pro_id">
+						<form class="form-horizontal">
+							<div class="form-group form-group-lg">
+							<label class="control-label col-lg-2">类别:</label>
+							<div class="col-lg-8">
+								<select name="pro_class" id="pro_class" >
+									<option value="1">1</option>
+									<option value="2">2</option>
+								</select>
+							</div>
+							</div>
+							<div class="form-group form-group-lg">
+								<label class="control-label col-lg-2">商品名:</label>
+								<div class="col-lg-8">
+									<input type="text" name="pro_name" id="pro_name" />
+								</div>
+							</div>
+							<div class="form-group form-group-lg">
+								<label class="control-label col-lg-2">价格:</label>
+								<div class="col-lg-8">
+									<input type="text" name="pro_price" id="pro_price" placeholder="请输入商品价格" />
+								</div>
+							</div>
+							<div class="form-group form-group-lg">
+								<label class="control-label col-lg-2">是否推荐:</label>
+								<div class="col-lg-8">
+									<input type="radio" name="yes"  value="是"  />是
+									<input type="radio" name="yes"  value="否" />否
+								</div>
+							</div>
+
+							<div class="form-group form-group-lg">
+								<label class="control-label col-lg-2">商品描述:</label>
+								<div class="col-lg-8">
+									<textarea name="pro_des" id="pro_des" rows="5" cols="40"></textarea>
+								</div>
+							</div>
+							<div class="form-group form-group-lg">
+								<label class="control-label col-lg-2">商品库存:</label>
+								<div class="col-lg-8">
+									<input type="text" name="pro_number" id="pro_number"/>
+								</div>
+							</div>
+							<div class="form-group form-group-lg">
+								<label class="control-label col-lg-2">图片:</label>
+								<div class="col-lg-8">
+									<input type="file" name="photo" id="photo" /><br><img src="" id="img0" width="200px" height="100px"/>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" onclick="doEdit()">确定</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	</body>
+	<script src="/jquery/jquery-3.4.1.min.js"></script>
+	<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
-		
-		function selectAll(f)
+		jQuery(function(){
+			//页面加载完毕，就去数据库中获取数据
+			//          /all 请求的地址
+			jQuery.post("/pro_findAll",function(rst){//处理响应的结果
+				var body="";
+				for(var i=0;i<rst.length;i++)
+				{
+					var json=rst[i];//{"pro_id":,"class2_id":,"name":,"price":"","hot":,"details":,number,photo}
+					body+="<tr>";
+					body+="<td>"+json.class2_id+"</td>";
+					body+="<td>"+json.name+"</td>";
+					body+="<td>"+json.price+"</td>";
+					body+="<td>"+json.hot+"</td>";
+					body+="<td>"+json.details+"</td>";
+					body+="<td>"+json.number+"</td>";
+					body+="<td>"+"<img src=\"" +json.photo +"\" width=\"100px\" height=\"50px\"/>"+"</td>";
+					body+="<td>";
+					body+="<a href='#' onclick='showDelModal(\""+json.pro_id+"\",\""+json.name+"\")'>删除</a>&nbsp;&nbsp;";
+					body+="<a href='#' onclick='showEditModal(" +
+							"\""+json.pro_id+"\"," +
+							"\""+json.class2_id+"\"," +
+							"\""+json.name+"\"," +
+							"\""+json.price+"\"," +
+							"\""+json.hot+"\"," +
+							"\""+json.details+"\"," +
+							"\""+json.number+"\"," +
+							"\""+json.photo+"\")'>修改</a>";
+					body+="</td>"
+					body+="</tr>";
+				}
+				jQuery("#tbody").html(body);
+			},"json");//表示返回数据的格式
+		});
+
+		//如果是通过function定义的方法必须在jquery外面写
+		function showDelModal(id,name)
 		{
-			//获取name为ids的所有控件，是一个数组
-			var chs=document.getElementsByName("ids");
-			for(var i=0;i<chs.length;i++)
-			{
-				//获取下标为i的控件
-				var ch=chs[i];
-				ch.checked=f;
-			}
+			jQuery("#del_id").val(id);
+			jQuery("#del_msg").html(name);
+			jQuery("#delModal").modal("show");
+		}
+		function doDelete()
+		{
+			jQuery("#delModal").modal("hide");
+			var id=jQuery("#del_id").val();
+			//json格式的属性名称必须与后台对应
+			jQuery.post("/pro_delete",{"pro_id":id},function(rst){
+				alert(rst);
+				//如果删除成功，重新加载数据
+				if(rst=='删除成功')
+				{
+					//重新加载本页面
+					location.reload();
+				}
+			});
+		}
+		function showEditModal(pro_id,class2_id,name,price,hot,details,number,photo)
+		{
+			jQuery("#pro_id").val(pro_id)
+			jQuery("#pro_class  option[value=\""+class2_id+"\"] ").attr("selected",true);
+			jQuery("#pro_name").val(name);
+			jQuery("#pro_price").val(price);
+			//jQuery("#hot").val(hot);
+			jQuery("input[type='radio'][value=\""+hot+"\"]").attr("checked",true);
+			jQuery("#pro_des").val(details);
+			jQuery("#pro_number").val(number);
+			//jQuery(":file").accept(photo);
+			//jQuery(":file").val(photo);
+			//$("#img0").attr("src", photo) ;
+			jQuery("#editModal").modal("show");
+		}
+		function doEdit() {
+			jQuery("#editModal").modal("hide");
+			//获取数据
+			var pro_id=jQuery("#pro_id").val();
+			var class2_id=jQuery("#pro_class").val();
+			var name=jQuery("#pro_name").val();
+			var price=jQuery("#pro_price").val();
+			var hot=jQuery("input[type='radio']:checked").val();
+			var details=jQuery("#pro_des").val();
+			var number=jQuery("#pro_number").val();
+			//var photo=jQuery("#photo").val();
+			var photo="";
+			jQuery.post("/pro_update",{"pro_id":pro_id,"class2_id":class2_id,"name":name,"price":price,"hot":hot,
+				"details":details,"number":number,"photo":photo},function (rst) {
+				alert(rst);
+				if(rst=='更新成功')
+				{
+					location.reload();
+				}
+			})
 		}
 	</script>
 </html>
