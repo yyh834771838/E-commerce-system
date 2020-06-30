@@ -963,12 +963,16 @@ Author URI: http://dev7studios.com
 	background: url("images/search.png") no-repeat scroll left  transparent;
         display: block;
         height: 31px;
-	cursor: pointer;
 	width: 36px;
         margin-left:150px;
-
-        
 }
+
+.btn-size{
+	width: 56px;
+	height: 33px;
+	background-color:#fff;
+}
+
 #search input {    
     border: solid 1px #ccc;
     color: #444444;

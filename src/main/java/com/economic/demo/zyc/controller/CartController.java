@@ -40,7 +40,7 @@ public class CartController {
         return msg;
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/edit")
     public String update(@RequestParam Map<String,String> map){
         String msg="修改失败";
         boolean flag=cartService.doUpdate(map);
