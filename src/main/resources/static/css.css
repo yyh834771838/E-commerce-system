@@ -55,7 +55,72 @@ body a{
  	overflow:hidden;
 
 }
+/* tableheader */
+.tableheader_product {
+	background-color: #f5f5f5;
+	border: 1px solid #e8e8e8;
+	text-align: center;
+	width: 400px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.tableheader_price{
+	background-color: #f5f5f5;
+	border: 1px solid #e8e8e8;
+	text-align: center;
+	width: 120px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.tableheader_num {
+	background-color: #f5f5f5;
+	border: 1px solid #e8e8e8;
+	text-align: center;
+	width: 120px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.tableheader_time{
+	background-color: #f5f5f5;
+	border: 1px solid #e8e8e8;
+	text-align: center;
+	width: 120px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.tableheader_state{
+	background-color: #f5f5f5;
+	border: 1px solid #e8e8e8;
+	text-align: center;
+	width: 120px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+.tableheader_productop{
+	background-color: #f5f5f5;
+	border: 1px solid #e8e8e8;
+	text-align: center;
+	width: 150px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
 
+.product_img {
+	max-height: 80px;
+	max-width: 80px;
+	float: left;
+	clear: both;
+}
+
+.product_name {
+	display: inline-block;
+}
+.table_product_des {
+	margin-left: 10px;
+	background-color: #ffffff;
+	font-size: 12px;
+	line-height: 16px;
+}
 .menu ul li {
 	color:#fff;
 	list-style:none;
