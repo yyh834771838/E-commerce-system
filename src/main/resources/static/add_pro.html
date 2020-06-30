@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	</head>
 	<body>
 		<form action="" method="get">
@@ -17,8 +18,8 @@
 					<td>商品类别：</td>
 					<td>
 						<select name="pro_class" id="pro_class" >
-							<option value="男">男</option>
-							<option value="女">女</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
 						</select>
 					</td>
 				</tr>
@@ -38,7 +39,7 @@
 				<tr>
 					<td>图片:</td>
 					<td>
-						<input type="file" name="photo" id="photo" />
+						<input type="file" name="photo" id="photo" /><br><img src="" id="img0" width="200px" height="100px"/>
 					</td>
 				</tr>
 				<tr>
@@ -55,11 +56,64 @@
 				</tr>
 				<tr>
 					<td>
-						<button type="submit">确定</button>
+						<button type="button"name="confirm" id="confirm">确定</button>
 						<button type="reset">重置</button>
 					</td>
 				</tr>
 			</table>
 		</form>
+		<div id="myModal" class="modal fade">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="gridSystemModalLabel">提示信息</h4>
+					</div>
+					<div class="modal-body">
+						<span id="reg_msg"></span>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" id="closeDilog">确定</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	</body>
+	<script src="/jquery/jquery-3.4.1.min.js"></script>
+	<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		jQuery(function(){
+			var objUrl;
+			jQuery("#photo").change(function(){
+				var name=this.files[0].name;
+				objUrl="/pro_images/"+name;
+				if (objUrl) {
+					$("#img0").attr("src", objUrl) ;
+				}
+			}) ;
+			jQuery("#confirm").click(function(){
+				var pro_name=jQuery("#pro_name").val();
+				var pro_class=jQuery("#pro_class").val();
+				var pro_price=jQuery("#pro_price").val();
+				var hot=jQuery("input[type='radio']:checked").val();
+				var photo=objUrl;
+				var pro_des=jQuery("#pro_des").val();
+				var pro_number=jQuery("#pro_number").val();
+				jQuery.post("/pro_save",{"class2_id":pro_class,"name":pro_name,"price":pro_price,"hot":hot,"details":pro_des,
+					"number":pro_number,"photo":photo},function(rst){
+					jQuery("#reg_msg").html(rst);
+					jQuery('#myModal').modal("show");
+
+				});
+			});
+			jQuery("#closeDilog").click(function(){
+				var rst=jQuery("#reg_msg").html();
+				if(rst=='添加成功')
+				{
+					//跳转页面
+					window.location.href="main.html";
+				}
+			});
+		});
+	</script>
 </html>

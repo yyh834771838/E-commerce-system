@@ -31,7 +31,7 @@ public class ProductService {
     public boolean doDelete(Map<String,String> map){
         boolean flag=false;
         try {
-            int id=Integer.parseInt(map.get("id"));
+            int id=Integer.parseInt(map.get("pro_id"));
             int r=productMapper.delete(id);
             if(r>0){
                 flag=true;
