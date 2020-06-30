@@ -1,180 +1,182 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<link rel="stylesheet" type="text/css" href="css.css" />
-<title>网上购物商城</title>
+	<link rel="stylesheet" type="text/css" href="css.css" />
+	<title>网上购物商城</title>
 </head>
 <body>
 <div class="menu">
-<ul>
-<li style="width:0px;"><a></a></li>
-<li class="active"><a href="index.html" class="home">主页</a></li>
-<li><a href="wishlist.html" class="wishlist">商城主页</a></li>
-<li><a href="account.html" class="account">我的账户</a></li>
-<li><a href="cart.html" class="cart">购物车</a></li>
-<li><a class="checkout">商品结算</a></li>
-<li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li>
-</ul>
+	<ul>
+		<li style="width:0px;"><a></a></li>
+		<li class="active"><a href="index.html" class="home">主页</a></li>
+		<li><a href="wishlist.html" class="wishlist">商城主页</a></li>
+		<li><a href="account.html" class="account">我的账户</a></li>
+		<li><a href="cart.html" class="cart">购物车</a></li>
+		<li><a class="checkout">商品结算</a></li>
+		<!--li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li-->
+		<li  style="float:right;" ><div id="top_page" class="login"></div></li>
+	</ul>
 </div>
 
 <!-- 商标+搜索框 -->
-<div style="width:700px;margin:700 auto;">
-<div id="cart">
-<div class="content"></div>
-</div>  
-<div id="search">
-	<div class="button-search"><button type="button" id="btn_sch" class="btn-size">搜索</button></div>
-<input type="text" name="sch_name" id="sch_name" value="Search" onClick="this.value = '';" onKeyDown="this.style.color = '#888';" />
-</div>
+<div style="width:700px;">
+	<div id="cart">
+		<div class="content"></div>
+	</div>
+	<div id="search">
+		<div class="button-search"><button type="button" id="btn_sch" class="btn-size">搜索</button></div>
+		<input type="text" name="sch_name" id="sch_name" value="Search" onClick="this.value = '';" onKeyDown="this.style.color = '#888';" />
+	</div>
 </div>
 <div class="header">
-<div class="logo_img">LOVESHOP</div></div>
+	<div class="logo_img">LOVESHOP</div></div>
 
 <!-- 商品分类 -->
 <div id="menu">
-<ul>  
-<li><a href="#">衣装服饰</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">外套</a></li>
-	<li><a href="default.htm">裤子</a></li>
-	<li><a href="default.htm">鞋子</a></li>
-	<li><a href="default.htm">内衣</a></li>
+	<ul>
+		<li><a href="#">衣装服饰</a>
+			<div>
+				<ul>
+					<li><a href="default.htm">外套</a></li>
+					<li><a href="default.htm">裤子</a></li>
+					<li><a href="default.htm">鞋子</a></li>
+					<li><a href="default.htm">内衣</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="#">吃货圣地</a>
+			<div>
+				<ul>
+					<li><a href="default.htm">酒乳饮品</a></li>
+					<li><a href="default.htm">蔬菜菌类</a></li>
+					<li><a href="default.htm">休闲食品</a></li>
+					<li><a href="default.htm">时令水果</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="index.html">电子设备</a>
+			<div>
+				<ul>
+					<li><a href="default.htm">电脑</a></li>
+					<li><a href="default.htm">电视</a></li>
+					<li><a href="default.htm">手机</a></li>
+					<li><a href="default.htm">配件</a></li>
+				</ul>
+			</div>
+		</li>
+		<li><a href="index.html">生活用品</a>
+			<div>
+				<ul>
+					<li><a href="default.htm">学习用品</a></li>
+					<li><a href="default.htm">体育用品</a></li>
+					<li><a href="default.htm">厨房用具</a></li>
+					<li><a href="default.htm">客厅摆式</a></li>
+				</ul>
+			</div>
+		</li>
 	</ul>
-	</div>
-</li>
-<li><a href="#">吃货圣地</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">酒乳饮品</a></li>
-	<li><a href="default.htm">蔬菜菌类</a></li>
-	<li><a href="default.htm">休闲食品</a></li>
-	<li><a href="default.htm">时令水果</a></li>
-	</ul>
-	</div>
-</li>
-<li><a href="index.html">电子设备</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">电脑</a></li>
-	<li><a href="default.htm">电视</a></li>
-	<li><a href="default.htm">手机</a></li>
-	<li><a href="default.htm">配件</a></li>
-	</ul>
-	</div>
-</li>
-<li><a href="index.html">生活用品</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">学习用品</a></li>
-	<li><a href="default.htm">体育用品</a></li>
-	<li><a href="default.htm">厨房用具</a></li>
-	<li><a href="default.htm">客厅摆式</a></li>
-	</ul>
-	</div>
-</li>
-</ul>
 </div>
 
 <!-- 大例子 -->
 <div id="wrapper">
-<div class="slider-wrapper theme-orman">
-<div class="ribbon"></div>
-<div id="slider" class="nivoSlider" style="border: 1px solid #444;box-shadow: 0 0 5px 0 #080808;">
-<a href="index.html"><img src="images/1.jpg" alt="" title="例子" /></a>
-<a href="index.html"><img src="images/2.jpg" alt="" title="例子" /></a>
-</div>
-<br>
-<div class="controlNav_box"></div>
-</div>
+	<div class="slider-wrapper theme-orman">
+		<div class="ribbon"></div>
+		<div id="slider" class="nivoSlider" style="border: 1px solid #444;box-shadow: 0 0 5px 0 #080808;">
+			<a href="index.html"><img src="images/1.jpg" alt="" title="例子" /></a>
+			<a href="index.html"><img src="images/2.jpg" alt="" title="例子" /></a>
+		</div>
+		<br>
+		<div class="controlNav_box"></div>
+	</div>
 </div>
 <script type="text/javascript" src="slider/scripts/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="slider/jquery.nivo.slider.pack.js"></script>
 <script type="text/javascript">
-    $(window).load(function() {
-        $('#slider').nivoSlider();
-    });
+	$(window).load(function() {
+		$('#slider').nivoSlider();
+	});
 </script>
 
 <!-- 商品 -->
 <div class="container">
-<div class="text_box_left">商品列表</div>
-<div class="box-product">
-<div>
-<div class="showhim">
-<div class="image">
-<a href="product.html"><img src="images/img4.webp" alt="">
-</a>
-<div class="name"><a href="#">AppaleWatch</a></div>
-<div class="priced">
-<ul>
-<li>$119.50</li>
-<li><a href="#">添加到购物车</a></li>
-</ul>
- </div>
-<div style="margin-top:24px;"></div>
-</div>	
-<div class="showme">	        	
-</div></div>           
-</div>            
-<div>
-<div class="showhim">
-<div class="image">
-<a href="product.html"><img src="images/img4.webp" alt="">
-</a>
-<div class="name"><a href="#">AppaleWatch</a></div>
-<div class="priced">
-<ul>
-<li>$120.68</li>
-<li><a href="#">添加到购物车</a></li>
-</ul>
-</div>
-<div style="margin-top:24px;"></div>
-</div>	
-</div>      
-</div>
-<div>
-<div class="showhim">
-<div class="image">
-<a href="product.html"><img src="images/img4.webp" alt="">
-</a>
-<div class="name"><a href="#">AppaleWatch</a></div>
-<div class="priced">
-<ul>
-<li>$119.50</li>
-<li><a href="#">添加到购物车</a></li>
-</ul>
-</div>
-<div style="margin-top:24px;"></div>
-</div>	
-<div class="showme">	        	
-</div>
-</div>
-</div>
-<div>
-<div class="showhim">
-<div class="image">
-<a href="product.html"><img src="images/img4.webp" alt="">
-</a>
-<div class="name"><a href="#">AppaleWatch</a></div>
-<div class="priced">
-<ul>
-<li>$119.50</li>
-<li><a href="#">添加到购物车</a></li>
-</ul>
-</div>
-<div style="margin-top:24px;"></div>
-</div>	
-<div class="showme">	        	
-</div>
-</div>
-</div>
-</div>
+	<div class="text_box_left">商品列表</div>
+	<div class="box-product">
+		<div>
+			<div class="showhim">
+				<div class="image">
+					<a href="product.html"><img src="images/img4.webp" alt="">
+					</a>
+					<div class="name"><a href="#">AppaleWatch</a></div>
+					<div class="priced">
+						<ul>
+							<li>$119.50</li>
+							<li><a href="#">添加到购物车</a></li>
+						</ul>
+					</div>
+					<div style="margin-top:24px;"></div>
+				</div>
+				<div class="showme">
+				</div></div>
+		</div>
+		<div>
+			<div class="showhim">
+				<div class="image">
+					<a href="product.html"><img src="images/img4.webp" alt="">
+					</a>
+					<div class="name"><a href="#">AppaleWatch</a></div>
+					<div class="priced">
+						<ul>
+							<li>$120.68</li>
+							<li><a href="#">添加到购物车</a></li>
+						</ul>
+					</div>
+					<div style="margin-top:24px;"></div>
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="showhim">
+				<div class="image">
+					<a href="product.html"><img src="images/img4.webp" alt="">
+					</a>
+					<div class="name"><a href="#">AppaleWatch</a></div>
+					<div class="priced">
+						<ul>
+							<li>$119.50</li>
+							<li><a href="#">添加到购物车</a></li>
+						</ul>
+					</div>
+					<div style="margin-top:24px;"></div>
+				</div>
+				<div class="showme">
+				</div>
+			</div>
+		</div>
+		<div>
+			<div class="showhim">
+				<div class="image">
+					<a href="product.html"><img src="images/img4.webp" alt="">
+					</a>
+					<div class="name"><a href="#">AppaleWatch</a></div>
+					<div class="priced">
+						<ul>
+							<li>$119.50</li>
+							<li><a href="#">添加到购物车</a></li>
+						</ul>
+					</div>
+					<div style="margin-top:24px;"></div>
+				</div>
+				<div class="showme">
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 <br>
 </body>
 <script src="/jquery/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
+	$("#top_page").load("top.html");
 	jQuery(function(){
 		jQuery("#btn_sch").click(function(){
 			var name=jQuery("#sch_name").val();
