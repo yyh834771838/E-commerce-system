@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css.css" />
-<!--    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">-->
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <title>iCart HTML Version</title>
 </head>
 <style>
@@ -39,7 +39,7 @@
 	</div>  
 	<div id="search">
     <div class="button-search"></div>
-        <input type="text" name="filter_name" value="Search"  onkeydown="this.style.color = '#888';" />
+        <input type="text" name="filter_name" value="Search" style="height:32px;width:175px;" onkeydown="this.style.color = '#888';" />
     </div>
 
 </div>
@@ -154,8 +154,8 @@
 
     <div class="buttons">
       <div class="left"><input type="checkbox" id="selectAll" />全选</div>
-      <div class="right"><a href="#" class="button"><span>结算</span></a></div>
-      <div class="center"><a href="#" class="button" style="width:120px;"><span>继续购物</span></a></div>
+      <div class="right"><a href="#" class="button" style="height:30px;width:120px;"><span>结算</span></a></div>
+      <div class="center"><a href="index.html" class="button" style="height:30px;width:120px;"><span>继续购物</span></a></div>
     </div>
 </div>
 <div class="modal fade" tabindex="-1" role="dialog" id="delModal">
@@ -170,8 +170,8 @@
                 <p id="del_msg"></p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" onclick="doDelete()">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="height:35px;">取消</button>
+                <button type="button" class="btn btn-primary" onclick="doDelete()" style="height:35px;">确定</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -196,8 +196,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" onclick="doEdit()">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" style="height:35px;">取消</button>
+                <button type="button" class="btn btn-primary" onclick="doEdit()" style="height:35px;">确定</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
