@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
 import java.util.Map;
 
 @Mapper
@@ -28,4 +29,8 @@ public interface AdminInfoMapper {
             " values " +
             " (#{t.u_name},#{t.u_pwd},#{t.u_tel},#{t.u_email},#{t.u_sex},1)")
     public void register(@Param("t") Map<String,String> map);
+
+    @Select("select * from user " +
+            " where user_id=#{t.user_id}")
+    public Map<String,Object> findDetailById(@Param("t") Map<String,String> map);
 }

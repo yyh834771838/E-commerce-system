@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			#container{
+				width: 70%;
+				padding: 30px;
+			}
+			td{
+				text-align: center!important;
+			}
+		</style>
+	</head>
+	<body>
+		<!-- 通过div控制内容出现的位置 -->
+		<div id="container">
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+					<tr>
+						<td>
+							父类
+						</td>
+						<td>
+							类名
+						</td>
+						<td>
+							操作
+						</td>
+					</tr>
+				</thead>
+				<tbody id="tbody">
+
+				</tbody>
+			</table>
+		</div>
+		<!-- 删除的模态框 -->
+		<!--<div class="modal fade" tabindex="-1" role="dialog" id="delModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">提示</h4>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" id="del_id">
+						<p id="del_msg"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" onclick="doDelete()">确定</button>
+					</div>
+				</div>&lt;!&ndash; /.modal-content &ndash;&gt;
+			</div>&lt;!&ndash; /.modal-dialog &ndash;&gt;
+		</div>&lt;!&ndash; /.modal &ndash;&gt;-->
+		<!-- 修改的模态框 -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">提示</h4>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" id="class2_id">
+						<form class="form-horizontal">
+							<div class="form-group form-group-lg">
+								<label class="control-label col-lg-2">类别:</label>
+								<div class="col-lg-8">
+									<select name="class1" id="class1" >
+
+									</select>
+								</div>
+							</div>
+							<div class="form-group form-group-lg">
+								<label class="control-label col-lg-2">类名:</label>
+								<div class="col-lg-8">
+									<input type="text" name="name2" id="name2" />
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" onclick="doEdit()">确定</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
+	</body>
+	<script src="/jquery/jquery-3.4.1.min.js"></script>
+	<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		jQuery(function(){
+			jQuery.post("/class1_findAll",function (rst) {
+				var body="";
+				for (var i=0;i<rst.length;i++){
+					var json=rst[i];
+					body+="<option value=\""+json.class1_id+"\">"+json.name1+"</option>";
+				}
+				jQuery("#class1").html(body);
+			},"json");
+
+			//页面加载完毕，就去数据库中获取数据
+			//          /all 请求的地址
+			jQuery.post("/class2_findAll",function(rst){//处理响应的结果
+				var body="";
+				for(var i=0;i<rst.length;i++)
+				{
+					var json=rst[i];
+					body+="<tr>";
+					body+="<td>"+json.name1+"</td>";
+					body+="<td>"+json.name2+"</td>";
+					body+="<td>";
+					/*body+="<a href='#' onclick='showDelModal(\""+json.class2_id+"\",\""+json.name2+"\")'>删除</a>&nbsp;&nbsp;";*/
+					body+="<a href='#' onclick='showEditModal(" +
+							"\""+json.class2_id+"\"," +
+							"\""+json.name1+"\"," +
+							"\""+json.name2+"\")'>修改</a>";
+					body+="</td>"
+					body+="</tr>";
+				}
+				jQuery("#tbody").html(body);
+			},"json");//表示返回数据的格式
+		});
+
+		//如果是通过function定义的方法必须在jquery外面写
+		/*function showDelModal(id,name)
+		{
+			jQuery("#del_id").val(id);
+			jQuery("#del_msg").html(name);
+			jQuery("#delModal").modal("show");
+		}
+		function doDelete()
+		{
+			jQuery("#delModal").modal("hide");
+			var id=jQuery("#del_id").val();
+			//json格式的属性名称必须与后台对应
+			jQuery.post("/class2_delete",{"class2_id":id},function(rst){
+				alert(rst);
+				//如果删除成功，重新加载数据
+				if(rst=='删除成功')
+				{
+					//重新加载本页面
+					location.reload();
+				}
+			});
+		}*/
+		function showEditModal(class2_id,name1,name2)
+		{
+			jQuery("#class2_id").val(class2_id)
+			jQuery("#name2").val(name2);
+			jQuery("#editModal").modal("show");
+		}
+		function doEdit() {
+			jQuery("#editModal").modal("hide");
+			//获取数据
+			var class2_id=jQuery("#class2_id").val();
+			var class1_id=jQuery("#class1 option:selected").val();
+			var name2=jQuery("#name2").val();
+			jQuery.post("/class2_update",{"class2_id":class2_id,"class1_id":class1_id,"name2":name2},function (rst) {
+				alert(rst);
+				if(rst=='更新成功')
+				{
+					location.reload();
+				}
+			})
+		}
+	</script>
+</html>

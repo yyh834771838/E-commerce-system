@@ -69,8 +69,7 @@
 							<label class="control-label col-lg-2">类别:</label>
 							<div class="col-lg-8">
 								<select name="pro_class" id="pro_class" >
-									<option value="1">1</option>
-									<option value="2">2</option>
+
 								</select>
 							</div>
 							</div>
@@ -127,6 +126,17 @@
 	<script type="text/javascript">
 		var objUrl;
 		jQuery(function(){
+
+			jQuery.post("/class2_findAll",function (rst) {
+				var body="";
+				for (var i=0;i<rst.length;i++){
+					var json=rst[i];
+					body+="<option value=\""+json.class2_id+"\">"+json.name2+"</option>";
+				}
+				jQuery("#pro_class").html(body);
+			},"json");
+
+
 			//页面加载完毕，就去数据库中获取数据
 			//          /all 请求的地址
 			jQuery.post("/pro_findAll",function(rst){//处理响应的结果
@@ -135,7 +145,7 @@
 				{
 					var json=rst[i];//{"pro_id":,"class2_id":,"name":,"price":"","hot":,"details":,number,photo}
 					body+="<tr>";
-					body+="<td>"+json.class2_id+"</td>";
+					body+="<td>"+json.name2+"</td>";
 					body+="<td>"+json.name+"</td>";
 					body+="<td>"+json.price+"</td>";
 					body+="<td>"+json.hot+"</td>";
@@ -146,7 +156,7 @@
 					body+="<a href='#' onclick='showDelModal(\""+json.pro_id+"\",\""+json.name+"\")'>删除</a>&nbsp;&nbsp;";
 					body+="<a href='#' onclick='showEditModal(" +
 							"\""+json.pro_id+"\"," +
-							"\""+json.class2_id+"\"," +
+							"\""+json.name2+"\"," +
 							"\""+json.name+"\"," +
 							"\""+json.price+"\"," +
 							"\""+json.hot+"\"," +
@@ -160,9 +170,11 @@
 			},"json");//表示返回数据的格式
 			jQuery("#photo").change(function(){
 				var name=this.files[0].name;
-				objUrl="/pro_images/"+name;
-				if (objUrl) {
-					$("#img0").attr("src", objUrl) ;
+				if(name!=null) {
+					objUrl = "/pro_images/" + name;
+					if (objUrl) {
+						$("#img0").attr("src", objUrl);
+					}
 				}
 			}) ;
 		});
@@ -189,10 +201,10 @@
 				}
 			});
 		}
-		function showEditModal(pro_id,class2_id,name,price,hot,details,number,photo)
+		function showEditModal(pro_id,name2,name,price,hot,details,number,photo)
 		{
 			jQuery("#pro_id").val(pro_id)
-			jQuery("#pro_class  option[value=\""+class2_id+"\"] ").attr("selected",true);
+			/*jQuery("#pro_class  option[value=\""+name2+"\"] ").attr("selected",true);*/
 			jQuery("#pro_name").val(name);
 			jQuery("#pro_price").val(price);
 			//jQuery("#hot").val(hot);
@@ -201,6 +213,7 @@
 			jQuery("#pro_number").val(number);
 			//jQuery(":file").accept(photo);
 			//jQuery(":file").val(photo);
+			objUrl=photo;
 			$("#img0").attr("src", photo) ;
 			jQuery("#editModal").modal("show");
 		}
@@ -208,13 +221,12 @@
 			jQuery("#editModal").modal("hide");
 			//获取数据
 			var pro_id=jQuery("#pro_id").val();
-			var class2_id=jQuery("#pro_class").val();
+			var class2_id=jQuery("#pro_class option:selected").val();
 			var name=jQuery("#pro_name").val();
 			var price=jQuery("#pro_price").val();
 			var hot=jQuery("input[type='radio']:checked").val();
 			var details=jQuery("#pro_des").val();
 			var number=jQuery("#pro_number").val();
-			//var photo=jQuery("#photo").val();
 			var photo=objUrl;
 			jQuery.post("/pro_update",{"pro_id":pro_id,"class2_id":class2_id,"name":name,"price":price,"hot":hot,
 				"details":details,"number":number,"photo":photo},function (rst) {

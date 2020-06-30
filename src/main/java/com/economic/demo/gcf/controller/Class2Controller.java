@@ -71,4 +71,13 @@ public class Class2Controller {
         return list;
 
     }
+    @RequestMapping("/class2_findByName")
+    public Map<String, Object>  findByName(@RequestParam Map<String,String> map){
+
+        Map<String ,Object> list=class2Service.findByName(map);
+        /*System.out.println(map);
+        System.out.println(list);*/
+        return list;
+
+    }
 }

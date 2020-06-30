@@ -2,6 +2,7 @@ package com.economic.demo.gcf.mapper;
 
 
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.javassist.runtime.Inner;
 
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,10 @@ import java.util.Map;
 @Mapper
 public interface ProductMapper {
 
-    @Select("select * from product")
+    @Select("select " +
+            "a.pro_id,a.name,b.name2,a.price,a.hot,a.details,a.number,a.photo "+
+            "from product a " +
+            "INNER JOIN pro_class2 b on a.class2_id=b.class2_id")
     public List<Map<String,Object>> findAll();
 
     /**

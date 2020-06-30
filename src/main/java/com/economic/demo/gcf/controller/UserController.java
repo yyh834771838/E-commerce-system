@@ -7,12 +7,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.List;
 import java.util.Map;
 
 @RestController
 public class UserController {
     @Resource
     private UserService userService;
+
+    @RequestMapping("/user_findAll")
+    public List<Map<String,Object>> findAll(){
+        List<Map<String,Object>> list=userService.fingAll();
+        return list;
+    }
     @RequestMapping("/user_delete")
     public String delete(@RequestParam Map<String,String> map){
         String msg="删除失败";
@@ -20,9 +27,7 @@ public class UserController {
         if(flag){
             msg="删除成功";
         }
-
         return msg;
-
     }
 
     @RequestMapping("/user_update")
@@ -32,7 +37,6 @@ public class UserController {
         if(flag){
             msg="更新成功";
         }
-
         return msg;
     }
 }
