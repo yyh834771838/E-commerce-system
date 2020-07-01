@@ -40,4 +40,13 @@ public class CustomOrderController {
         List<Map<String, Object>> result = customOrderService.getOrderInfo(map);
         return result;
     }
+
+    @RequestMapping("/getCartInfo")
+    public List<Map<String, Object>> getCartInfo(@RequestParam Map<String, String> map)
+    {
+        List<Map<String, Object>> result = customOrderService.getCartInfo(map);
+        return result;
+    }
+
+
 }
