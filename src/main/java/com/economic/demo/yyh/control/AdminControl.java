@@ -35,4 +35,22 @@ public class AdminControl {
         Map<String, Object> info = adminInfoService.findDetailById(map);
         return info;
     }
+    @RequestMapping("/updateUserInfo")
+    public String update(@RequestParam Map<String,String> map){
+        String msg="修改失败";
+        boolean flag=adminInfoService.updateUserInfo(map);
+        if(flag){
+            msg="修改成功";
+        }
+        return msg;
+    }
+    @RequestMapping("/findUserPassword")
+    public String findUserPassword(@RequestParam Map<String,String> map){
+        String msg="账号信息有误!请重新填写";
+        boolean flag = adminInfoService.findUserPassword(map);
+        if(flag){
+            msg="密码修改成功";
+        }
+        return msg;
+    }
 }
