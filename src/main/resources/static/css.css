@@ -1024,7 +1024,7 @@ Author URI: http://dev7studios.com
 
 .button-search {
 	position:absolute;
-	left: 70px;
+	left: 100px;
 	background: url("images/search.png") no-repeat scroll left  transparent;
         display: block;
         height: 31px;

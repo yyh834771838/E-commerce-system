@@ -48,5 +48,11 @@ public class CustomOrderController {
         return result;
     }
 
+    @RequestMapping("/AdminFindDetailByMenuid")
+    public List<Map<String, Object>> AdminFindDetailByMenuid(@RequestParam Map<String, String> map)
+    {
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByMenuid(map);
+        return result;
+    }
 
 }

@@ -98,6 +98,7 @@ class CustomOrderMapperTest {
             System.out.println("the time is: " + key.get("time"));
             System.out.println("the total is: " + key.get("total"));
             System.out.println("the status is: " + key.get("status"));
+            System.out.println("the id of the product is: " + key.get("pro_id"));
         }
     }
 }

@@ -74,7 +74,8 @@ public class CustomOrderService {
         List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
         Iterator<String> iter = menu_id.keySet().iterator();
         if (iter.hasNext()) {
-            result =customOrderMapper.getCartInfo(Integer.valueOf(menu_id.get(iter.next())));
+            String param = menu_id.get(iter.next());
+            result =customOrderMapper.AdminFindDetailByMenuid(param,param,param);
         }
         return result;
     }
