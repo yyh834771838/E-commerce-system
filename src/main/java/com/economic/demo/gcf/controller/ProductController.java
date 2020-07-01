@@ -72,5 +72,15 @@ public class ProductController {
         return list;
 
     }
+    @RequestMapping("/pro_prodelete")
+    public String prodelete(@RequestParam Map<String,String> map){
+        String msg="删除失败";
+        boolean flag=productService.doprodelete(map);
+        if(flag){
+            msg="删除成功";
+        }
+
+        return msg;
+    }
 
 }
