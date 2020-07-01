@@ -37,7 +37,7 @@
     <ul>
       	<li><a onclick="showInfo()">个人资料</a></li>
       	<li><a onclick="showAddr()">收货地址</a></li>
-      	<li><a href="#">个人交易信息</a></li>
+      	<li><a href="custom_order.html">个人交易信息</a></li>
       	<li><a href="#">个人成长信息</a></li>
 		<li><a href="#">安全设置</a></li>
     </ul>
@@ -72,7 +72,7 @@
 				</li>
 				<br/>
 				<div class="form-group">
-					<button type="button" id="btn_reg" class="btn">保存</button>
+					<button type="button" id="btn_reset_info" class="btn">修改并保存</button>
 					<button type="reset" class="btn">重置</button>
 				</div>
 			</ul>
@@ -107,7 +107,7 @@
 					</li>
 					<br/>
 					<div class="form-group">
-						<button type="button" id="btn_add" class="btn">保存收获地址</button>
+						<button type="button" id="btn_add_address" class="btn">保存收获地址</button>
 						<button type="reset" class="btn">重置输入</button>
 					</div>
 				</ul>
@@ -145,8 +145,10 @@
 				<h4 class="modal-title">提示</h4>
 			</div>
 			<div class="modal-body">
-				<input type="hidden" id="del_id">
-				<p id="del_msg"></p>
+				<p>你确定删除:"</p>
+				<p hidden="hidden" id="del_rec"></p>
+				<p id="del_area"></p>
+				<p>"这条地址吗？</p>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
@@ -249,6 +251,7 @@
 				body+="<td>";
 				body+="<a href='#' onclick='showDelModal(\""+json.receiver_name+"\",\""+json.area_name+"\")'>删除</a>&nbsp;&nbsp;";
 				body+="<a href='#' onclick='showEditModal(\""
+						+json.add_id+"\",\""
 						+json.receiver_name+"\",\""
 						+json.province+"\",\""
 						+json.city_name+"\",\""
@@ -273,17 +276,18 @@
 	});
 
 	//如果是通过function定义的方法必须在jquery外面写
-	function showDelModal(id,name)
+	function showDelModal(receiver,area)
 	{
-		jQuery("#del_id").val(id);
-		jQuery("#del_msg").html(name);
+		jQuery("#del_rec").html(receiver);
+		jQuery("#del_area").html(area);
 		jQuery("#delModal").modal("show");
 	}
 
 	function doDelete() {
 		jQuery("#delModal").modal("hide");
-		var id = jQuery("#del_id").val();
-		jQuery.post("/delete",{"id":id}, function (rst) {
+		var u_name = jQuery("#del_rec").html();
+		var u_area = jQuery("#del_area").html();
+		jQuery.post("/deleteAddress",{"u_id":cur_user_id, "u_name":u_name, "u_area":u_area}, function (rst) {
 			alert(rst);
 			if (rst == "删除成功") {
 				location.reload();
@@ -291,8 +295,9 @@
 		})
 	}
 
-	function showEditModal(receiver,province,city,area,number)
+	function showEditModal(add_id,receiver,province,city,area,number)
 	{
+		jQuery("#edit_id").val(add_id);
 		jQuery("#rec_name").val(receiver);
 		jQuery("#rec_prov").val(province);
 		jQuery("#rec_city").val(city);
@@ -302,11 +307,13 @@
 	}
 	function doEdit() {
 		jQuery("#editModal").modal("hide");
-		var id = jQuery("#edit_id").val();
-		var name = jQuery("#name").val();
-		var no = jQuery("#no").val();
-		var sex = jQuery("#sex").val();
-		jQuery.post("/edit", {"id":id, "name":name,"no":no,"sex":sex},function (rst) {
+		var add_id = jQuery("#edit_id").val();
+		var u_name = jQuery("#rec_name").val();
+		var u_tel = jQuery("#rec_tel").val();
+		var u_prov = jQuery("#rec_prov").val();
+		var u_city = jQuery("#rec_city").val();
+		var u_area = jQuery("#rec_area").val();
+		jQuery.post("/updateAddress", {"add_id":add_id, "u_name":u_name,"u_tel":u_tel,"u_prov":u_prov,"u_city":u_city,"u_area":u_area},function (rst) {
 			alert(rst);
 			if (rst == "修改成功") {
 				location.reload();
@@ -324,5 +331,44 @@
 		jQuery("#address_detail").css("display","inline");
 	}
 
+	jQuery(function(){
+		jQuery("#btn_add_address").click(function(){
+			var u_name=jQuery("#add_name").val();
+			var u_tel=jQuery("#add_tel").val();
+			var u_prov=jQuery("#add_pro").val();
+			var u_city=jQuery("#add_city").val();
+			var u_area=jQuery("#add_area").val();
+			jQuery.post("/addUserAddress",{"u_id":cur_user_id,"u_name":u_name,"u_tel":u_tel,"u_prov":u_prov,
+				"u_city":u_city,"u_area":u_area},function (rst) {
+				if(rst=="添加成功")
+				{
+					alert(rst);
+					location.reload();
+				}else{
+					alert(rst);
+				}
+			});
+		});
+	});
+
+	jQuery(function(){
+		jQuery("#btn_reset_info").click(function(){
+			var u_name=jQuery("#u_name").val();
+			var u_tel=jQuery("#u_tel").val();
+			var u_pwd=jQuery("#u_pwd").val();
+			var u_email=jQuery("#u_email").val();
+			var u_sex=jQuery("#u_sex").val();
+			jQuery.post("/updateUserInfo",{"u_id":cur_user_id,"u_name":u_name,"u_tel":u_tel,"u_pwd":u_pwd,
+				"u_email":u_email,"u_sex":u_sex},function (rst) {
+				if(rst=="修改成功")
+				{
+					alert(rst);
+					location.reload();
+				}else{
+					alert(rst);
+				}
+			});
+		});
+	});
 </script>
 </html>
