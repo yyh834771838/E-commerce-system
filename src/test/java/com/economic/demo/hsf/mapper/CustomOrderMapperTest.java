@@ -67,11 +67,13 @@ class CustomOrderMapperTest {
     void getCartInfo() {
         List<Map<String,  Object>> map = customOrderMapper.getCartInfo(1);
         Iterator<Map<String, Object>> iter = map.iterator();
+        System.out.println(map.get(0).keySet());
         while (iter.hasNext())
         {
             Map<String, Object> key = iter.next();
             System.out.println("=================================================");
             System.out.println("the user_id is: " + key.get("user_id"));
+            System.out.println("the username is: " + key.get("uname"));
             System.out.println("the addr_id is: " + key.get("add_id"));
             System.out.println("the menu_id is: " + key.get("menu_id"));
             System.out.println("the time is: " + key.get("time"));
@@ -81,4 +83,5 @@ class CustomOrderMapperTest {
             System.out.println("the number of the product is: " + key.get("pro_number"));
         }
     }
+
 }
