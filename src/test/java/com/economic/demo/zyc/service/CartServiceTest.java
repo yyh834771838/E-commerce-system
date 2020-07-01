@@ -22,25 +22,25 @@ class CartServiceTest {
 //    public void doSave() {
 //        Map<String,String> map=new HashMap<>();
 //        map.put("pro_id","1");
-//        map.put("menu_id","1");
-//        map.put("number","200");
-//        map.put("price","5");
+//        map.put("user_id","1");
+//        map.put("pro_number","200");
+//        map.put("pro_price","5");
 //        boolean flag=cartService.doSave(map);
 //        assertTrue(flag);
 //    }
 
-    @Test
-    public void findAll() {
-        List<Map<String,Object>> list=cartService.findAll();
-        System.out.println(list);
-    }
+//    @Test
+//    public void findAll() {
+//        List<Map<String,Object>> list=cartService.findAll("zyc");
+//        System.out.println(list);
+//    }
 
-    @Test
-    public void doUpdate() {
-        Map<String,String> map=new HashMap<>();
-        map.put("id","5");
-        map.put("number","777");
-        boolean flag=cartService.doUpdate(map);
-        assertTrue(flag);
-    }
+//    @Test
+//    public void doUpdate() {
+//        Map<String,String> map=new HashMap<>();
+//        map.put("id","5");
+//        map.put("pro_number","777");
+//        boolean flag=cartService.doUpdate(map);
+//        assertTrue(flag);
+//    }
 }

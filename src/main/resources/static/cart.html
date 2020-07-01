@@ -25,7 +25,8 @@
 <li><a href="account.html" class="account">我的账户</a></li>
 <li class="active"><a href="cart.html" class="cart">购物车</a></li>
 <li><a class="checkout">商品结算</a></li>
-<li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li>
+<!--<li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li>-->
+<li  style="float:right;" ><div id="top_page" class="login"></div></li>
 </ul>
 </div>
 
@@ -93,9 +94,6 @@
 </ul>
 </div>
 
-
-
-
 <div style="width:1000px;margin: 0 auto;margin-top:10px;">
 <div class="linktree">
         <a href="#">首页</a>
@@ -103,7 +101,6 @@
     </div>
 <h1 style="margin-top:-10px;">购物车&nbsp;</h1>
 
-<br>
      <form action="#" method="post" id="basket">
       <div class="cart-info">
         <table>
@@ -120,33 +117,6 @@
             </tr>
           </thead>
           <tbody id="tbody">
-<!--            <tr>-->
-<!--              <td class="select"><input type="checkbox" class="select" /></td>-->
-<!--              <td class="image"><a href="#"><img src="images/imac.jpg" width="150" height="75" /></a></td>-->
-<!--              <td class="name"><a href="#">iMac</a></td>-->
-<!--              <td class="model">Product 14</td>-->
-<!--              <td class="quantity"><input type="number" step="1" min="1" max="100" placeholder="1"/></td>-->
-<!--              <td class="price">$100.00</td>-->
-<!--              <td class="total">$200.00</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <td class="select"><input type="checkbox" class="select" /></td>-->
-<!--              <td class="image"><a href="#"><img src="images/iphone.jpg" width="100" height="70" /></a></td>-->
-<!--              <td class="name"><a href="#">iPhone</a></td>-->
-<!--              <td class="model">product 11</td>-->
-<!--              <td class="quantity"><input type="number" step="1" min="1" max="100" placeholder="1"/></td>-->
-<!--              <td class="price">$101.00</td>-->
-<!--              <td class="total">$101.00</td>-->
-<!--            </tr>-->
-<!--            <tr>-->
-<!--              <td class="select"><input type="checkbox" class="select" /></td>-->
-<!--              <td class="image"><a href="#"><img src="images/ipod.jpg" width="100" height="70" /></a></td>-->
-<!--              <td class="name"><a href="#">iPod Nano</a></td>-->
-<!--              <td class="model">Product 9</td>-->
-<!--              <td class="quantity"><input type="number" step="1" min="1" max="100" placeholder="1"/></td>-->
-<!--              <td class="price">$100.00</td>-->
-<!--              <td class="total">$100.00</td>-->
-<!--            </tr>-->
           </tbody>
         </table>
       </div>
@@ -154,7 +124,7 @@
 
     <div class="buttons">
       <div class="left"><input type="checkbox" id="selectAll" />全选</div>
-      <div class="right"><a href="#" class="button" style="height:30px;width:120px;"><span>结算</span></a></div>
+      <div class="right"><a href="settlement.html" class="button" style="height:30px;width:120px;"><span>结算</span></a></div>
       <div class="center"><a href="index.html" class="button" style="height:30px;width:120px;"><span>继续购物</span></a></div>
     </div>
 </div>
@@ -216,24 +186,35 @@
         jQuery(function(){
             //页面加载完毕，就去数据库中获取数据
             //          /all 请求的地址
-            jQuery.post("/all",function(rst){//处理响应的结果
+            var cookies=document.cookie.split(";");
+            for(var i=0;i<cookies.length;i++)
+            {
+                var cookie=cookies[i].trim();
+                if(cookie.indexOf("info")==0)
+                {
+                    var m=cookie.substring("info".length+1);
+                    var m1=m.split("【");
+                    var m2=m1[1].split("】");
+                }
+            }
+            jQuery.post("/all",{"name":m2[0]},function(rst){//处理响应的结果
                 var body="";
                 for(var i=0;i<rst.length;i++)
                 {
-                    var json=rst[i];//{"tea_id":1,"tea_name":"zhagnsan","tea_sex":'',"tea_no":""}
+                    var json=rst[i];
                     body+="<tr>";
                     body+="<td class=\"select\"><input type=\"checkbox\" class=\"select\" /></td>"
                     body+="<td class=\"image\"><a href=\"#\"><img src=\""+json.photo+"\" width=\"150\" height=\"75\" /></a></td>"
                     body+="<td class=\"name\"><a href=\"#\">"+json.name+"</a></td>"
                     body+="<td class=\"model\">"+json.class2_id+"</td>"
-                    body+="<td>"+json.number+"</td>";
-                    body+="<td>"+json.price+"</td>";
-                    body+="<td>"+json.number*json.price+"</td>";
+                    body+="<td>"+json.pro_number+"</td>";
+                    body+="<td>"+json.pro_price+"</td>";
+                    body+="<td>"+json.pro_number*json.pro_price+"</td>";
                     body+="<td>";
-                    body+="<a href='#' onclick='showDelModal(\""+json.id+"\",\""+json.menu_id+"\")'>删除</a>&nbsp;&nbsp;";
+                    body+="<a href='#' onclick='showDelModal(\""+json.id+"\",\""+json.user_id+"\")'>删除</a>&nbsp;&nbsp;";
                     body+="<a href='#' onclick='showEditModal(" +
                         "\""+json.id+"\"," +
-                        "\""+json.number+"\")'>修改</a>";
+                        "\""+json.pro_number+"\")'>修改</a>";
                     body+="</td>"
                     body+="</tr>";
                 }
@@ -273,8 +254,8 @@
             jQuery("#editModal").modal("hide");
             //获取数据
             var id=jQuery("#edit_id").val();
-            var number=jQuery("#num").val();
-            jQuery.post("/update",{"id":id,"number":number},function (rst) {
+            var pro_number=jQuery("#num").val();
+            jQuery.post("/update",{"id":id,"pro_number":pro_number},function (rst) {
                 alert(rst);
                 if(rst=="修改成功")
                 {
@@ -282,5 +263,8 @@
                 }
             })
         }
+// 检测登陆
+        $("#top_page").load("top.html");
+
 </script>
 </html>

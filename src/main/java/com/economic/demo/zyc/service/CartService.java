@@ -56,10 +56,10 @@ public class CartService {
         return flag;
     }
 
-    public List<Map<String,Object>> findAll(){
+    public List<Map<String,Object>> findAll(String name){
         List<Map<String,Object>> list=null;
         try {
-            list=cartMapper.findAll();
+            list=cartMapper.findAll(name);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -70,7 +70,7 @@ public class CartService {
         Map<String,Object> tea=null;
         try {
             int id=Integer.parseInt(map.get("id"));
-            tea=cartMapper.findByMenuid(id);
+            tea=cartMapper.findByUserid(id);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
