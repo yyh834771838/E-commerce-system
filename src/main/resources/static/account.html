@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<link rel="stylesheet" type="text/css" href="css.css" />
-<title>网上购物商城</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="css.css" >
+	<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<title>网上购物商城</title>
 </head>
 <body>
 <div class="menu">
@@ -11,105 +13,316 @@
 <li><a href="index.html" class="home">首页</a></li>
 <li><a href="wishlist.html" class="wishlist">商城主页</a></li>
 <li class="active"><a href="account.html" class="account">我的账户</a></li>
-<li><a href="cart.html" class="cart">购物�?</a></li>
+<li><a href="cart.html" class="cart">购物车</a></li>
 <li><a class="checkout">商品结算</a></li>
-<li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li>
+	<!--li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li-->
+	<li  style="float:right;" ><div id="top_page" class="login"></div></li>
 </ul>
 </div>
-<div style="width: 700px;margin: 700 auto;">
+<div style="width: 700px;">
 	<div id="search">
 	<div class="button-search"></div>
-	    <input type="text" name="filter_name" value="搜索"  onkeydown="this.style.color = '#888';" />
+	    <input type="text" name="filter_name" value=""  onkeydown="this.style.color='#888' ;" />
 	  </div>
 </div>
 <div class="header">
 <div class="logo_img">LOVESHOP</div></div>
 
-<!-- 商品分类 -->
-<div id="menu">
-<ul>  
-<li><a href="#">衣装服饰</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">外套</a></li>
-	<li><a href="default.htm">裤子</a></li>
-	<li><a href="default.htm">鞋子</a></li>
-	<li><a href="default.htm">内衣</a></li>
-	</ul>
-	</div>
-</li>
-<li><a href="#">吃货圣地</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">酒乳饮品</a></li>
-	<li><a href="default.htm">蔬菜菌类</a></li>
-	<li><a href="default.htm">休闲食品</a></li>
-	<li><a href="default.htm">时令水果</a></li>
-	</ul>
-	</div>
-</li>
-<li><a href="index.html">电子设备</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">电脑</a></li>
-	<li><a href="default.htm">电视</a></li>
-	<li><a href="default.htm">手机</a></li>
-	<li><a href="default.htm">配件</a></li>
-	</ul>
-	</div>
-</li>
-<li><a href="index.html">生活用品</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">学习用品</a></li>
-	<li><a href="default.htm">体育用品</a></li>
-	<li><a href="default.htm">厨房用具</a></li>
-	<li><a href="default.htm">客厅摆式</a></li>
-	</ul>
-	</div>
-</li>
-</ul>
-</div>
-
 
 <div style="width:1000px;margin: 0 auto;margin-top:10px;">
 <div id="column-right">
     <div class="box">
-  <div class="box-heading_left">账户</div>
+  <div class="box-heading_left">账号管理</div>
   <div class="box-content" style="background:none;border: solid 1px #E3E3E2;"><div class="box-category">
     <ul>
-      <li><a href="#">我的账户</a></li>
-      <li><a href="#">编辑账户</a></li>
-      <li><a href="#">密码</a></li>
-      <li><a href="#">购物�?</a></li>
-      <li><a href="#">订单历史</a></li>
-      <li><a href="#">�?�?</a></li>
+      	<li><a onclick="showInfo()">个人资料</a></li>
+      	<li><a onclick="showAddr()">收货地址</a></li>
+      	<li><a href="#">个人交易信息</a></li>
+      	<li><a href="#">个人成长信息</a></li>
+		<li><a href="#">安全设置</a></li>
     </ul>
   </div>
 </div>
 </div>
-  </div>
-<div id="content">
+</div>
+	<div id="information" style="display: inline">
     <h2>我的账户</h2>
-  <div class="content">
-    <ul>
-      <li><a href="#">编辑账户信息</a></li>
-      <li><a href="#">更改密码</a></li>
+	<h4>亲爱的会员，填写真实信息，有助于好友找到你哦。</h4>
+	<form action="#" >
+		<div class="content">
+			<ul>
+				<li>
+					昵称:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_name">
+				</li>
+				<br/>
+				<li>
+					密码:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_pwd">
+				</li>
+				<br/>
+				<li>
+					电话:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_tel">
+				</li>
+				<br/>
+				<li>
+					性别:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_sex">
+				</li>
+				<br/>
+				<li>
+					邮箱:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="u_email">
+				</li>
+				<br/>
+				<div class="form-group">
+					<button type="button" id="btn_reg" class="btn">保存</button>
+					<button type="reset" class="btn">重置</button>
+				</div>
+			</ul>
+	  	</div>
+	</form>
+  </div>
 
-    </ul>
-  </div>
-  <h2>我的订单</h2>
-  <div class="content">
-    <ul>
-      <li><a href="#">查看历史订单</a></li>
-      <li><a href="#">前往清空购物�?</a></li>
-    </ul>
-  </div>
-  </div>
+	<div id="address" style="display: none" >
+		<h2>收获地址</h2>
+		<h4 style="color: #d43f3a">新增收获地址</h4>
+		<form action="#" >
+			<div class="content">
+				<ul>
+					<li>
+						收货人姓名:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="add_name">
+					</li>
+					<br/>
+					<li>
+						收货人手机:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="add_tel">
+					</li>
+					<br/>
+					<li>
+						收货人省份:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="add_pro">
+					</li>
+					<br/>
+					<li>
+						收货人城市:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="add_city">
+					</li>
+					<br/>
+					<li>
+						详细的地址:&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="add_area">
+					</li>
+					<br/>
+					<div class="form-group">
+						<button type="button" id="btn_add" class="btn">保存收获地址</button>
+						<button type="reset" class="btn">重置输入</button>
+					</div>
+				</ul>
+			</div>
+		</form>
+	</div>
+
+	<div id="address_detail" style="display: none">
+		<br/>
+		<h4>已保存地址如下：</h4>
+		<table class="table table-bordered table-striped table-hover">
+			<thead>
+			<tr>
+				<td>收货人</td>
+				<td>省份</td>
+				<td>城市</td>
+				<td>详细地址</td>
+				<td>手机号</td>
+				<td>操作</td>
+			</tr>
+			</thead>
+			<tbody id="tbody">
+
+			</tbody>
+		</table>
+	</div>
 </div>
+
+<!-- 删除的模态框 -->
+<div class="modal fade" tabindex="-1" role="dialog" id="delModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">提示</h4>
+			</div>
+			<div class="modal-body">
+				<input type="hidden" id="del_id">
+				<p id="del_msg"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" onclick="doDelete()">确定</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<!-- 修改的模态框 -->
+<div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title">提示</h4>
+			</div>
+			<div class="modal-body">
+				<input type="hidden" id="edit_id">
+				<form class="form-horizontal">
+					<div class="form-group form-group-lg">
+						<label class="control-label col-lg-2">收货人姓名:</label>
+						<div class="col-lg-8">
+							<input type="text" name="rec_name" id="rec_name" class="form-control">
+						</div>
+					</div>
+					<div class="form-group form-group-lg">
+						<label class="control-label col-lg-2">收货地省份:</label>
+						<div class="col-lg-8">
+							<input type="text" name="no" id="rec_prov" class="form-control">
+						</div>
+					</div>
+					<div class="form-group form-group-lg">
+						<label class="control-label col-lg-2">收货地城市:</label>
+						<div class="col-lg-8">
+							<input type="text" name="no" id="rec_city" class="form-control">
+						</div>
+					</div>
+					<div class="form-group form-group-lg">
+						<label class="control-label col-lg-2">详细地址:</label>
+						<div class="col-lg-8">
+							<input type="text" name="name" id="rec_area" class="form-control">
+						</div>
+					</div>
+					<div class="form-group form-group-lg">
+						<label class="control-label col-lg-2">收货人电话:</label>
+						<div class="col-lg-8">
+							<input type="text" name="name" id="rec_tel" class="form-control">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+				<button type="button" class="btn btn-primary" onclick="doEdit()">确定</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 </body>
-<script src="/jquery/jquery-3.4.1.min.js"></script>
+<script src="jquery/jquery-3.4.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	$("#top_page").load("top.html");
+	var cur_user_id;
+	getStatus();
+	function getStatus()
+	{
+		var cookies=document.cookie.split(";");
+		for(var i=0;i<cookies.length;i++)
+		{
+			var cookie=cookies[i].trim();
+			if(cookie.indexOf("info")==0)
+			{
+				var m=cookie.substring("info".length+1);
+				m = m.substring(3);
+				m = m.substring(0,m.length-4);
+				jQuery.post("/findIdByName",{"user_name":m},function (rst) {
+					cur_user_id = rst;
+				},"json");
+				return;
+			}
+		}
+	}
+
+	jQuery(function(){
+		//页面加载完毕，就去数据库中获取数据
+		jQuery.post("/findAllAddress",{"user_id": cur_user_id},function(rst){//处理响应的结果
+			var body="";
+			for(var i=0;i<rst.length;i++)
+			{
+				var json=rst[i];//{"receiver_name":叶宇航,"province":"浙江","city_name":'',"area":"","number":""}
+				body+="<tr>";
+				body+="<td>"+json.receiver_name+"</td>";
+				body+="<td>"+json.province+"</td>";
+				body+="<td>"+json.city_name+"</td>";
+				body+="<td>"+json.area_name+"</td>";
+				body+="<td>"+json.number+"</td>";
+				body+="<td>";
+				body+="<a href='#' onclick='showDelModal(\""+json.receiver_name+"\",\""+json.area_name+"\")'>删除</a>&nbsp;&nbsp;";
+				body+="<a href='#' onclick='showEditModal(\""
+						+json.receiver_name+"\",\""
+						+json.province+"\",\""
+						+json.city_name+"\",\""
+						+json.area_name+"\",\""
+						+json.number+"\")'>修改</a>";
+				body+="</td>"
+				body+="</tr>";
+			}
+			jQuery("#tbody").html(body);
+		},"json");//表示返回数据的格式
+	});
+
+	jQuery(function(){
+		//页面加载完毕，就去数据库中获取数据
+		jQuery.post("/findUserDetails",{"user_id": cur_user_id},function(rst){//处理响应的结果
+			jQuery("#u_name").val(rst.name);
+			jQuery("#u_pwd").val(rst.password);
+			jQuery("#u_tel").val(rst.number);
+			jQuery("#u_sex").val(rst.sex);
+			jQuery("#u_email").val(rst.email);
+		},"json");//表示返回数据的格式
+	});
+
+	//如果是通过function定义的方法必须在jquery外面写
+	function showDelModal(id,name)
+	{
+		jQuery("#del_id").val(id);
+		jQuery("#del_msg").html(name);
+		jQuery("#delModal").modal("show");
+	}
+
+	function doDelete() {
+		jQuery("#delModal").modal("hide");
+		var id = jQuery("#del_id").val();
+		jQuery.post("/delete",{"id":id}, function (rst) {
+			alert(rst);
+			if (rst == "删除成功") {
+				location.reload();
+			}
+		})
+	}
+
+	function showEditModal(receiver,province,city,area,number)
+	{
+		jQuery("#rec_name").val(receiver);
+		jQuery("#rec_prov").val(province);
+		jQuery("#rec_city").val(city);
+		jQuery("#rec_area").val(area);
+		jQuery("#rec_tel").val(number);
+		jQuery("#editModal").modal("show");
+	}
+	function doEdit() {
+		jQuery("#editModal").modal("hide");
+		var id = jQuery("#edit_id").val();
+		var name = jQuery("#name").val();
+		var no = jQuery("#no").val();
+		var sex = jQuery("#sex").val();
+		jQuery.post("/edit", {"id":id, "name":name,"no":no,"sex":sex},function (rst) {
+			alert(rst);
+			if (rst == "修改成功") {
+				location.reload();
+			}
+		})
+	}
+	function showInfo() {
+		jQuery("#information").css("display","inline");
+		jQuery("#address").css("display","none");
+		jQuery("#address_detail").css("display","none");
+	}
+	function showAddr() {
+		jQuery("#information").css("display","none");
+		jQuery("#address").css("display","inline");
+		jQuery("#address_detail").css("display","inline");
+	}
+
 </script>
 </html>

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" type="text/css" href="css.css" />
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css.css" />
     <script src="jquery/jquery-3.4.1.min.js"></script>
-    <title>销售订单</title>
+    <title>确认订单</title>
 </head>
 <body>
 <!--the header of the page-->
@@ -33,12 +33,11 @@
     </div>
 </div>
 <!--icon of the website-->
-    <div class="header">
-            <div class="logo_img">LOVESHOP</div>
-    </div>
-
+<div class="header">
+    <div class="logo_img">LOVESHOP</div>
+</div>
 <!-- 商品分类 -->
-    <div id="menu">
+<div id="menu">
     <ul>
         <li>
             <a href="#">衣装服饰</a>
@@ -84,35 +83,15 @@
     </ul>
 </div>
 
-<div style="margin:0 auto; width:1000px">
-    <button id="allorder" class="btn btn-default btn-primary">所有订单</button>
-    <button id="readyorder" class="btn btn-default btn-primary">待付款</button>
-    <style>
-        .btn{
-            color: black;
-            font-size: 17px;
-        }
-    </style>
-</div>
-<!--订单详情部分-->
-<div class="custom_order">
-    <table class="table" style="margin:0 auto; width:1000px">
-        <tbody id="tbody">
-<!--        由jQuery部分负责添加订单详情信息-->
-        </tbody>
-    </table>
-</div>
-
-<script src="jquery/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-    jQuery(function () {
-
-    })
-</script>
-<div>
-
+<div style="width: 1000px; margin:0 auto">
+    <br/>
+    <br/>
+    <p style="font-size: 300%">Thanks for your purchase! </p>
+    <br/>
+    <br/>
+    <p style="font-size: 150%">以下是您的订单信息请您确认:</p>
+    <p style="font-size: 120%">用户: </p>
 </div>
 
 </body>
-<script type="text/javascript" src="Script/getOrder.js">//设置订单表头</script>
 </html>

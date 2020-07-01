@@ -39,4 +39,9 @@ public class AdminInfoService {
         adminInfoMapper.register(map);
         return "注册成功";
     }
+
+    public Map<String,Object> findDetailById(Map<String,String> map) {
+        Map<String,Object> info = adminInfoMapper.findDetailById(map);
+        return info;
+    }
 }

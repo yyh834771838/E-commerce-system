@@ -24,8 +24,8 @@
 <div class="content"></div>
 </div>  
 <div id="search">
-<div class="button-search"></div>
-<input type="text" name="filter_name" value="Search" onClick="this.value = '';" onKeyDown="this.style.color = '#888';" />
+	<div class="button-search"><button type="button" id="btn_sch" class="btn-size">搜索</button></div>
+<input type="text" name="sch_name" id="sch_name" value="Search" onClick="this.value = '';" onKeyDown="this.style.color = '#888';" />
 </div>
 </div>
 <div class="header">
@@ -177,5 +177,24 @@
 <script src="/jquery/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 	$("#top_page").load("top.html");
+	jQuery(function(){
+		jQuery("#btn_sch").click(function(){
+			var name=jQuery("#sch_name").val();
+			jQuery.post("/all",{"sch_name":name},function(rst){
+				jQuery("#reg_msg").html(rst);
+				jQuery('#myModal').modal("show");
+
+			});
+		});
+		jQuery("#closeDilog").click(function(){
+			jQuery('#myModal').modal("hide");
+			var rst=jQuery("#reg_msg").html();
+			if(rst=='注册成功')
+			{
+				//跳转页面
+				window.location.href="success.html";
+			}
+		});
+	});
 </script>
 </html>

@@ -3,10 +3,8 @@
 	<head>
 		<meta charset="utf-8">
 		<title></title>
+		<link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	</head>
-	<script src="/jquery/jquery-3.4.1.min.js"></script>
-	<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-	<link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<body>
 		<form action="" method="get">
 			<table>
@@ -34,8 +32,8 @@
 				<tr>
 					<td>是否推荐:</td>
 					<td>
-						<input type="radio" name="yes"  value="是" checked="checked" />是
-						<input type="radio" name="yes"  value="否" />否
+						<input type="radio" name="pro" id="yes" value="是" checked="checked" />是
+						<input type="radio" name="pro" id="no" value="否" />否
 					</td>
 				</tr>
 				<tr>
@@ -58,7 +56,7 @@
 				</tr>
 				<tr>
 					<td>
-						<button type="button" name="confirm" id="confirm">确定</button>
+						<button type="button"name="confirm" id="confirm">确定</button>
 						<button type="reset">重置</button>
 					</td>
 				</tr>
@@ -81,7 +79,9 @@
 			</div><!-- /.modal-dialog -->
 		</div><!-- /.modal -->
 	</body>
-	<script>
+	<script src="/jquery/jquery-3.4.1.min.js"></script>
+	<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
 		jQuery(function(){
 			var objUrl;
 			jQuery("#photo").change(function(){
@@ -92,30 +92,19 @@
 				}
 			}) ;
 			jQuery("#confirm").click(function(){
-
-				var name=jQuery("#pro_name").val();
-				var class2_id=jQuery("#pro_class").val();
-				var price=jQuery("#pro_price").val();
+				var pro_name=jQuery("#pro_name").val();
+				var pro_class=jQuery("#pro_class").val();
+				var pro_price=jQuery("#pro_price").val();
 				var hot=jQuery("input[type='radio']:checked").val();
-				/*if(jQuery(":radio")){
-					hot=1;
-				}
-				else{
-					hot=0;
-				}*/
-
 				var photo=objUrl;
-
-				var details=jQuery("#pro_des").val();
-				var number=jQuery("#pro_number").val();
-
-				jQuery.post("/pro_save",{"name":name,"class2_id":class2_id,"price":price,
-					"hot":hot,"details":details,"photo":photo,"number":number},function(rst){
+				var pro_des=jQuery("#pro_des").val();
+				var pro_number=jQuery("#pro_number").val();
+				jQuery.post("/pro_save",{"class2_id":pro_class,"name":pro_name,"price":pro_price,"hot":hot,"details":pro_des,
+					"number":pro_number,"photo":photo},function(rst){
 					jQuery("#reg_msg").html(rst);
-					jQuery("#myModal").modal("show");
+					jQuery('#myModal').modal("show");
 
 				});
-
 			});
 			jQuery("#closeDilog").click(function(){
 				var rst=jQuery("#reg_msg").html();
@@ -126,6 +115,5 @@
 				}
 			});
 		});
-
 	</script>
 </html>
