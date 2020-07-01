@@ -74,6 +74,12 @@ public class SearchController {
         return list;
     }
 
+    @RequestMapping("/idProD")
+    public Map<String,Object> findByIdProDetail(@RequestParam Map<String,String> map){
+        Map<String,Object> list=searchService.findByIdProDetail(map);
+        return list;
+    }
+
     @RequestMapping("/editC")
     public String update(@RequestParam Map<String,String> map){
         String msg="修改失败";
