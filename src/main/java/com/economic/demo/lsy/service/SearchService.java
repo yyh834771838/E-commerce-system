@@ -105,4 +105,43 @@ private SearchMapper searchMapper;
         }
         return list;
     }
+
+    public Map<String,Object> findByIdPro(Map<String,String> map){
+        Map<String,Object> list=null;
+        try {
+            int content= Integer.parseInt(map.get("pro_id"));
+            int content2= Integer.parseInt(map.get("user_id"));
+            list=searchMapper.findByIdPro(content,content2);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public boolean doUpdate(Map<String,String> map){
+        boolean flag=false;
+        try {
+            int r=searchMapper.update(map);
+            if(r>0){
+                flag=true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean doSave(Map<String,String> map){
+        boolean flag=false;
+        try {
+            int r=searchMapper.save(map);
+            if(r>0){
+                flag=true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
 }
