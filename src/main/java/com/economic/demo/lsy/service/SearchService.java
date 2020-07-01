@@ -118,6 +118,17 @@ private SearchMapper searchMapper;
         return list;
     }
 
+    public Map<String,Object> findByIdProDetail(Map<String,String> map){
+        Map<String,Object> list=null;
+        try {
+            int content= Integer.parseInt(map.get("pro_id"));
+            list=searchMapper.findByIdProDetail(content);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
     public boolean doUpdate(Map<String,String> map){
         boolean flag=false;
         try {

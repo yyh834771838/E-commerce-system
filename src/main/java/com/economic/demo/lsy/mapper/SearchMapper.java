@@ -37,6 +37,9 @@ public interface SearchMapper {
     @Select("select * from cart where pro_id=#{idp} AND user_id=#{idu}")
     public Map<String,Object> findByIdPro(int idp,int idu);
 
+    @Select("select * from product where pro_id=#{n}")
+    public Map<String,Object> findByIdProDetail(int id);
+
     @Update("update cart " +
             " set pro_number=#{uc.pro_number}" +
             " where pro_id=#{uc.pro_id} AND user_id=#{uc.user_id}")
