@@ -77,4 +77,18 @@ public class ProductService {
         }
         return tea;
     }
+
+    public boolean doprodelete(Map<String,String> map){
+        boolean flag=false;
+        try {
+            int r=productMapper.prodelete(map);
+            if(r>0){
+                flag=true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return flag;
+    }
 }

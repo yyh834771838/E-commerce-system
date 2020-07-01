@@ -5,7 +5,11 @@
 		<title></title>
 		<link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<style type="text/css">
-			#container{
+			#container1{
+				width: 70%;
+				padding: 30px;
+			}
+			#container2{
 				width: 70%;
 				padding: 30px;
 			}
@@ -16,7 +20,7 @@
 	</head>
 	<body>
 		<!-- 通过div控制内容出现的位置 -->
-		<div id="container">
+		<div id="container1">
 			<table class="table table-bordered table-striped table-hover">
 				<thead>
 					<tr>
@@ -24,41 +28,154 @@
 							订单号
 						</td>
 						<td>
-							收货人
-						</td>
-						<td>
-							支付状态
+							用户名
 						</td>
 						<td>
 							下单时间
+						</td>
+						<td>
+							总金额
+						</td>
+						<td>
+							付款状态
+						</td>
+						<td>
+							详情
 						</td>
 						<td>
 							操作
 						</td>
 					</tr>
 				</thead>
-				<tbody>
-					<tr>
-						<td>
-							123983982
-						</td>
-						<td>
-							小明
-						</td>
-						<td>
-							已支付
-						</td>
-						<td>
-							2020-6-19
-						</td>
-						<td>
-							<a href="">删除</a>
-							<a href="">修改</a>
-						</td>
-					</tr>	
+				<tbody id="tbody1">
+
 				</tbody>
 			</table>
 		</div>
+		<div id="container2">
+			<table class="table table-bordered table-striped table-hover">
+				<thead>
+				<tr>
+					<td>
+						商品名
+					</td>
+					<td>
+						价格
+					</td>
+					<td>
+						数量
+					</td>
+					<td>
+						图片
+					</td>
+				</tr>
+				</thead>
+				<tbody id="tbody2">
+
+				</tbody>
+				<a href="order.html">返回</a>
+
+			</table>
+		</div>
+		<!-- 删除的模态框 -->
+		<div class="modal fade" tabindex="-1" role="dialog" id="delModal">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">提示</h4>
+					</div>
+					<div class="modal-body">
+						<input type="hidden" id="del_id">
+						<p id="del_msg"></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+						<button type="button" class="btn btn-primary" onclick="doDelete()">确定</button>
+					</div>
+				</div><!-- /.modal-content -->
+			</div><!-- /.modal-dialog -->
+		</div><!-- /.modal -->
 	</body>
-	
+	<script src="/jquery/jquery-3.4.1.min.js"></script>
+	<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		jQuery("#container2").hide();
+		jQuery(function(){
+			//页面加载完毕，就去数据库中获取数据
+			//          /all 请求的地址
+			jQuery.post("/menu_findAll",function(rst){//处理响应的结果
+				var body="";
+				for(var i=0;i<rst.length;i++)
+				{
+					var json=rst[i];//{"pro_id":,"class2_id":,"name":,"price":"","hot":,"details":,number,photo}
+					body+="<tr>";
+					body+="<td>"+json.menu_id+"</td>";
+					body+="<td>"+json.name+"</td>";
+					body+="<td>"+json.time+"</td>";
+					body+="<td>"+json.total+"</td>";
+					body+="<td>"+json.status+"</td>";
+					/*body+="<td>"+json.number+"</td>";*/
+					/*body+="<td>"+"<img src=\"" +json.photo +"\" width=\"100px\" height=\"50px\"/>"+"</td>";*/
+					body+="<td>";
+					body+="<a href='#' onclick='showDelModal1(\""+json.menu_id+"\")'>详情</a>";
+					body+="</td>";
+					body+="<td>";
+					body+="<a href='#' onclick='showDelModal2(\""+json.menu_id+"\",\""+json.name+"\")'>删除</a>";
+					body+="</td>";
+					body+="</tr>";
+				}
+				jQuery("#tbody1").html(body);
+			},"json");//表示返回数据的格式
+
+		});
+
+		//如果是通过function定义的方法必须在jquery外面写
+		function showDelModal1(id)
+		{
+			jQuery("#container1").hide();
+			jQuery.post("/menu_findBymenuid",{"menu_id":id},function(rst){//处理响应的结果
+				var body="";
+				for(var i=0;i<rst.length;i++)
+				{
+					var json=rst[i];
+					body+="<tr>";
+					body+="<td>"+json.name+"</td>";
+					body+="<td>"+json.pro_price+"</td>";
+					body+="<td>"+json.pro_number+"</td>";
+					body+="<td>"+"<img src=\"" +json.photo +"\" width=\"100px\" height=\"50px\"/>"+"</td>";
+					body+="</tr>";
+				}
+				jQuery("#tbody2").html(body);
+			},"json");//表示返回数据的格式
+			jQuery("#container2").show();
+
+		}
+		function showDelModal2(id,name)
+		{
+			jQuery("#del_id").val(id);
+			jQuery("#del_msg").html(name);
+			jQuery("#delModal").modal("show");
+		}
+		function doDelete()
+		{
+			jQuery("#delModal").modal("hide");
+			var id=jQuery("#del_id").val();
+			//json格式的属性名称必须与后台对应
+			jQuery.post("/menu_delete",{"menu_id":id},function(rst){
+				alert(rst);
+				//如果删除成功，重新加载数据
+				if(rst=='删除成功')
+				{
+					//重新加载本页面
+					location.reload();
+					//jQuery.load("#container2");
+					/*jQuery("#container1").hide();
+					jQuery("#container2").show();*/
+
+				}
+			});
+		}
+
+	</script>
 </html>
