@@ -26,4 +26,7 @@ public interface CustomOrderMapper {
             "INNER JOIN product c ON c.pro_id = b.pro_id " +
             "WHERE a.user_id = #{user_id}")
     public List<Map<String, Object>> getOrderInfo(int user_id);
+
+    @Select("select * from menu a inner join oderdetails b on a.menu_id = b. menu_id where a.menu_id = #{menu_id}")
+    public List<Map<String, Object>> getCartInfo(int menu_id);
 }
