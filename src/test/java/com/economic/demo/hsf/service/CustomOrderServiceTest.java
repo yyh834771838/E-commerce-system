@@ -43,7 +43,7 @@ class CustomOrderServiceTest {
     void getProNameAndPrice() {
         boolean flag = false;
         Map<String, String> map = new HashMap<String, String>();
-        map.put("pro_id", "12");
+        map.put("pro_id", "1");
         Map<String, Object> result = customOrderService.getProNameAndPrice(map);
         if (result.size()!=0)
         {
@@ -63,5 +63,38 @@ class CustomOrderServiceTest {
         if (result != null)
             flag = true;
        assertTrue(flag);
+    }
+
+    @Test
+    void getCartInfo() {
+        boolean flag = false;
+        Map<String, String> map = new HashMap<>();
+        map.put("menu_id", "1");
+        List<Map<String, Object>> result = customOrderService.getCartInfo(map);
+        if (result != null)
+            flag = true;
+        assertTrue(flag);
+    }
+
+    @Test
+    void adminFindDetailByMenuid() {
+        boolean flag = false;
+        Map<String, String> map = new HashMap<>();
+        map.put("menu_id", "1");
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByMenuid(map);
+        if (result != null)
+            flag = true;
+        assertTrue(flag);
+    }
+
+    @Test
+    void adminFindDetailByNameOrClass2() {
+        boolean flag = false;
+        Map<String, String> map = new HashMap<>();
+        map.put("name", "1");
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByNameOrClass2(map);
+        if (result != null)
+            flag = true;
+        assertTrue(flag);
     }
 }

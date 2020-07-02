@@ -18,8 +18,7 @@
 					<td>商品类别：</td>
 					<td>
 						<select name="pro_class" id="pro_class" >
-							<option value="1">1</option>
-							<option value="2">2</option>
+
 						</select>
 					</td>
 				</tr>
@@ -84,6 +83,14 @@
 	<script type="text/javascript">
 		jQuery(function(){
 			var objUrl;
+			jQuery.post("/class2_findAll",function (rst) {
+				var body="";
+				for (var i=0;i<rst.length;i++){
+					var json=rst[i];
+					body+="<option value=\""+json.class2_id+"\">"+json.name2+"</option>";
+				}
+				jQuery("#pro_class").html(body);
+			},"json");
 			jQuery("#photo").change(function(){
 				var name=this.files[0].name;
 				objUrl="/pro_images/"+name;
@@ -94,13 +101,14 @@
 			jQuery("#confirm").click(function(){
 				var pro_name=jQuery("#pro_name").val();
 				var pro_class=jQuery("#pro_class").val();
+				//var pro_calss=jQuery("#pro_class option:selected").val();
 				var pro_price=jQuery("#pro_price").val();
 				var hot=jQuery("input[type='radio']:checked").val();
 				var photo=objUrl;
 				var pro_des=jQuery("#pro_des").val();
 				var pro_number=jQuery("#pro_number").val();
 				jQuery.post("/pro_save",{"class2_id":pro_class,"name":pro_name,"price":pro_price,"hot":hot,"details":pro_des,
-					"number":pro_number,"photo":photo},function(rst){
+					"number":pro_number,"photo":photo,"pro_delete":"1"},function(rst){
 					jQuery("#reg_msg").html(rst);
 					jQuery('#myModal').modal("show");
 
@@ -111,7 +119,7 @@
 				if(rst=='添加成功')
 				{
 					//跳转页面
-					window.location.href="main.html";
+					location.reload();
 				}
 			});
 		});

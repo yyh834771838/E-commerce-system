@@ -1,7 +1,7 @@
 package com.economic.demo.gcf.service;
 
-
 import com.economic.demo.gcf.mapper.ProductMapper;
+import com.economic.demo.gcf.mapper.SalesMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -9,16 +9,15 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class ProductService {
-
+public class SalesSrevice {
 
     @Resource
 
-    private ProductMapper productMapper;
+    private SalesMapper salesMapper;
     public boolean doSave(Map<String,String> map){
         boolean flag=false;
         try {
-            int r=productMapper.save(map);
+            int r=salesMapper.save(map);
             if(r>0){
                 flag=true;
             }
@@ -31,8 +30,8 @@ public class ProductService {
     public boolean doDelete(Map<String,String> map){
         boolean flag=false;
         try {
-            int id=Integer.parseInt(map.get("pro_id"));
-            int r=productMapper.delete(id);
+            int id=Integer.parseInt(map.get("sales_id"));
+            int r=salesMapper.delete(id);
             if(r>0){
                 flag=true;
             }
@@ -46,7 +45,7 @@ public class ProductService {
     public boolean doUpdate(Map<String,String> map){
         boolean flag=false;
         try {
-            int r=productMapper.update(map);
+            int r=salesMapper.update(map);
             if(r>0){
                 flag=true;
             }
@@ -56,39 +55,14 @@ public class ProductService {
 
         return flag;
     }
-    public List<Map<String,Object>> fingAll(){
+    public List<Map<String,Object>> findAll(){
 
         List<Map<String,Object>> list=null;
         try {
-            list=productMapper.findAll();
+            list=salesMapper.findAll();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
-    }
-
-    public Map<String ,Object>findById(Map<String,String> map){
-        Map<String ,Object> tea=null;
-        try {
-            int id=Integer.parseInt(map.get("id"));
-            tea=productMapper.findById(id);
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-        }
-        return tea;
-    }
-
-    public boolean doprodelete(Map<String,String> map){
-        boolean flag=false;
-        try {
-            int r=productMapper.prodelete(map);
-            if(r>0){
-                flag=true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return flag;
     }
 }

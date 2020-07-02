@@ -40,4 +40,25 @@ public class CustomOrderController {
         List<Map<String, Object>> result = customOrderService.getOrderInfo(map);
         return result;
     }
+
+    @RequestMapping("/getCartInfo")
+    public List<Map<String, Object>> getCartInfo(@RequestParam Map<String, String> map)
+    {
+        List<Map<String, Object>> result = customOrderService.getCartInfo(map);
+        return result;
+    }
+
+    @RequestMapping("/AdminFindDetailByMenuid")
+    public List<Map<String, Object>> AdminFindDetailByMenuid(@RequestParam Map<String, String> map)
+    {
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByMenuid(map);
+        return result;
+    }
+
+    @RequestMapping("/AdminFindDetailByNameOrClass2")
+    public List<Map<String, Object>> AdminFindDetailByNameOrClass2(@RequestParam Map<String, String> map)
+    {
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByNameOrClass2(map);
+        return result;
+    }
 }

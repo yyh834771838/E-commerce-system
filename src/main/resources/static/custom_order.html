@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="css.css" />
     <meta charset="UTF-8">
-    <script src="jquery/jquery-3.4.1.min.js"></script>
+
     <title>销售订单</title>
 </head>
 <body>
@@ -15,13 +15,14 @@
         <li><a href="wishlist.html" class="wishlist">愿望单 (0)</a></li>
         <li><a href="account.html" class="account">我的账户</a></li>
         <li><a href="cat.html" class="cart">购物车</a></li>
-        <li><a class="checkout">登出</a></li>
-        <li style="float:right;"><a href="login.html" class="login">登录</a></li>
-        <li style="float:right;"><a class="register">注册</a></li>
+        <li><a class="checkout">商品结算</a></li>
+        <li  style="float:right;" >
+            <div id="top_page" class="login">
+            </div></li>
     </ul>
 </div>
 <!--the search bar-->
-<div style="width: 700px;margin: 700 auto;">
+<div style="width: 700px;">
     <div id="cart">
         <div class="content">
         </div>
@@ -103,16 +104,13 @@
     </table>
 </div>
 
-<script src="jquery/jquery-3.4.1.min.js"></script>
-<script type="text/javascript">
-    jQuery(function () {
-
-    })
-</script>
 <div>
 
 </div>
 
 </body>
-<script type="text/javascript" src="Script/getOrder.js">//设置订单表头</script>
+<script src="jquery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="Script/getOrder.js">
+    //设置订单表头</script>
+
 </html>

@@ -8,12 +8,12 @@
 <div class="menu">
 <ul>
 <li style="width:0px;"><a></a></li>
-<li class="active"><a href="index.html" class="home">主页</a></li>
+<li class="active"><a href="index.html" class="home">首页</a></li>
 <li><a href="wishlist.html" class="wishlist">商城主页</a></li>
 <li><a href="account.html" class="account">我的账户</a></li>
 <li><a href="cart.html" class="cart">购物车</a></li>
 <li><a class="checkout">商品结算</a></li>
-	<!--li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li-->
+
 	<li  style="float:right;" ><div id="top_page" class="login"></div></li>
 </ul>
 </div>
@@ -22,75 +22,27 @@
 <div style="width:700px;">
 <div id="cart">
 <div class="content"></div>
-</div>  
-<div id="search">
-	<div class="button-search"><button type="button" id="btn_sch" class="btn-size">搜索</button></div>
-<input type="text" name="sch_name" id="sch_name" value="Search" onClick="this.value = '';" onKeyDown="this.style.color = '#888';" />
 </div>
 </div>
 <div class="header">
 <div class="logo_img">LOVESHOP</div></div>
 
-<!-- 商品分类 -->
-<div id="menu">
-<ul>  
-<li><a href="#">衣装服饰</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">外套</a></li>
-	<li><a href="default.htm">裤子</a></li>
-	<li><a href="default.htm">鞋子</a></li>
-	<li><a href="default.htm">内衣</a></li>
-	</ul>
-	</div>
-</li>
-<li><a href="#">吃货圣地</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">酒乳饮品</a></li>
-	<li><a href="default.htm">蔬菜菌类</a></li>
-	<li><a href="default.htm">休闲食品</a></li>
-	<li><a href="default.htm">时令水果</a></li>
-	</ul>
-	</div>
-</li>
-<li><a href="index.html">电子设备</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">电脑</a></li>
-	<li><a href="default.htm">电视</a></li>
-	<li><a href="default.htm">手机</a></li>
-	<li><a href="default.htm">配件</a></li>
-	</ul>
-	</div>
-</li>
-<li><a href="index.html">生活用品</a>
-	<div>
-	<ul>	
-	<li><a href="default.htm">学习用品</a></li>
-	<li><a href="default.htm">体育用品</a></li>
-	<li><a href="default.htm">厨房用具</a></li>
-	<li><a href="default.htm">客厅摆式</a></li>
-	</ul>
-	</div>
-</li>
-</ul>
-</div>
 
 <!-- 大例子 -->
 <div id="wrapper">
-<div class="slider-wrapper theme-orman">
-<div class="ribbon"></div>
-<div id="slider" class="nivoSlider" style="border: 1px solid #444;box-shadow: 0 0 5px 0 #080808;">
-<a href="index.html"><img src="images/1.jpg" alt="" title="例子" /></a>
-<a href="index.html"><img src="images/2.jpg" alt="" title="例子" /></a>
-</div>
+	<div class="slider-wrapper theme-orman">
+		<div class="ribbon"></div>
+		<div id="slider" class="nivoSlider" style="border: 1px solid #444;box-shadow: 0 0 5px 0 #080808;">
+			<a href="index.html"><img src="images/1.jpg" alt="" title="例子" /></a>
+			<a href="index.html"><img src="images/2.jpg" alt="" title="例子" /></a>
+		</div>
 <br>
 <div class="controlNav_box"></div>
 </div>
 </div>
-<script type="text/javascript" src="slider/scripts/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="slider/jquery.nivo.slider.pack.js"></script>
+<!--<script type="text/javascript" src="slider/scripts/jquery-1.7.1.min.js"></script>-->
+<script src="/jquery/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="/slider/jquery.nivo.slider.pack.js"></script>
 <script type="text/javascript">
     $(window).load(function() {
         $('#slider').nivoSlider();
@@ -100,101 +52,109 @@
 <!-- 商品 -->
 <div class="container">
 <div class="text_box_left">商品列表</div>
-<div class="box-product">
-<div>
-<div class="showhim">
-<div class="image">
-<a href="product.html"><img src="images/img4.webp" alt="">
-</a>
-<div class="name"><a href="#">AppaleWatch</a></div>
-<div class="priced">
-<ul>
-<li>$119.50</li>
-<li><a href="#">添加到购物车</a></li>
-</ul>
- </div>
-<div style="margin-top:24px;"></div>
-</div>	
-<div class="showme">	        	
-</div></div>           
-</div>            
-<div>
-<div class="showhim">
-<div class="image">
-<a href="product.html"><img src="images/img4.webp" alt="">
-</a>
-<div class="name"><a href="#">AppaleWatch</a></div>
-<div class="priced">
-<ul>
-<li>$120.68</li>
-<li><a href="#">添加到购物车</a></li>
-</ul>
-</div>
-<div style="margin-top:24px;"></div>
-</div>	
-</div>      
-</div>
-<div>
-<div class="showhim">
-<div class="image">
-<a href="product.html"><img src="images/img4.webp" alt="">
-</a>
-<div class="name"><a href="#">AppaleWatch</a></div>
-<div class="priced">
-<ul>
-<li>$119.50</li>
-<li><a href="#">添加到购物车</a></li>
-</ul>
-</div>
-<div style="margin-top:24px;"></div>
-</div>	
-<div class="showme">	        	
-</div>
-</div>
-</div>
-<div>
-<div class="showhim">
-<div class="image">
-<a href="product.html"><img src="images/img4.webp" alt="">
-</a>
-<div class="name"><a href="#">AppaleWatch</a></div>
-<div class="priced">
-<ul>
-<li>$119.50</li>
-<li><a href="#">添加到购物车</a></li>
-</ul>
-</div>
-<div style="margin-top:24px;"></div>
-</div>	
-<div class="showme">	        	
-</div>
-</div>
-</div>
+<div class="box-product" id="recommend">
+
 </div>
 </div>
 <br>
 </body>
-<script src="/jquery/jquery-3.4.1.min.js"></script>
+
+<script src="/jquery/jquery.cookie.js"></script>
 <script type="text/javascript">
 	$("#top_page").load("top.html");
-	jQuery(function(){
-		jQuery("#btn_sch").click(function(){
-			var name=jQuery("#sch_name").val();
-			jQuery.post("/all",{"sch_name":name},function(rst){
-				jQuery("#reg_msg").html(rst);
-				jQuery('#myModal').modal("show");
-
-			});
-		});
-		jQuery("#closeDilog").click(function(){
-			jQuery('#myModal').modal("hide");
-			var rst=jQuery("#reg_msg").html();
-			if(rst=='注册成功')
+	var cur_user_id;
+	getStatus();
+	function getStatus()
+	{
+		var cookies=document.cookie.split(";");
+		for(var i=0;i<cookies.length;i++)
+		{
+			var cookie=cookies[i].trim();
+			if(cookie.indexOf("info")==0)
 			{
-				//跳转页面
-				window.location.href="success.html";
+				var m=cookie.substring("info".length+1);
+				m = m.substring(3);
+				m = m.substring(0,m.length-4);
+				jQuery.post("/findIdByName",{"user_name":m},function (rst) {
+					cur_user_id = rst;
+				},"json");
+				return;
 			}
-		});
+		}
+	}
+	//设置cookie
+	//cname 放入cookie中的key
+	//cvalue 放入的值
+	//exdays 存放天数
+	function setCookie(cname, cvalue, exdays) {
+		var d = new Date();
+		d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + "; expires=" + expires  + ";";
+	}
+
+
+	jQuery(function(){
+		jQuery.post("/allLsy",function(rst){
+			var body="";
+			var number_alr=0;
+			for(var i=0;i<rst.length;i++){
+				var json=rst[i];
+				if(json.pro_delete==1 && number_alr<4) {
+					number_alr++;
+					body += "<div>";
+					body += "<div class=\"showhim\">";
+					body += "<div class=\"image\">";
+					body += "<a onclick='show(\"" + json.pro_id + "\")'>" +"<img src=\""+json.photo+"\" width=\"90px\" height=\"180px\"> "+ "</a>";
+					body += "<div class=\"name\"><a href=\"product.html\">" + json.name + "</a></div>";
+					body += "<div class=\"priced\"><ul>";
+					body += "<li>￥"+ json.price + "</li>";
+					body += "<li><a href=\"#\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'>添加到购物车</a></li>";
+					body += "</ul></div><div style=\"margin-top:24px;\"></div></div><div class=\"showme\"></div></div></div>";
+				}
+			}
+			jQuery("#recommend").html(body);
+		},"json");
 	});
+
+	function doAddCart(id,price) {
+		if(cur_user_id==null){
+			alert("请登录后操作");
+		}else {
+			var check = 1;
+			jQuery.post("/idPro", {"pro_id": id, "user_id": cur_user_id}, function (rst) {
+				var json = rst;
+				if (json.pro_id == null)
+					check = 0;
+				if (check == 1) {
+					var pro_number = json.pro_number + 1;
+					jQuery.post("/editC", {
+						"pro_id": id,
+						"user_id": cur_user_id,
+						"pro_number": pro_number
+					}, function (rst2) {
+						alert(rst2);
+					});
+				}
+				if (check == 0) {
+					jQuery.post("/saveC", {
+						"user_id": cur_user_id,
+						"pro_id": id,
+						"pro_number": 1,
+						"pro_price": price
+					}, function (rst3) {
+						alert(rst3);
+					});
+				}
+			});
+		}
+	}
+
+	function show(id)
+	{
+		//jQuery.cookie("pro_id",id,{expires:7,path:'/'});
+		setCookie("pro_id",id,7);
+		location.href="product.html";
+	}
 </script>
 </html>

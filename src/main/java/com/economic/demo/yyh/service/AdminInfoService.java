@@ -44,4 +44,29 @@ public class AdminInfoService {
         Map<String,Object> info = adminInfoMapper.findDetailById(map);
         return info;
     }
+
+    public boolean updateUserInfo(Map<String,String> map){
+        boolean flag=false;
+        try {
+            int r=adminInfoMapper.updateUserInfo(map);
+            if(r>0){
+                flag=true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean findUserPassword(Map<String,String> map) {
+        boolean flag = false;
+        Map<String,Object> tmp = adminInfoMapper.findPassword(map);
+        if (tmp!=null && tmp.size()>0)
+        {
+            int len = adminInfoMapper.updateUserPassword(map);
+            if (len > 0)
+                return true;
+        }
+        return false;
+    }
 }

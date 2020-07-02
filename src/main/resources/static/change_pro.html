@@ -191,7 +191,7 @@
 			jQuery("#delModal").modal("hide");
 			var id=jQuery("#del_id").val();
 			//json格式的属性名称必须与后台对应
-			jQuery.post("/pro_delete",{"pro_id":id},function(rst){
+			jQuery.post("/pro_prodelete",{"pro_id":id},function(rst){
 				alert(rst);
 				//如果删除成功，重新加载数据
 				if(rst=='删除成功')
@@ -229,7 +229,7 @@
 			var number=jQuery("#pro_number").val();
 			var photo=objUrl;
 			jQuery.post("/pro_update",{"pro_id":pro_id,"class2_id":class2_id,"name":name,"price":price,"hot":hot,
-				"details":details,"number":number,"photo":photo},function (rst) {
+				"details":details,"number":number,"photo":photo,"pro_delete":"1"},function (rst) {
 				alert(rst);
 				if(rst=='更新成功')
 				{

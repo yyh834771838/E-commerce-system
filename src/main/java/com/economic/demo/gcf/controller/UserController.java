@@ -20,6 +20,20 @@ public class UserController {
         List<Map<String,Object>> list=userService.fingAll();
         return list;
     }
+    @RequestMapping("/user_findManager")
+    public List<Map<String,Object>> findManager(){
+        List<Map<String,Object>> list=userService.findManager();
+        return list;
+    }
+    @RequestMapping("/user_save")
+    public String save(@RequestParam Map<String,String> map){
+        String msg="添加失败";
+        boolean flag=userService.doSave(map);
+        if(flag){
+            msg="添加成功";
+        }
+        return msg;
+    }
     @RequestMapping("/user_delete")
     public String delete(@RequestParam Map<String,String> map){
         String msg="删除失败";

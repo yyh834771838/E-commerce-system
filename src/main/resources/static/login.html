@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
     <link rel="stylesheet" type="text/css" href="css.css" />
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <title>登陆/注册</title>
 </head>
 <body>
@@ -135,7 +136,7 @@
                         <input type="password" name="u_pwd" id="u_pwd" value="" placeholder="请输入密码"/>
 
                         <br />
-                        <a href="">忘记密码？</a><br />
+                        <a onclick="showFindPwdModal()">忘记密码？</a><br />
                         <br />
                         <button type="button" id="btn_login" class="btn btn-info">登陆</button>
                     </div>
@@ -146,11 +147,56 @@
 
 </div>
 
+<!-- 找回密码的模态框 -->
+<div class="modal fade" tabindex="-1" role="dialog" id="findPwdModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">请按要求填写相关信息</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-lg">
+                        <label class="control-label col-lg-2">用户名:</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="pwd_name" id="pwd_name" class="form-control" placeholder="所有信息都要如实填写，否则会修改失败！">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label class="control-label col-lg-2">手机号:</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="no" id="pwd_tel" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label class="control-label col-lg-2">邮箱:</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="name" id="pwd_email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label class="control-label col-lg-2">新的密码:</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="name" id="pwd_new" class="form-control">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-confirm_pwd" onclick="doFindPwd()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 </body>
 
 <script src="/jquery/jquery-3.4.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript">
-    $("#top_page").load("top.html");
+    jQuery("#top_page").load("top.html");
     jQuery(function(){
         jQuery("#btn_login").click(function(){
             var name=jQuery("#u_name").val();
@@ -172,5 +218,22 @@
             });
         });
     });
+
+    function showFindPwdModal()
+    {
+        jQuery("#findPwdModal").modal("show");
+    }
+    function doFindPwd() {
+        jQuery("#findPwdModal").modal("hide");
+        var u_tel = jQuery("#pwd_tel").val();
+        var u_name = jQuery("#pwd_name").val();
+        var u_email = jQuery("#pwd_email").val();
+        var u_pwd = jQuery("#pwd_new").val();
+        jQuery.post("/findUserPassword",{"u_name":u_name,"u_pwd":u_pwd,"u_tel":u_tel,"u_email":u_email},function (rst) {
+            alert(rst);
+            if (rst=="密码修改成功")
+                location.reload();
+        });
+    }
 </script>
 </html>
