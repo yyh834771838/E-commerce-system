@@ -58,7 +58,7 @@ class CustomOrderServiceTest {
     void getNamePriceNum() {
         boolean flag = false;
         Map<String, String> map = new HashMap<>();
-        map.put("user_id", "1");
+        map.put("username", "zyc");
         List<Map<String, Object>> result = customOrderService.getOrderInfo(map);
         if (result != null)
             flag = true;
@@ -94,6 +94,17 @@ class CustomOrderServiceTest {
         map.put("name", "1");
         List<Map<String, Object>> result = customOrderService.AdminFindDetailByNameOrClass2(map);
         if (result != null)
+            flag = true;
+        assertTrue(flag);
+    }
+
+    @Test
+    void getMemuNum() {
+        boolean flag = false;
+        int length = 0;
+
+        length = customOrderService.getMemuNum();
+        if (length!=0)
             flag = true;
         assertTrue(flag);
     }

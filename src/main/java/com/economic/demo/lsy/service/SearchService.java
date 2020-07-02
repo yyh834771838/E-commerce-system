@@ -129,6 +129,17 @@ private SearchMapper searchMapper;
         return list;
     }
 
+    public List<Map<String,Object>> findByIdComment(Map<String,String> map){
+        List<Map<String,Object>> list=null;
+        try {
+            int content= Integer.parseInt(map.get("pro_id"));
+            list=searchMapper.findByIdComment(content);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
     public boolean doUpdate(Map<String,String> map){
         boolean flag=false;
         try {

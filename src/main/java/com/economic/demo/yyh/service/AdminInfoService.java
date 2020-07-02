@@ -69,4 +69,18 @@ public class AdminInfoService {
         }
         return false;
     }
+
+    public int findSystemAdmin(Map<String,String> map) {
+        Map<String,Object> tmp = adminInfoMapper.findNormalByNameAndPwd(map);
+        if (tmp!=null && tmp.size()>0)
+        {
+            return 2;
+        }
+        tmp = adminInfoMapper.findSeniorByNameAndPwd(map);
+        if (tmp!=null && tmp.size()>0)
+        {
+            return 3;
+        }
+        return 0;
+    }
 }

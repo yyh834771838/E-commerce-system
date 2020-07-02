@@ -15,8 +15,18 @@ public interface AdminInfoMapper {
      */
     @Select("select * from user " +
             " where name=#{t.u_name}" +
-            " and password=#{t.u_pwd}")
+            " and password=#{t.u_pwd} and identity=1")
     public Map<String,Object> findByNameAndPwd(@Param("t") Map<String,String> map);
+
+    @Select("select * from user " +
+            " where name=#{t.u_name}" +
+            " and password=#{t.u_pwd} and identity=2")
+    public Map<String,Object> findNormalByNameAndPwd(@Param("t") Map<String,String> map);
+
+    @Select("select * from user " +
+            " where name=#{t.u_name}" +
+            " and password=#{t.u_pwd} and identity=3")
+    public Map<String,Object> findSeniorByNameAndPwd(@Param("t") Map<String,String> map);
 
     @Select("select * from user " +
             " where name=#{t.u_name}")
