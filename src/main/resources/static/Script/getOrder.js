@@ -123,32 +123,42 @@ jQuery(function () {
         var body = ""
         body = setTableHeader(body)
         console.log("in the readyOrder the length of the OrderInfo is: " + OrderInfo.length)
-        for (var i=0; i< OrderInfo.length;i++){
-            var json = OrderInfo[i]
-            console.log("the status is : " + json.status)
-            //如果输入的值和返回来的订单中的商品名相同,则展示其信息
-            if (json.status == 0) {
-                console.log("correspond")
-                body += "<tr>";
-                //添加商品名字和图片信息
-                body += "<td class='table_product_des'>";
-                //添加商品图片信息
-                body += "<img src='images/iphone.jpg' alt='图片一' class='product_img'>"
-                body += json.name;
-                body += "</td>";
-                //添加商品单价信息
-                body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.pro_price + "</td>"
-                //添加商品数量信息
-                body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.pro_number + "</td>"
-                //添加商品操作信息
-                body += "<td style='vertical-align: center; text-align: center;background-color: #FFFFFF'>" + "评价跳转" + "</td>"
-                //添加商品状态
-                body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.status + "</td>"
-                //添加下单时间
-                body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.time + "</td>"
-                //添加商品
-                body += "</tr>";
+        if (OrderInfo.length!=0)
+        {
+            for (var i=0; i< OrderInfo.length;i++){
+                var json = OrderInfo[i]
+                console.log("the status is : " + json.status)
+                //如果输入的值和返回来的订单中的商品名相同,则展示其信息
+                if (json.status == 0) {
+                    console.log("correspond")
+                    body += "<tr>";
+                    //添加商品名字和图片信息
+                    body += "<td class='table_product_des'>";
+                    //添加商品图片信息
+                    body += "<img src='images/iphone.jpg' alt='图片一' class='product_img'>"
+                    body += json.name;
+                    body += "</td>";
+                    //添加商品单价信息
+                    body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.pro_price + "</td>"
+                    //添加商品数量信息
+                    body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.pro_number + "</td>"
+                    //添加商品操作信息
+                    body += "<td style='vertical-align: center; text-align: center;background-color: #FFFFFF'>" + "评价跳转" + "</td>"
+                    //添加商品状态
+                    body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.status + "</td>"
+                    //添加下单时间
+                    body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.time + "</td>"
+                    //添加商品
+                    body += "</tr>";
+                }
             }
+        }
+        else {
+            body+="<tr>";
+            body +="<td style='font-size: 200%'>";
+            body += "您尚未购买过商品"
+            body +="</td>";
+            body+="</tr>";
         }
         jQuery("#tbody").html(body)
     })
