@@ -97,4 +97,15 @@ class CustomOrderServiceTest {
             flag = true;
         assertTrue(flag);
     }
+
+    @Test
+    void getMemuNum() {
+        boolean flag = false;
+        int length = 0;
+
+        length = customOrderService.getMemuNum();
+        if (length!=0)
+            flag = true;
+        assertTrue(flag);
+    }
 }
