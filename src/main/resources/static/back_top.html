@@ -5,10 +5,10 @@
     <title></title>
     <style type="text/css">
         *{
-            margin: 0px;
             padding: 0px;
-            font-size: 12px;
+            margin: 0px;
         }
+
         #top{
             /* background-image: url(img/top-right.gif); */
             /* background-color:#122B40; */
@@ -22,20 +22,54 @@
             font-size: 20px;
             padding-left: 20px;
         }
-        #info{
+        *{
+            padding: 0px;
+            margin: 0px;
+        }
+        #agg{
             float: right;
             color: white;
             padding-right: 20px;
         }
+
     </style>
 </head>
 <body>
 <div id="top">
-    <div id="logo">Manager</div>
-    <div id="info">
-        欢迎【张三】
-        <a href="login.html" target="_top">注销</a>
-    </div>
+        <div id="logo">Manager</div>
+        <div id="agg">
+            <span id="info"></span>
+            <a href="index.html" target="_top">首页</a>
+        </div>
 </div>
 </body>
+
+<script src="/jquery/jquery-3.4.1.min.js"></script>
+<script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script>
+    function exit()
+    {
+        var d=new Date();
+        d.setTime(d.getTime()+ -1*24*60*60);
+        document.cookie="info="+123+"; expires="+d.toUTCString();
+        location.href="login.html";
+    }
+    function getCookie()
+    {
+        var cookies=document.cookie.split(";");
+        for(var i=0;i<cookies.length;i++)
+        {
+            var cookie=cookies[i].trim();
+            if(cookie.indexOf("info")==0)
+            {
+                var m=cookie.substring("info".length+1);
+                jQuery("#info").html(m);
+                //jQuery("#quit").html("注销");
+                return;
+            }
+        }
+    }
+    getCookie();
+</script>
+
 </html>
