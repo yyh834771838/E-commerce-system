@@ -48,6 +48,11 @@ public interface SearchMapper {
             " where pro_id=#{uc.pro_id} AND user_id=#{uc.user_id}")
     public int update(@Param("uc") Map<String,String> map);
 
+    @Update("update cart " +
+            " set chosen=#{ucp.chosen}" +
+            " where user_id=#{ucp.user_id}")
+    public int updateCP(@Param("ucp") Map<String,String> map);
+
     @Insert("insert into cart(user_id,pro_id,pro_number,pro_price,chosen)" +
             "value(#{ac.user_id},#{ac.pro_id},#{ac.pro_number},#{ac.pro_price},#{ac.chosen})")
     public int save(@Param("ac") Map<String,String> map);
