@@ -73,4 +73,34 @@ class CustomOrderControllerTest {
         String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
         System.out.println(str);
     }
+
+    @Test
+    void adminFindDetailByMenuid() throws Exception {
+        MockHttpServletRequestBuilder builder=
+                MockMvcRequestBuilders.post("/AdminFindDetailByMenuid")
+                        .param("menu_id","1");
+        MvcResult rst=mockMvc.perform(builder).andReturn();
+        String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
+        System.out.println(str);
+    }
+
+    @Test
+    void adminFindDetailByNameOrClass2() throws Exception {
+        MockHttpServletRequestBuilder builder=
+                MockMvcRequestBuilders.post("/AdminFindDetailByNameOrClass2")
+                        .param("name","1");
+        MvcResult rst=mockMvc.perform(builder).andReturn();
+        String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
+        System.out.println(str);
+    }
+
+    @Test
+    void getMemuNum() throws Exception {
+        MockHttpServletRequestBuilder builder=
+                MockMvcRequestBuilders.post("/AdminFindDetailByNameOrClass2")
+                        .param("name","1");
+        MvcResult rst=mockMvc.perform(builder).andReturn();
+        String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
+        System.out.println(str);
+    }
 }

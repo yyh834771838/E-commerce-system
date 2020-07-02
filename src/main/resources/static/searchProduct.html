@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    <style type="text/css">
+        #container1{
+            width: 70%;
+            padding: 30px;
+        }
+        #container2{
+            width: 70%;
+            padding: 30px;
+        }
+        td{
+            text-align: center!important;
+        }
+    </style>
+</head>
+<body>
+<!-- 商标+搜索框 -->
+<div style="width:700px;margin:700 auto;">
+    <div id="cart">
+        <div class="content"></div>
+    </div>
+    <div id="search">
+        <div class="button-search"><button type="button" id="ProductName" class="btn-size">搜索</button></div>
+        <input type="text" name="name" id="name" style="height: 33px; width: 270px" placeholder="请输入用户名,订单号或下单时间进行查询">
+        <script src="jquery/jquery-3.4.1.min.js"></script>
+    </div>
+
+
+</div>
+<div id="container1">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <td>
+                商品图片
+            </td>
+            <td>
+                商品名
+            </td>
+            <td>
+                大类别
+            </td>
+            <td>
+                小类别
+            </td>
+            <td>
+                商品价格
+            </td>
+        </tr>
+        </thead>
+        <tbody id="tbody1">
+
+        </tbody>
+    </table>
+</div>
+</body>
+<script src="Script/AdminFindProduct.js"></script>
+</html>

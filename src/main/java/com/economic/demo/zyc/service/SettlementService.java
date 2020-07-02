@@ -1,7 +1,7 @@
-package com.economic.demo.gcf.service;
+package com.economic.demo.zyc.service;
 
-import com.economic.demo.gcf.mapper.MenuMapper;
-import com.economic.demo.gcf.mapper.UserMapper;
+import com.economic.demo.zyc.mapper.CartMapper;
+import com.economic.demo.zyc.mapper.SettlementMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -9,70 +9,59 @@ import java.util.List;
 import java.util.Map;
 
 @Service
-public class UserService {
+public class SettlementService {
     @Resource
+    private SettlementMapper settlementMapper;
 
-    private UserMapper userMapper;
-    public List<Map<String,Object>> fingAll(){
-
+    public List<Map<String,Object>> findAdd(String name){
         List<Map<String,Object>> list=null;
         try {
-            list=userMapper.findAll();
+            list=settlementMapper.findAdd(name);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return list;
     }
-    public List<Map<String,Object>> findManager(){
 
-        List<Map<String,Object>> list=null;
-        try {
-            list=userMapper.findManager();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return list;
-    }
-    public boolean doSave(Map<String,String> map){
+    public boolean addMenu(Map<String,String> map){
         boolean flag=false;
+        //选择要添加监控的代码
+        //ctrl+alt+t 打开 surround with窗口 选择 try catch
         try {
-            int r=userMapper.save(map);
+            int r=settlementMapper.addMenu(map);
             if(r>0){
                 flag=true;
             }
         } catch (Exception e) {
             e.printStackTrace();
+            //记录日志，写到文件中进行保存
         }
-
         return flag;
     }
 
-    public boolean doDelete(Map<String,String> map){
+    public boolean addOrder(String name){
         boolean flag=false;
         try {
-            int id=Integer.parseInt(map.get("user_id"));
-            int r=userMapper.delete(id);
+            int r=settlementMapper.addOrder(name);
             if(r>0){
                 flag=true;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return flag;
-
     }
-    public boolean doUpdate(Map<String,String> map){
+
+    public boolean delCart(int user_id){
         boolean flag=false;
         try {
-            int r=userMapper.update(map);
+            int r=settlementMapper.delCart(user_id);
             if(r>0){
                 flag=true;
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return flag;
     }
 }

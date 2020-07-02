@@ -75,4 +75,37 @@ class CustomOrderServiceTest {
             flag = true;
         assertTrue(flag);
     }
+
+    @Test
+    void adminFindDetailByMenuid() {
+        boolean flag = false;
+        Map<String, String> map = new HashMap<>();
+        map.put("menu_id", "1");
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByMenuid(map);
+        if (result != null)
+            flag = true;
+        assertTrue(flag);
+    }
+
+    @Test
+    void adminFindDetailByNameOrClass2() {
+        boolean flag = false;
+        Map<String, String> map = new HashMap<>();
+        map.put("name", "1");
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByNameOrClass2(map);
+        if (result != null)
+            flag = true;
+        assertTrue(flag);
+    }
+
+    @Test
+    void getMemuNum() {
+        boolean flag = false;
+        int length = 0;
+
+        length = customOrderService.getMemuNum();
+        if (length!=0)
+            flag = true;
+        assertTrue(flag);
+    }
 }

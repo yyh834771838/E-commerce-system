@@ -25,6 +25,13 @@ public class AdminControl {
         }
         return msg;
     }
+
+    @RequestMapping("/adminLogin")
+    public int adminLogin(@RequestParam Map<String,String> map){
+        int info =adminInfoService.findSystemAdmin(map);
+        return info;
+    }
+
     @RequestMapping("/register")
     public String register(@RequestParam Map<String,String> map){
         String info=adminInfoService.checkRegister(map);

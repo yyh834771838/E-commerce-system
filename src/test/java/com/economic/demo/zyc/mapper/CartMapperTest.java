@@ -22,21 +22,21 @@ class CartMapperTest {
     private CartMapper cartMapper;
 //    @Test
 //    public void findAll() {
-//        List<Map<String,Object>> list=cartMapper.findAll();
+//        List<Map<String,Object>> list=cartMapper.findAll("zyc");
 //        System.out.println(list);
 //    }
 
-//    @Test
-//    public void delete() {
-//        int n=cartMapper.delete(5);
-//        assertEquals(1,n);
-//    }
+    @Test
+    public void delete() {
+        int n=cartMapper.delete(5);
+        assertEquals(1,n);
+    }
 
 //    @Test
 //    public void save() {
 //        Map<String,String> map=new HashMap<>();
 //        map.put("pro_id","1");
-//        map.put("menu_id","1");
+//        map.put("user_id","1");
 //        map.put("number","200");
 //        map.put("price","5");
 //        int n=cartMapper.save(map);
@@ -44,13 +44,13 @@ class CartMapperTest {
 //        assertEquals(1,n);
 //    }
 
-    @Test
-    public void update() {
-        Map<String,String> tea=new HashMap<>();
-        tea.put("number","123");
-        tea.put("id","5");
-        int n=cartMapper.update(tea);
-        assertEquals(1,n);
-    }
+//    @Test
+//    public void update() {
+//        Map<String,String> tea=new HashMap<>();
+//        tea.put("pro_number","123");
+//        tea.put("id","5");
+//        int n=cartMapper.update(tea);
+//        assertEquals(1,n);
+//    }
 
 }

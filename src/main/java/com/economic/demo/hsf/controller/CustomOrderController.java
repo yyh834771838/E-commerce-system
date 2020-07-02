@@ -48,5 +48,24 @@ public class CustomOrderController {
         return result;
     }
 
+    @RequestMapping("/AdminFindDetailByMenuid")
+    public List<Map<String, Object>> AdminFindDetailByMenuid(@RequestParam Map<String, String> map)
+    {
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByMenuid(map);
+        return result;
+    }
 
+    @RequestMapping("/AdminFindDetailByNameOrClass2")
+    public List<Map<String, Object>> AdminFindDetailByNameOrClass2(@RequestParam Map<String, String> map)
+    {
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByNameOrClass2(map);
+        return result;
+    }
+
+    @RequestMapping("/getMemuNum")
+    public int getMemuNum()
+    {
+        int length = customOrderService.getMemuNum();
+        return length;
+    }
 }
