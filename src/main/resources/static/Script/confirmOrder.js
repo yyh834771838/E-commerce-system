@@ -1,7 +1,5 @@
 jQuery(function () {
-    jQuery("#confirmOrder").click(function () {
         getOrderId()
-    })
 })
 function getOrderId() {
     var menu_id
