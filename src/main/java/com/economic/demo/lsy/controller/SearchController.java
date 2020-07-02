@@ -80,6 +80,12 @@ public class SearchController {
         return list;
     }
 
+    @RequestMapping("/idComm")
+    public List<Map<String,Object>> findByIdComment(@RequestParam Map<String,String> map){
+        List<Map<String,Object>> list=searchService.findByIdComment(map);
+        return list;
+    }
+
     @RequestMapping("/editC")
     public String update(@RequestParam Map<String,String> map){
         String msg="修改失败";

@@ -105,7 +105,7 @@
 					body += "<div>";
 					body += "<div class=\"showhim\">";
 					body += "<div class=\"image\">";
-					body += "<a onclick='show(\"" + json.pro_id + "\")'>" +"<img src=\""+json.photo+"\" width=\"90px\" height=\"180px\"> "+ "</a>";
+					body += "<a href='#' onclick='show(\"" + json.pro_id + "\")'>" +"<img src=\""+json.photo+"\" width=\"90px\" height=\"180px\"> "+ "</a>";
 					body += "<div class=\"name\"><a href=\"product.html\">" + json.name + "</a></div>";
 					body += "<div class=\"priced\"><ul>";
 					body += "<li>гд"+ json.price + "</li>";
@@ -141,7 +141,8 @@
 						"user_id": cur_user_id,
 						"pro_id": id,
 						"pro_number": 1,
-						"pro_price": price
+						"pro_price": price,
+						"chosen": 0
 					}, function (rst3) {
 						alert(rst3);
 					});

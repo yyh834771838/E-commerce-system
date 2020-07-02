@@ -73,8 +73,9 @@
           <tr>
             <td >图片</td>
             <td >商品名称</td>
-            <td >剩余库存量</td>
+            <td >库存量</td>
             <td >商品单价</td>
+              <td >购买数量</td>
             <td >商品详情</td>
               <td >立即购买</td>
           </tr>
@@ -194,8 +195,9 @@
                     body += "<td>" + json.name + "</td>";
                     body += "<td>" + json.number + "</td>";
                     body += "<td>" + json.price + "</td>";
+                    body += "<td><input class=\"quantity\" type=\"text\" name=\"quantity\" size=\"2\" value=\"1\" id=\"howmany"+ json.pro_id +"\" /></td>";
                     body += "<td>";
-                    body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                    body += "<a href='#' class=\"button\" onclick='show(\"" + json.pro_id + "\")'><span>查看详情</span></a>";
                     body += "</td>";
                     body += "<td>";
                     body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
@@ -218,8 +220,9 @@
                             body += "<td>" + json.name + "</td>";
                             body += "<td>" + json.number + "</td>";
                             body += "<td>" + json.price + "</td>";
+                            body += "<td><input class=\"quantity\" type=\"text\" name=\"quantity\" size=\"2\" value=\"1\" id=\"howmany"+ json.pro_id +"\" /></td>";
                             body += "<td>";
-                            body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                            body += "<a href='#' onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
                             body += "</td>";
                             body += "<td>";
                             body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
@@ -242,8 +245,9 @@
                         body += "<td>" + json.name + "</td>";
                         body += "<td>" + json.number + "</td>";
                         body += "<td>" + json.price + "</td>";
+                        body += "<td><input class=\"quantity\" type=\"text\" name=\"quantity\" size=\"2\" value=\"1\" id=\"howmany"+ json.pro_id +"\" /></td>";
                         body += "<td>";
-                        body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                        body += "<a href='#' onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
                         body += "</td>";
                         body += "<td>";
                         body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
@@ -266,8 +270,9 @@
                         body += "<td>" + json.name + "</td>";
                         body += "<td>" + json.number + "</td>";
                         body += "<td>" + json.price + "</td>";
+                        body += "<td><input class=\"quantity\" type=\"text\" name=\"quantity\" size=\"2\" value=\"1\" id=\"howmany"+ json.pro_id +"\" /></td>";
                         body += "<td>";
-                        body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                        body += "<a href='#' onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
                         body += "</td>";
                         body += "<td>";
                         body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
@@ -290,8 +295,9 @@
                         body += "<td>" + json.name + "</td>";
                         body += "<td>" + json.number + "</td>";
                         body += "<td>" + json.price + "</td>";
+                        body += "<td><input class=\"quantity\" type=\"text\" name=\"quantity\" size=\"2\" value=\"1\" id=\"howmany"+ json.pro_id +"\" /></td>";
                         body += "<td>";
-                        body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                        body += "<a href='#' onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
                         body += "</td>";
                         body += "<td>";
                         body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
@@ -314,8 +320,9 @@
                         body += "<td>" + json.name + "</td>";
                         body += "<td>" + json.number + "</td>";
                         body += "<td>" + json.price + "</td>";
+                        body += "<td><input class=\"quantity\" type=\"text\" name=\"quantity\" size=\"2\" value=\"1\" id=\"howmany"+ json.pro_id +"\" /></td>";
                         body += "<td>";
-                        body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                        body += "<a href='#' onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
                         body += "</td>";
                         body += "<td>";
                         body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
@@ -338,8 +345,9 @@
                         body += "<td>" + json.name + "</td>";
                         body += "<td>" + json.number + "</td>";
                         body += "<td>" + json.price + "</td>";
+                        body += "<td><input class=\"quantity\" type=\"text\" name=\"quantity\" size=\"2\" value=\"1\" id=\"howmany"+ json.pro_id +"\" /></td>";
                         body += "<td>";
-                        body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                        body += "<a href='#' onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
                         body += "</td>";
                         body += "<td>";
                         body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
@@ -364,8 +372,9 @@
                     body += "<td>" + json.name + "</td>";
                     body += "<td>" + json.number + "</td>";
                     body += "<td>" + json.price + "</td>";
+                    body += "<td><input class=\"quantity\" type=\"text\" name=\"quantity\" size=\"2\" value=\"1\" id=\"howmany"+ json.pro_id +"\" /></td>";
                     body += "<td>";
-                    body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                    body += "<a href='#' onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
                     body += "</td>";
                     body += "<td>";
                     body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
@@ -384,10 +393,12 @@
             var check = 1;
             jQuery.post("/idPro", {"pro_id": id, "user_id": cur_user_id}, function (rst) {
                 var json = rst;
+                var str="#howmany"+id;
+                var q=parseInt(jQuery(str).val());
                 if (json.pro_id == null)
                     check = 0;
                 if (check == 1) {
-                    var pro_number = json.pro_number + 1;
+                    var pro_number = json.pro_number + q;
                     jQuery.post("/editC", {
                         "pro_id": id,
                         "user_id": cur_user_id,
@@ -400,8 +411,9 @@
                     jQuery.post("/saveC", {
                         "user_id": cur_user_id,
                         "pro_id": id,
-                        "pro_number": 1,
-                        "pro_price": price
+                        "pro_number": q,
+                        "pro_price": price,
+                        "chosen": 0
                     }, function (rst3) {
                         alert(rst3);
                     });

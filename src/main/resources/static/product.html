@@ -11,7 +11,7 @@
 	<li><a href="index.html" class="home">首页</a></li>
 	<li><a href="wishlist.html" class="wishlist">商城主页</a></li>
 	<li><a href="account.html" class="account">我的账户</a></li>
-	<li><a href="cat.html" class="cart">购物车</a></li>
+	<li><a href="cart.html" class="cart">购物车</a></li>
 	<li><a class="checkout">商品结算</a></li>
 		<li  style="float:right;" ><div id="top_page" class="login"></div></li>
 	</ul>
@@ -52,14 +52,8 @@
 		<div class="box-heading_left">猜您喜欢</div>
 		<div class="box-content" style="background:none;border:none;">
 			<div class="box-category">
-				<ul>
-					<li><a href="#">台式机</a></li>
-					<li><a href="#">笔记本电脑</a></li>
-					<li><a href="#">组件</a></li>
-					<li><a href="#">软件</a></li>
-					<li><a href="#">手机</a></li>
-					<li><a href="#">相机</a></li>
-					<li><a href="#">MP3播放器</a></li>
+				<ul id="rc2">
+
 				</ul>
 			</div>
 		</div>
@@ -77,6 +71,7 @@
 <div class="left" id="proD">
 
 </div>
+	<div id="commbody"></div>
 </div>
 </div>
 </div>
@@ -109,6 +104,16 @@
 		}
 	}
 
+	//设置cookie
+	//cname 放入cookie中的key
+	//cvalue 放入的值
+	//exdays 存放天数
+	function setCookie(cname, cvalue, exdays) {
+		var d = new Date();
+		d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires="+d.toUTCString();
+		document.cookie = cname + "=" + cvalue + "; expires=" + expires  + ";";
+	}
 
 	function getCookie(name)
 	{
@@ -149,7 +154,6 @@
 			body += "<div class=\"right\" style=\"margin-left: -10px\">";
 			body += "<div id=\"tabs\" class=\"tabs\">";
 			body += "<a  class=\"selected\"><img alt=\"Information\" src=\"images/Info.png\" style=\"margin-top:6px;\" /><div></div></a>";
-			body += "<a href=\"#tab-review\">评价 (0)</a>";
 			body += "</div>";
 			body += "<div id=\"tab-information\" class=\"tab-content\">";
 			body += "<div id=\"information\"></div>";
@@ -161,18 +165,108 @@
 			body += "<div class=\"price\">";
 			body += "<span class=\"price-new\">￥"+ json.price + "</span>";
 			body += "</div>";
-			body += "<br><div class=\"cart\"><div>数量:<input class=\"quantity\" type=\"text\" name=\"quantity\" size=\"2\" value=\"1\" />";
-			body += "<input type=\"hidden\" name=\"product_id\"  value=\"41\" />";
-			body += "&nbsp;&nbsp;&nbsp;&nbsp;<a id=\"button-buy\" class=\"button\"><span>立即购买</span></a></div>";
+			body += "<br><div class=\"cart\"><div>数量:<input class=\"quantity\" type=\"text\" name=\"quantity\" size=\"2\" value=\"1\" id=\"howmany\" />";
+			body += "<input type=\"hidden\" name=\"product_id\" />";
+			body += "&nbsp;&nbsp;&nbsp;&nbsp;<a id=\"button-buy\" class=\"button\" href='#' onclick='doOver(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>立即购买</span></a></div>";
 			body += "<div><span>&nbsp;&nbsp;&nbsp;- OR -&nbsp;&nbsp;&nbsp;</span></div>";
-			body += "<div><a id=\"button-cart\" class=\"button\"><span>添加到购物车</span></a></div>";
+			body += "<div><a id=\"button-cart\" class=\"button\" href='#' onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>添加到购物车</span></a></div>";
 			body += "</div>";
 			body += "<div class=\"review\"><div ><img src=\"images/stars.png\"  />&nbsp;&nbsp;</div></div>";
 			body += "<div>" + json.details + "</div></div><div class=\"price\"></div></div>";
+
 			console.log("body:"+body);
 			jQuery("#proD").html(body);
 		},"json");
+
+		jQuery.post("/allLsy",function(rst){
+			var body="";
+			var number_alr=0;
+			for(var i=0;i<rst.length;i++){
+				var json=rst[i];
+				if(json.pro_delete==1 && number_alr<8) {
+					number_alr++;
+					body += "<li><a href=\"#\" onclick='show(\"" + json.pro_id + "\")'>" + json.name + "</a></li>";
+				}
+			}
+			jQuery("#rc2").html(body);
+		},"json");
+
+		jQuery.post("/idComm",{"pro_id": v},function(rst2){
+			var body2="";
+				body2 += "<div id=\"tabs\" class=\"tabs2\">";
+				body2 += "</div>";
+				body2 += "<div id=\"tab-information\" class=\"tab-content\">";
+				body2 += "<div id=\"information\"></div>";
+				body2 += "<div class=\"description\">";
+				body2 += "<span>&raquo;&nbsp;用户评论</span><br />";
+				body2 += "</div>";
+			for(var j=0;j<rst2.length;j++){
+				var json2=rst2[j];
+				body2 += "<div class=\"description\"><span>" + json2.name + ":&nbsp;&nbsp;" + json2.text_content + "</span><br /></div>";
+
+			}
+			body2 += "</div><div class=\"price\"></div></div>";
+			jQuery("#commbody").html(body2);
+		},"json");
 	});
 
+	function doAddCart(id,price) {
+		if(cur_user_id==null){
+			alert("请登录后操作");
+		}else {
+			var check = 1;
+			jQuery.post("/idPro", {"pro_id": id, "user_id": cur_user_id}, function (rst) {
+				var json = rst;
+				var q=parseInt(jQuery("#howmany").val());
+				if (json.pro_id == null)
+					check = 0;
+				if (check == 1) {
+					var pro_number = json.pro_number + q;
+					jQuery.post("/editC", {
+						"pro_id": id,
+						"user_id": cur_user_id,
+						"pro_number": pro_number
+					}, function (rst2) {
+						alert(rst2);
+					});
+				}
+				if (check == 0) {
+					jQuery.post("/saveC", {
+						"user_id": cur_user_id,
+						"pro_id": id,
+						"pro_number": q,
+						"pro_price": price,
+						"chosen": 0
+					}, function (rst3) {
+						alert(rst3);
+					});
+				}
+			});
+		}
+	}
+
+	function doOver(id,price) {
+		if(cur_user_id==null){
+			alert("请登录后操作");
+		}else {
+				var q=parseInt(jQuery("#howmany").val());
+				jQuery.post("/saveC", {
+						"user_id": cur_user_id,
+						"pro_id": id,
+						"pro_number": q,
+						"pro_price": price,
+					    "chosen": 1
+					}, function (rst3) {
+					location.href="settlement.html";
+					});
+		}
+	}
+
+	function show(id)
+	{
+		//jQuery.cookie("pro_id",id,{expires:7,path:'/'});
+		setCookie("pro_id",id,7);
+		location.href="product.html";
+	}
 </script>
 </html>
