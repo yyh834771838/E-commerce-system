@@ -23,6 +23,30 @@ public class UserService {
         }
         return list;
     }
+    public List<Map<String,Object>> findManager(){
+
+        List<Map<String,Object>> list=null;
+        try {
+            list=userMapper.findManager();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+    public boolean doSave(Map<String,String> map){
+        boolean flag=false;
+        try {
+            int r=userMapper.save(map);
+            if(r>0){
+                flag=true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return flag;
+    }
+
     public boolean doDelete(Map<String,String> map){
         boolean flag=false;
         try {
