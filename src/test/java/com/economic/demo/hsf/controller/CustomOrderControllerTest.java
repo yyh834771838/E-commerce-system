@@ -58,7 +58,7 @@ class CustomOrderControllerTest {
     void getOrderInfo() throws Exception {
         MockHttpServletRequestBuilder builder=
                 MockMvcRequestBuilders.post("/getOrderInfo")
-                        .param("user_id","1");
+                        .param("username","zyc");
         MvcResult rst=mockMvc.perform(builder).andReturn();
         String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
         System.out.println(str);

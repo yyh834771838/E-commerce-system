@@ -49,7 +49,7 @@ class CustomOrderMapperTest {
 
     @Test
     void getOrderInfo() {
-        List<Map<String, Object>> map = customOrderMapper.getOrderInfo(1);
+        List<Map<String, Object>> map = customOrderMapper.getOrderInfo("zyc");
         Iterator<Map<String, Object>> iter = map.iterator();
         while (iter.hasNext())
         {

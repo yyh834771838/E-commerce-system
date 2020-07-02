@@ -1,10 +1,8 @@
 package com.economic.demo.hsf.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -21,11 +19,13 @@ public interface CustomOrderMapper {
     public Map<String, Object> getProNameAndPrice(int pro_id);
 
     @Select("SELECT * " +
-            "from menu a " +
-            "INNER JOIN oderdetails b ON a.menu_id = b.menu_id " +
-            "INNER JOIN product c ON c.pro_id = b.pro_id " +
-            "WHERE a.user_id = #{user_id}")
-    public List<Map<String, Object>> getOrderInfo(int user_id);
+            "from user a " +
+            "INNER JOIN menu b ON b.user_id = a.user_id " +
+            "INNER JOIN oderdetails c ON b.menu_id = c.menu_id " +
+            "INNER JOIN product d ON c.pro_id = d.pro_id " +
+
+            "WHERE a.name = #{username}")
+    public List<Map<String, Object>> getOrderInfo(String username);
 
     @Select("select *,c.name AS uname, e.name AS pname " +
             "from menu a " +
@@ -44,4 +44,11 @@ public interface CustomOrderMapper {
 
     @Select("select * from menu")
     public List<Map<String, Object>> getMemuNum();
+
+    @Select("SELECT * " +
+            "from menu a " +
+            "INNER JOIN oderdetails b ON a.menu_id = b.menu_id " +
+            "INNER JOIN product c ON c.pro_id = b.pro_id " +
+            "WHERE a.name = #{username}")
+    public List<Map<String, Object>> getOrderByUserName(String username);
 }
