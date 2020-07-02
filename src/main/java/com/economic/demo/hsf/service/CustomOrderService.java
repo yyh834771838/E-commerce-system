@@ -79,4 +79,14 @@ public class CustomOrderService {
         }
         return result;
     }
+
+    public List<Map<String, Object>> AdminFindDetailByNameOrClass2(Map<String, String>nameorclass2id){
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+        Iterator<String> iter = nameorclass2id.keySet().iterator();
+        if (iter.hasNext()) {
+            String param = nameorclass2id.get(iter.next());
+            result =customOrderMapper.AdminFindDetailByNameOrClass2(param,param);
+        }
+        return result;
+    }
 }

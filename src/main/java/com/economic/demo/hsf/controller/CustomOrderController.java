@@ -55,4 +55,10 @@ public class CustomOrderController {
         return result;
     }
 
+    @RequestMapping("/AdminFindDetailByNameOrClass2")
+    public List<Map<String, Object>> AdminFindDetailByNameOrClass2(@RequestParam Map<String, String> map)
+    {
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByNameOrClass2(map);
+        return result;
+    }
 }
