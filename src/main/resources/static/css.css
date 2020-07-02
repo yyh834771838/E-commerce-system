@@ -1533,13 +1533,24 @@ a.button span {
 
 
 
-
 .tabs {
 	display: block;
 	height: 36px;
 	background: #fafafa;
 	border: 1px solid #ccc;
 	width: 800px;
+	margin-bottom: 0px;
+	border-radius: 3px;
+
+
+}
+
+.tabs2 {
+	display: block;
+	height: 36px;
+	background: #fafafa;
+	border: 1px solid #ccc;
+	width: 700px;
 	margin-bottom: 0px;
 	border-radius: 3px;
 
