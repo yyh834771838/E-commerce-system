@@ -59,11 +59,21 @@ class SettlementControllerTest {
 //        System.out.println(str);
 //    }
 
+//    @Test
+//    public void delCart() throws Exception {
+//        MockHttpServletRequestBuilder builder=
+//                MockMvcRequestBuilders.post("/delCart")
+//                        .param("user_id","2");
+//        MvcResult rst=mockMvc.perform(builder).andReturn();
+//        String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
+//        System.out.println(str);
+//    }
+
     @Test
-    public void delCart() throws Exception {
+    public void totalPrice() throws Exception {
         MockHttpServletRequestBuilder builder=
-                MockMvcRequestBuilders.post("/delCart")
-                        .param("user_id","2");
+                MockMvcRequestBuilders.post("/totalPrice")
+                        .param("name","zyc");
         MvcResult rst=mockMvc.perform(builder).andReturn();
         String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
         System.out.println(str);

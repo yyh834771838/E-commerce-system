@@ -47,18 +47,18 @@ class CartControllerTest {
 //        System.out.println(str);
 //    }
 
-    @Test
-    public void delete() throws Exception {
-        //构建一个请求对象，get请求
-        MockHttpServletRequestBuilder builder=
-                MockMvcRequestBuilders.get("/delete")
-                        .param("id","5");
-        //使用mockmvc发送请求，并获取响应
-        MvcResult rst=mockMvc.perform(builder).andReturn();
-        //从响应结果中获取其中的内容
-        String str=rst.getResponse().getContentAsString(Charset.forName("utf-8"));
-        System.out.println(str);
-    }
+//    @Test
+//    public void delete() throws Exception {
+//        //构建一个请求对象，get请求
+//        MockHttpServletRequestBuilder builder=
+//                MockMvcRequestBuilders.get("/delete")
+//                        .param("id","5");
+//        //使用mockmvc发送请求，并获取响应
+//        MvcResult rst=mockMvc.perform(builder).andReturn();
+//        //从响应结果中获取其中的内容
+//        String str=rst.getResponse().getContentAsString(Charset.forName("utf-8"));
+//        System.out.println(str);
+//    }
 
 //    @Test
 //    public void update() throws Exception {
@@ -73,4 +73,17 @@ class CartControllerTest {
 //        String str=rst.getResponse().getContentAsString(Charset.forName("utf-8"));
 //        System.out.println(str);
 //    }
+
+    @Test
+    public void chosen0() throws Exception {
+        //构建一个请求对象，get请求
+        MockHttpServletRequestBuilder builder=
+                MockMvcRequestBuilders.get("/chosen0")
+                        .param("id","1");
+        //使用mockmvc发送请求，并获取响应
+        MvcResult rst=mockMvc.perform(builder).andReturn();
+        //从响应结果中获取其中的内容
+        String str=rst.getResponse().getContentAsString(Charset.forName("utf-8"));
+        System.out.println(str);
+    }
 }

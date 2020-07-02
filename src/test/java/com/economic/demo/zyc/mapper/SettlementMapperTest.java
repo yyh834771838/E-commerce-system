@@ -33,15 +33,21 @@ class SettlementMapperTest {
 //        assertEquals(2,n);
 //    }
 
+//    @Test
+//    void addOrder() {
+//        Map<String,String> map=new HashMap<>();
+//        map.put("user_id","1");
+//        map.put("add_id","1");
+//        map.put("time","200");
+//        map.put("total","5");
+//        int n=settlementMapper.addMenu(map);
+//        //junit中的断言，进行提示显示，如果执行的结果跟我们的期望职相同，测试通过
+//        assertEquals(1,n);
+//    }
+
     @Test
-    void addOrder() {
-        Map<String,String> map=new HashMap<>();
-        map.put("user_id","1");
-        map.put("add_id","1");
-        map.put("time","200");
-        map.put("total","5");
-        int n=settlementMapper.addMenu(map);
-        //junit中的断言，进行提示显示，如果执行的结果跟我们的期望职相同，测试通过
-        assertEquals(1,n);
+    void totalPrice() {
+        List<Map<String,Object>> list=settlementMapper.totalPrice("zyc");
+        System.out.println(list);
     }
 }

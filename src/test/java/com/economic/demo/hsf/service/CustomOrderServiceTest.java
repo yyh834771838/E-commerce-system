@@ -58,7 +58,7 @@ class CustomOrderServiceTest {
     void getNamePriceNum() {
         boolean flag = false;
         Map<String, String> map = new HashMap<>();
-        map.put("user_id", "1");
+        map.put("username", "zyc");
         List<Map<String, Object>> result = customOrderService.getOrderInfo(map);
         if (result != null)
             flag = true;

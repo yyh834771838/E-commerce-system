@@ -23,20 +23,25 @@ class SettlementServiceTest {
 //        System.out.println(list);
 //    }
 //
-    @Test
-    public void addMenu() {
-        Map<String,String> map=new HashMap<>();
-        map.put("user_id","1");
-        map.put("add_id","1");
-        map.put("time","200");
-        map.put("total","5");
-        boolean flag=settlementService.addMenu(map);
-        assertTrue(flag);
-    }
+//    @Test
+//    public void addMenu() {
+//        Map<String,String> map=new HashMap<>();
+//        map.put("user_id","1");
+//        map.put("add_id","1");
+//        map.put("time","200");
+//        map.put("total","5");
+//        boolean flag=settlementService.addMenu(map);
+//        assertTrue(flag);
+//    }
 
 //    @Test
 //    public void addOrder(){
 //        boolean flag=settlementService.addOrder("zyc");
 //        assertTrue(flag);
 //    }
+    @Test
+    void totalPrice() {
+        List<Map<String,Object>> list=settlementService.totalPrice("zyc");
+        System.out.println(list);
+    }
 }

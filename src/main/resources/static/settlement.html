@@ -24,7 +24,7 @@
         <li><a href="wishlist.html" class="wishlist">商城主页</a></li>
         <li><a href="account.html" class="account">我的账户</a></li>
         <li class="active"><a href="cart.html" class="cart">购物车</a></li>
-        <li><a class="checkout">商品结算</a></li>
+<!--        <li><a class="checkout">商品结算</a></li>-->
         <!--<li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li>-->
         <li  style="float:right;" ><div id="top_page" class="login"></div></li>
     </ul>
@@ -48,51 +48,51 @@
 <div class="header">
     <div class="logo_img">LOVESHOP</div></div>
 
-<!-- 商品分类 -->
-<div id="menu">
-    <ul>
-        <li><a href="#">衣装服饰</a>
-            <div>
-                <ul>
-                    <li><a href="default.htm">外套</a></li>
-                    <li><a href="default.htm">裤子</a></li>
-                    <li><a href="default.htm">鞋子</a></li>
-                    <li><a href="default.htm">内衣</a></li>
-                </ul>
-            </div>
-        </li>
-        <li><a href="#">吃货圣地</a>
-            <div>
-                <ul>
-                    <li><a href="default.htm">酒乳饮品</a></li>
-                    <li><a href="default.htm">蔬菜菌类</a></li>
-                    <li><a href="default.htm">休闲食品</a></li>
-                    <li><a href="default.htm">时令水果</a></li>
-                </ul>
-            </div>
-        </li>
-        <li><a href="index.html">电子设备</a>
-            <div>
-                <ul>
-                    <li><a href="default.htm">电脑</a></li>
-                    <li><a href="default.htm">电视</a></li>
-                    <li><a href="default.htm">手机</a></li>
-                    <li><a href="default.htm">配件</a></li>
-                </ul>
-            </div>
-        </li>
-        <li><a href="index.html">生活用品</a>
-            <div>
-                <ul>
-                    <li><a href="default.htm">学习用品</a></li>
-                    <li><a href="default.htm">体育用品</a></li>
-                    <li><a href="default.htm">厨房用具</a></li>
-                    <li><a href="default.htm">客厅摆式</a></li>
-                </ul>
-            </div>
-        </li>
-    </ul>
-</div>
+<!--&lt;!&ndash; 商品分类 &ndash;&gt;-->
+<!--<div id="menu">-->
+<!--    <ul>-->
+<!--        <li><a href="#">衣装服饰</a>-->
+<!--            <div>-->
+<!--                <ul>-->
+<!--                    <li><a href="default.htm">外套</a></li>-->
+<!--                    <li><a href="default.htm">裤子</a></li>-->
+<!--                    <li><a href="default.htm">鞋子</a></li>-->
+<!--                    <li><a href="default.htm">内衣</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li><a href="#">吃货圣地</a>-->
+<!--            <div>-->
+<!--                <ul>-->
+<!--                    <li><a href="default.htm">酒乳饮品</a></li>-->
+<!--                    <li><a href="default.htm">蔬菜菌类</a></li>-->
+<!--                    <li><a href="default.htm">休闲食品</a></li>-->
+<!--                    <li><a href="default.htm">时令水果</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li><a href="index.html">电子设备</a>-->
+<!--            <div>-->
+<!--                <ul>-->
+<!--                    <li><a href="default.htm">电脑</a></li>-->
+<!--                    <li><a href="default.htm">电视</a></li>-->
+<!--                    <li><a href="default.htm">手机</a></li>-->
+<!--                    <li><a href="default.htm">配件</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--        <li><a href="index.html">生活用品</a>-->
+<!--            <div>-->
+<!--                <ul>-->
+<!--                    <li><a href="default.htm">学习用品</a></li>-->
+<!--                    <li><a href="default.htm">体育用品</a></li>-->
+<!--                    <li><a href="default.htm">厨房用具</a></li>-->
+<!--                    <li><a href="default.htm">客厅摆式</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </li>-->
+<!--    </ul>-->
+<!--</div>-->
 
 <div style="width:1000px;margin: 0 auto;margin-top:10px;">
     <div class="linktree">
@@ -125,7 +125,7 @@
             <p>合计：</p>
             <input type="text" value=""readonly id="total"></input>
         </div>
-        <div class="right"><a href="orderConfirm.html" class="button" style="height:30px;width:120px;" onclick="add()"><span>付款</span></a></div>
+        <div class="right"><a href="#" class="button" style="height:30px;width:120px;" onclick="add()"><span>付款</span></a></div>
     </div>
 </div>
 <div class="hiddenPlace">
@@ -155,7 +155,7 @@
                 m2=m1[1].split("】");
             }
         }
-        jQuery.post("/all",{"name":m2[0]},function(rst){
+        jQuery.post("/totalPrice",{"name":m2[0]},function(rst){
             total=0;
             for(var i=0;i<rst.length;i++)
             {
@@ -170,11 +170,11 @@
                 var json=rst[i];
                 body+="<tr>";
                 body+="<td class=\"select\"><input type=\"radio\" name=\"single\" onclick='set(\""+json.user_id+"\",\""+rst[i].add_id+"\")'></td>";
-                body+="<td>"+json.receiver+"</td>";
+                body+="<td>"+json.receiver_name+"</td>";
                 body+="<td>"+json.number+"</td>";
                 body+="<td>"+json.province+"</td>";
-                body+="<td>"+json.city+"</td>";
-                body+="<td>"+json.area+"</td>";
+                body+="<td>"+json.city_name+"</td>";
+                body+="<td>"+json.area_name+"</td>";
                 body+="</tr>";
             }
             jQuery("#tbody").html(body);
@@ -194,7 +194,7 @@
             Location.reload();
         }
         jQuery.post("/addMenu", {"user_id": user, "add_id": add, "time": "100", "total": total}, function (rst) {
-            //alert(rst);
+            alert(rst);
             //如果删除成功，重新加载数据
             if (rst == '付款成功') {
                 //重新加载本页面
@@ -218,11 +218,11 @@
 
     function del(user) {
         jQuery.post("/delCart",{"user_id":user},function (rst) {
-            //alert(rst);
+            alert(rst);
             //如果删除成功，重新加载数据
             if (rst == '删除成功') {
-                //重新加载本页面
-                location.reload();
+
+                location.href="orderConfirm.html";
             }
         });
     }

@@ -64,4 +64,14 @@ public class SettlementService {
         }
         return flag;
     }
+
+    public List<Map<String,Object>> totalPrice(String name){
+        List<Map<String,Object>> list=null;
+        try {
+            list=settlementMapper.totalPrice(name);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
