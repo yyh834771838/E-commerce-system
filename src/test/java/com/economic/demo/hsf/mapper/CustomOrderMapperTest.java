@@ -99,6 +99,23 @@ class CustomOrderMapperTest {
             System.out.println("the total is: " + key.get("total"));
             System.out.println("the status is: " + key.get("status"));
             System.out.println("the id of the product is: " + key.get("pro_id"));
+            System.out.println("the name of the product is: " + key.get("productname"));
+        }
+    }
+
+    @Test
+    void adminFindDetailByNameOrClass2() {
+        List<Map<String,  Object>> map = customOrderMapper.AdminFindDetailByNameOrClass2("1","1");
+        Iterator<Map<String, Object>> iter = map.iterator();
+        System.out.println(map.get(0).keySet());
+        while (iter.hasNext())
+        {
+            Map<String, Object> key = iter.next();
+            System.out.println("=================================================");
+            System.out.println("the name of the product is: " + key.get("name"));
+            System.out.println("the pro_class2 of the product is: " + key.get("name2"));
+            System.out.println("the pro_class1 of the product is: " + key.get("name1"));
+            System.out.println("the photo path of the product is: " + key.get("photo"));
         }
     }
 }

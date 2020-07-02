@@ -37,7 +37,9 @@
     <ul>
       	<li><a onclick="showInfo()">个人资料</a></li>
       	<li><a onclick="showAddr()">收货地址</a></li>
-      	<li><a href="custom_order.html">个人交易信息</a></li>
+      	<li id="test"><a href="custom_order.html">个人交易信息</a></li>
+		<script>
+		</script>
       	<li><a href="#">个人成长信息</a></li>
 		<li><a href="#">安全设置</a></li>
     </ul>
@@ -230,6 +232,7 @@
 				jQuery.post("/findIdByName",{"user_name":m},function (rst) {
 					cur_user_id = rst;
 				},"json");
+				console.log(cur_user_id);
 				return;
 			}
 		}

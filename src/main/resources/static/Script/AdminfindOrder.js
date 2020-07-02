@@ -17,7 +17,7 @@ jQuery(function () {
                 //添加下单时间信息
                 body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.time + "</td>"
                 //添加商品id信息
-                body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.pro_id + "</td>"
+                body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.productname + "</td>"
                 //添加商品数量信息
                 body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.pro_number + "</td>"
                 //添加总金额信息
