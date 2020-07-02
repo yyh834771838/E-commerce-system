@@ -13,7 +13,6 @@
 <li><a href="account.html" class="account">我的账户</a></li>
 <li><a href="cart.html" class="cart">购物车</a></li>
 <li><a class="checkout">商品结算</a></li>
-    <!--li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li-->
     <li  style="float:right;" ><div id="top_page" class="login"></div></li>
 </ul>
 </div>
@@ -96,8 +95,36 @@
 <script src="/jquery/jquery-3.4.1.min.js"></script>
 <script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript">
+    $("#top_page").load("top.html");
+    var cur_user_id;
+    getStatus();
+    function getStatus()
+    {
+        var cookies=document.cookie.split(";");
+        for(var i=0;i<cookies.length;i++)
+        {
+            var cookie=cookies[i].trim();
+            if(cookie.indexOf("info")==0)
+            {
+                var m=cookie.substring("info".length+1);
+                m = m.substring(3);
+                m = m.substring(0,m.length-4);
+                jQuery.post("/findIdByName",{"user_name":m},function (rst) {
+                    cur_user_id = rst;
+                },"json");
+                return;
+            }
+        }
+    }
+
+    function setCookie(cname, cvalue, exdays) {
+        var d = new Date();
+        d.setTime(d.getTime() + (exdays*24*60*60*1000));
+        var expires = "expires="+d.toUTCString();
+        document.cookie = cname + "=" + cvalue + "; expires=" + expires  + ";";
+    }
+
     jQuery(function(){
-        $("#top_page").load("top.html");
         jQuery.post("/allC1",function(rst){
             var body="";
             for(var i=0;i<rst.length;i++){
@@ -161,18 +188,20 @@
             var body="";
             for(var i=0;i<rst.length;i++){
                 var json=rst[i];
-                body+="<tr>";
-                body+="<td>"+json.photo+"</td>";
-                body+="<td>"+json.name+"</td>";
-                body+="<td>"+json.number+"</td>";
-                body+="<td>"+json.price+"</td>";
-                body+="<td>";
-                body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
-                body+="</td>";
-                body+="<td>";
-                body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
-                body+="</td>";
-                body+="</tr>";
+                if(json.pro_delete==1) {
+                    body += "<tr>";
+                    body += "<td> " + "<img src=\""+json.photo+"\" width=\"80px\" height=\"80px\"> "+ "</td>";
+                    body += "<td>" + json.name + "</td>";
+                    body += "<td>" + json.number + "</td>";
+                    body += "<td>" + json.price + "</td>";
+                    body += "<td>";
+                    body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                    body += "</td>";
+                    body += "<td>";
+                    body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
+                    body += "</td>";
+                    body += "</tr>";
+                }
             }
             jQuery("#tbody").html(body);
         },"json");
@@ -183,18 +212,20 @@
                     var body = "";
                     for (var i = 0; i < rst.length; i++) {
                         var json = rst[i];
-                        body += "<tr>";
-                        body += "<td>" + json.photo + "</td>";
-                        body += "<td>" + json.name + "</td>";
-                        body += "<td>" + json.number + "</td>";
-                        body += "<td>" + json.price + "</td>";
-                        body += "<td>";
-                        body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
-                        body+="</td>";
-                        body+="<td>";
-                        body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
-                        body += "</td>";
-                        body += "</tr>";
+                        if(json.pro_delete==1) {
+                            body += "<tr>";
+                            body += "<td> " + "<img src=\""+json.photo+"\" width=\"80px\" height=\"80px\"> "+ "</td>";
+                            body += "<td>" + json.name + "</td>";
+                            body += "<td>" + json.number + "</td>";
+                            body += "<td>" + json.price + "</td>";
+                            body += "<td>";
+                            body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                            body += "</td>";
+                            body += "<td>";
+                            body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
+                            body += "</td>";
+                            body += "</tr>";
+                        }
                     }
                     jQuery("#tbody").html(body);
                 }, "json");
@@ -205,18 +236,20 @@
                 var body = "";
                 for (var i = 0; i < rst.length; i++) {
                     var json = rst[i];
-                    body += "<tr>";
-                    body += "<td>" + json.photo + "</td>";
-                    body += "<td>" + json.name + "</td>";
-                    body += "<td>" + json.number + "</td>";
-                    body += "<td>" + json.price + "</td>";
-                    body += "<td>";
-                    body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
-                    body+="</td>";
-                    body+="<td>";
-                    body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
-                    body += "</td>";
-                    body += "</tr>";
+                    if(json.pro_delete==1) {
+                        body += "<tr>";
+                        body += "<td> " + "<img src=\""+json.photo+"\" width=\"80px\" height=\"80px\"> "+ "</td>";
+                        body += "<td>" + json.name + "</td>";
+                        body += "<td>" + json.number + "</td>";
+                        body += "<td>" + json.price + "</td>";
+                        body += "<td>";
+                        body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                        body += "</td>";
+                        body += "<td>";
+                        body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
+                        body += "</td>";
+                        body += "</tr>";
+                    }
                 }
                 jQuery("#tbody").html(body);
             }, "json");
@@ -227,18 +260,20 @@
                 var body = "";
                 for (var i = 0; i < rst.length; i++) {
                     var json = rst[i];
-                    body += "<tr>";
-                    body += "<td>" + json.photo + "</td>";
-                    body += "<td>" + json.name + "</td>";
-                    body += "<td>" + json.number + "</td>";
-                    body += "<td>" + json.price + "</td>";
-                    body += "<td>";
-                    body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
-                    body+="</td>";
-                    body+="<td>";
-                    body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
-                    body += "</td>";
-                    body += "</tr>";
+                    if(json.pro_delete==1) {
+                        body += "<tr>";
+                        body += "<td> " + "<img src=\""+json.photo+"\" width=\"80px\" height=\"80px\"> "+ "</td>";
+                        body += "<td>" + json.name + "</td>";
+                        body += "<td>" + json.number + "</td>";
+                        body += "<td>" + json.price + "</td>";
+                        body += "<td>";
+                        body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                        body += "</td>";
+                        body += "<td>";
+                        body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
+                        body += "</td>";
+                        body += "</tr>";
+                    }
                 }
                 jQuery("#tbody").html(body);
             }, "json");
@@ -249,18 +284,20 @@
                 var body = "";
                 for (var i = 0; i < rst.length; i++) {
                     var json = rst[i];
-                    body += "<tr>";
-                    body += "<td>" + json.photo + "</td>";
-                    body += "<td>" + json.name + "</td>";
-                    body += "<td>" + json.number + "</td>";
-                    body += "<td>" + json.price + "</td>";
-                    body += "<td>";
-                    body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
-                    body+="</td>";
-                    body+="<td>";
-                    body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
-                    body += "</td>";
-                    body += "</tr>";
+                    if(json.pro_delete==1) {
+                        body += "<tr>";
+                        body += "<td> " + "<img src=\""+json.photo+"\" width=\"80px\" height=\"80px\"> "+ "</td>";
+                        body += "<td>" + json.name + "</td>";
+                        body += "<td>" + json.number + "</td>";
+                        body += "<td>" + json.price + "</td>";
+                        body += "<td>";
+                        body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                        body += "</td>";
+                        body += "<td>";
+                        body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
+                        body += "</td>";
+                        body += "</tr>";
+                    }
                 }
                 jQuery("#tbody").html(body);
             }, "json");
@@ -271,18 +308,20 @@
                 var body = "";
                 for (var i = 0; i < rst.length; i++) {
                     var json = rst[i];
-                    body += "<tr>";
-                    body += "<td>" + json.photo + "</td>";
-                    body += "<td>" + json.name + "</td>";
-                    body += "<td>" + json.number + "</td>";
-                    body += "<td>" + json.price + "</td>";
-                    body += "<td>";
-                    body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
-                    body+="</td>";
-                    body+="<td>";
-                    body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
-                    body += "</td>";
-                    body += "</tr>";
+                    if(json.pro_delete==1) {
+                        body += "<tr>";
+                        body += "<td> " + "<img src=\""+json.photo+"\" width=\"80px\" height=\"80px\"> "+ "</td>";
+                        body += "<td>" + json.name + "</td>";
+                        body += "<td>" + json.number + "</td>";
+                        body += "<td>" + json.price + "</td>";
+                        body += "<td>";
+                        body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                        body += "</td>";
+                        body += "<td>";
+                        body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
+                        body += "</td>";
+                        body += "</tr>";
+                    }
                 }
                 jQuery("#tbody").html(body);
             }, "json");
@@ -293,18 +332,20 @@
                 var body = "";
                 for (var i = 0; i < rst.length; i++) {
                     var json = rst[i];
-                    body += "<tr>";
-                    body += "<td>" + json.photo + "</td>";
-                    body += "<td>" + json.name + "</td>";
-                    body += "<td>" + json.number + "</td>";
-                    body += "<td>" + json.price + "</td>";
-                    body += "<td>";
-                    body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
-                    body+="</td>";
-                    body+="<td>";
-                    body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
-                    body += "</td>";
-                    body += "</tr>";
+                    if(json.pro_delete==1) {
+                        body += "<tr>";
+                        body += "<td> " + "<img src=\""+json.photo+"\" width=\"80px\" height=\"80px\"> "+ "</td>";
+                        body += "<td>" + json.name + "</td>";
+                        body += "<td>" + json.number + "</td>";
+                        body += "<td>" + json.price + "</td>";
+                        body += "<td>";
+                        body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                        body += "</td>";
+                        body += "<td>";
+                        body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
+                        body += "</td>";
+                        body += "</tr>";
+                    }
                 }
                 jQuery("#tbody").html(body);
             }, "json");
@@ -317,44 +358,63 @@
             var body = "";
             for (var i = 0; i < rst.length; i++) {
                 var json = rst[i];
-                body += "<tr>";
-                body += "<td>" + json.photo + "</td>";
-                body += "<td>" + json.name + "</td>";
-                body += "<td>" + json.number + "</td>";
-                body += "<td>" + json.price + "</td>";
-                body += "<td>";
-                body += "<a href='product.html' class=\"button\"><span>查看详情</span></a>";
-                body+="</td>";
-                body+="<td>";
-                body+="<a href='#' class=\"button\" onclick='doAddCart(\""+json.pro_id+"\",\""+json.price+"\")'><span>加入购物车</span></a>";
-                body += "</td>";
-                body += "</tr>";
+                if(json.pro_delete==1) {
+                    body += "<tr>";
+                    body += "<td> " + "<img src=\""+json.photo+"\" width=\"80px\" height=\"80px\"> "+ "</td>";
+                    body += "<td>" + json.name + "</td>";
+                    body += "<td>" + json.number + "</td>";
+                    body += "<td>" + json.price + "</td>";
+                    body += "<td>";
+                    body += "<a onclick='show(\"" + json.pro_id + "\")' class=\"button\"><span>查看详情</span></a>";
+                    body += "</td>";
+                    body += "<td>";
+                    body += "<a href='#' class=\"button\" onclick='doAddCart(\"" + json.pro_id + "\",\"" + json.price + "\")'><span>加入购物车</span></a>";
+                    body += "</td>";
+                    body += "</tr>";
+                }
             }
             jQuery("#tbody").html(body);
         }, "json");
     }
 
     function doAddCart(id,price) {
-        var check = 1;
-
-        jQuery.post("/idPro", {"pro_id": id, "user_id": 1}, function (rst) {
-            var json = rst;
-            if(json.pro_id==null)
-                check=0;
-            if(check==1) {
-                var pro_number = json.pro_number + 1;
-                jQuery.post("/editC", {"pro_id": id, "user_id": 1, "pro_number": pro_number}, function (rst2) {
-                    alert(rst2);
-                });
-            }
-        if(check==0) {
-            jQuery.post("/saveC", {"user_id": 1, "pro_id": id, "pro_number": 1, "pro_price": price}, function (rst3) {
-                alert(rst3);
+        if(cur_user_id==null){
+         alert("请登录后操作");
+        }else {
+            var check = 1;
+            jQuery.post("/idPro", {"pro_id": id, "user_id": cur_user_id}, function (rst) {
+                var json = rst;
+                if (json.pro_id == null)
+                    check = 0;
+                if (check == 1) {
+                    var pro_number = json.pro_number + 1;
+                    jQuery.post("/editC", {
+                        "pro_id": id,
+                        "user_id": cur_user_id,
+                        "pro_number": pro_number
+                    }, function (rst2) {
+                        alert(rst2);
+                    });
+                }
+                if (check == 0) {
+                    jQuery.post("/saveC", {
+                        "user_id": cur_user_id,
+                        "pro_id": id,
+                        "pro_number": 1,
+                        "pro_price": price
+                    }, function (rst3) {
+                        alert(rst3);
+                    });
+                }
             });
         }
-        });
     }
 
-
+    function show(id)
+    {
+        //jQuery.cookie("pro_id",id,{expires:7,path:'/'});
+        setCookie("pro_id",id,7);
+        location.href="product.html";
+    }
 </script>
 </html>

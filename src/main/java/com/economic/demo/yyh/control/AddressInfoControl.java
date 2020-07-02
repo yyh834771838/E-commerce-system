@@ -25,4 +25,28 @@ public class AddressInfoControl {
         String info = addressInfoService.findUserIdByName(map);
         return info;
     }
+
+    @RequestMapping("/addUserAddress")
+    public String addAddress(@RequestParam Map<String,String> map) {
+        String  rst = addressInfoService.addAddress(map);
+        return rst;
+    }
+    @RequestMapping("/deleteAddress")
+    public String deleteAddress(@RequestParam Map<String,String> map){
+        String msg="删除失败";
+        boolean flag=addressInfoService.deleteAddress(map);
+        if(flag){
+            msg="删除成功";
+        }
+        return msg;
+    }
+    @RequestMapping("/updateAddress")
+    public String updateAddress(@RequestParam Map<String,String> map){
+        String msg="修改失败";
+        boolean flag=addressInfoService.updateAddress(map);
+        if(flag){
+            msg="修改成功";
+        }
+        return msg;
+    }
 }

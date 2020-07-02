@@ -75,4 +75,15 @@ class CustomOrderServiceTest {
             flag = true;
         assertTrue(flag);
     }
+
+    @Test
+    void adminFindDetailByMenuid() {
+        boolean flag = false;
+        Map<String, String> map = new HashMap<>();
+        map.put("menu_id", "1");
+        List<Map<String, Object>> result = customOrderService.AdminFindDetailByMenuid(map);
+        if (result != null)
+            flag = true;
+        assertTrue(flag);
+    }
 }

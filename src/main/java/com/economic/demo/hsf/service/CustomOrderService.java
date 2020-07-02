@@ -70,5 +70,13 @@ public class CustomOrderService {
         return result;
     }
 
-
+    public List<Map<String, Object>> AdminFindDetailByMenuid(Map<String, String>menu_id){
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+        Iterator<String> iter = menu_id.keySet().iterator();
+        if (iter.hasNext()) {
+            String param = menu_id.get(iter.next());
+            result =customOrderMapper.AdminFindDetailByMenuid(param,param,param);
+        }
+        return result;
+    }
 }
