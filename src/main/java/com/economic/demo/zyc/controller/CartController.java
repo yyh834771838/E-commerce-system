@@ -15,8 +15,8 @@ public class CartController {
     private CartService cartService;
 
     @RequestMapping("/all")
-    public List<Map<String,Object>> findAll(){
-        List<Map<String,Object>> list=cartService.findAll();
+    public List<Map<String,Object>> findAll(@RequestParam String name){
+        List<Map<String,Object>> list=cartService.findAll(name);
         return list;
     }
 
@@ -40,7 +40,7 @@ public class CartController {
         return msg;
     }
 
-    @RequestMapping("/edit")
+    @RequestMapping("/update")
     public String update(@RequestParam Map<String,String> map){
         String msg="修改失败";
         boolean flag=cartService.doUpdate(map);

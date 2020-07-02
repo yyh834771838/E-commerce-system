@@ -89,4 +89,11 @@ public class CustomOrderService {
         }
         return result;
     }
+
+    public int getMemuNum(){
+        List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+        result = customOrderMapper.getMemuNum();
+        int length = result.size();
+        return length;
+    }
 }

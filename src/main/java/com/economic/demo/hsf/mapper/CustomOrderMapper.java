@@ -41,4 +41,7 @@ public interface CustomOrderMapper {
     //根据商品名,小类别查询商品信息
     @Select("select * from product a inner join pro_class2 b on b.class2_id = a.class2_id inner join pro_class1 c on c.class1_id = b.class1_id where a.name = #{name} or a.class2_id = #{class2_id}")
     public List<Map<String, Object>> AdminFindDetailByNameOrClass2(String name, String class2_id);
+
+    @Select("select * from menu")
+    public List<Map<String, Object>> getMemuNum();
 }
