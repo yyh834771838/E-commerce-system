@@ -118,4 +118,10 @@ class CustomOrderMapperTest {
             System.out.println("the photo path of the product is: " + key.get("photo"));
         }
     }
+
+    @Test
+    void getMemuNum() {
+        List<Map<String,  Object>> map = customOrderMapper.getMemuNum();
+        System.out.println(map.size());
+    }
 }

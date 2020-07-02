@@ -61,4 +61,11 @@ public class CustomOrderController {
         List<Map<String, Object>> result = customOrderService.AdminFindDetailByNameOrClass2(map);
         return result;
     }
+
+    @RequestMapping("/getMemuNum")
+    public int getMemuNum()
+    {
+        int length = customOrderService.getMemuNum();
+        return length;
+    }
 }

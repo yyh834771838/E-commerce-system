@@ -7,21 +7,26 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface CartMapper {
 
-    @Select("select * from oderdetails")
-    public List<Map<String,Object>> findAll();
+    @Select("SELECT\n" +
+            "a.class2_id,a.photo,a.name,b.id,b.pro_id,b.user_id,b.pro_number,b.pro_price,c.name\n" +
+            "FROM product a\n" +
+            "INNER JOIN cart b on a.pro_id=b.pro_id\n" +
+            "INNER JOIN user c on c.user_id=b.user_id\n" +
+            "where c.name=#{name}")
+    public List<Map<String,Object>> findAll(String name);
 
-    @Select("select * from oderdetails where menu_id=#{n}")
-    public Map<String,Object> findByMenuid(int id);
+    @Select("select * from cart where user_id=#{n}")
+    public Map<String,Object> findByUserid(int id);
 
-    @Insert("insert into oderdetails(pro_id,menu_id,number,price)" +
-            "value(#{pro_id},#{menu_id},#{number},#{price})")
-    public int save(@Param("order") Map<String, String> map);
+    @Insert("insert into cart(pro_id,user_id,pro_number,pro_price)" +
+            "value(#{order.pro_id},#{order.user_id},#{order.pro_number},#{order.pro_price})")
+    public int save(@Param("order") Map<String,String> map);
 
-    @Update("update oderdetails " +
-            " set number=#{num}" +
-            " where id=#{id}")
-    public int update(@Param("t") Map<String, String> tea);
+    @Update("update cart " +
+            " set pro_number=#{order.pro_number}" +
+            " where id=#{order.id}")
+    public int update(@Param("order") Map<String,String> tea);
 
-    @Delete("delete from oderdetails where id=#{id}")
+    @Delete("delete from cart where id=#{id}")
     public int delete(int id);
 }

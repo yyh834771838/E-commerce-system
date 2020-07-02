@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css.css" />
+    <link href="/bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <title>iCart HTML Version</title>
+</head>
+<style>
+    .logo_img {
+        height:60px;
+        font-size:2.5rem;
+        color: #fafafa;
+        letter-spacing: 0;
+        text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+        text-indent: 50px;
+    }
+</style>
+<body>
+<div class="menu">
+    <ul>
+        <li style="width:0px;"><a></a></li>
+        <li><a href="index.html" class="home">首页</a></li>
+        <li><a href="wishlist.html" class="wishlist">商城主页</a></li>
+        <li><a href="account.html" class="account">我的账户</a></li>
+        <li class="active"><a href="cart.html" class="cart">购物车</a></li>
+        <li><a class="checkout">商品结算</a></li>
+        <!--<li class="active" style="float:right;"><a href="login.html" class="login">登陆/注册</a></li>-->
+        <li  style="float:right;" ><div id="top_page" class="login"></div></li>
+    </ul>
+</div>
+
+<div style="width:700px;margin:700 auto;">
+    <div id="cart">
+        <!-- <div class="heading">
+        <a style="padding:8px;margin-left:-14px;">Shopping Cart</a><span style="font-size:14px;color:#fff;">&raquo;</span>
+        <a><span id="cart_total">0 item(s) - $0.00</span></a>
+        </div> -->
+        <div class="content"></div>
+    </div>
+    <div id="search">
+        <div class="button-search"></div>
+        <input type="text" name="filter_name" value="Search" style="height:32px;width:175px;" onkeydown="this.style.color = '#888';" />
+    </div>
+
+</div>
+
+<div class="header">
+    <div class="logo_img">LOVESHOP</div></div>
+
+<!-- 商品分类 -->
+<div id="menu">
+    <ul>
+        <li><a href="#">衣装服饰</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">外套</a></li>
+                    <li><a href="default.htm">裤子</a></li>
+                    <li><a href="default.htm">鞋子</a></li>
+                    <li><a href="default.htm">内衣</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="#">吃货圣地</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">酒乳饮品</a></li>
+                    <li><a href="default.htm">蔬菜菌类</a></li>
+                    <li><a href="default.htm">休闲食品</a></li>
+                    <li><a href="default.htm">时令水果</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="index.html">电子设备</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">电脑</a></li>
+                    <li><a href="default.htm">电视</a></li>
+                    <li><a href="default.htm">手机</a></li>
+                    <li><a href="default.htm">配件</a></li>
+                </ul>
+            </div>
+        </li>
+        <li><a href="index.html">生活用品</a>
+            <div>
+                <ul>
+                    <li><a href="default.htm">学习用品</a></li>
+                    <li><a href="default.htm">体育用品</a></li>
+                    <li><a href="default.htm">厨房用具</a></li>
+                    <li><a href="default.htm">客厅摆式</a></li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<div style="width:1000px;margin: 0 auto;margin-top:10px;">
+    <div class="linktree">
+        <a href="#">首页</a>
+        &raquo; <a href="#">购物车</a>
+        &raquo; <a href="#">结算</a>
+    </div>
+    <h1 style="margin-top:-10px;">结算&nbsp;</h1>
+
+    <form action="#" method="post" id="basket">
+        <div class="cart-info">
+            <table>
+                <thead>
+                <tr>
+                    <td class="select">选择收货地址</td>
+                    <td class="name">收货人姓名</td>
+                    <td class="phone">电话号码</td>
+                    <td class="province">省份</td>
+                    <td class="city">城市</td>
+                    <td class="area">地区</td>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <div class="buttons">
+        <div class="left">
+            <p>合计：</p>
+            <input type="text" value=""readonly id="total"></input>
+        </div>
+        <div class="right"><a href="orderConfirm.html" class="button" style="height:30px;width:120px;" onclick="add()"><span>付款</span></a></div>
+    </div>
+</div>
+<div class="hiddenPlace">
+    <input type="hidden" id="def_user">
+</div>
+<div class="hiddenPlace">
+    <input type="hidden" id="def_add">
+</div>
+</body>
+<script src="jquery/jquery-3.4.1.min.js"></script>
+<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    // 检测登陆
+    $("#top_page").load("top.html");
+
+    jQuery(function(){
+        //页面加载完毕，就去数据库中获取数据
+        //          /all 请求的地址
+        var cookies=document.cookie.split(";");
+        for(var i=0;i<cookies.length;i++)
+        {
+            var cookie=cookies[i].trim();
+            if(cookie.indexOf("info")==0)
+            {
+                var m=cookie.substring("info".length+1);
+                var m1=m.split("【");
+                m2=m1[1].split("】");
+            }
+        }
+        jQuery.post("/all",{"name":m2[0]},function(rst){
+            total=0;
+            for(var i=0;i<rst.length;i++)
+            {
+                total+=rst[i].pro_number*rst[i].pro_price;
+            }
+            jQuery("#total").val(total);
+        },"json");
+        jQuery.post("/add",{"name":m2[0]},function(rst){//处理响应的结果
+            var body="";
+            for(var i=0;i<rst.length;i++)
+            {
+                var json=rst[i];
+                body+="<tr>";
+                body+="<td class=\"select\"><input type=\"radio\" name=\"single\" onclick='set(\""+json.user_id+"\",\""+rst[i].add_id+"\")'></td>";
+                body+="<td>"+json.receiver+"</td>";
+                body+="<td>"+json.number+"</td>";
+                body+="<td>"+json.province+"</td>";
+                body+="<td>"+json.city+"</td>";
+                body+="<td>"+json.area+"</td>";
+                body+="</tr>";
+            }
+            jQuery("#tbody").html(body);
+        },"json");//表示返回数据的格式
+    });
+
+    function set(user,add) {
+        jQuery("#def_user").val(user);
+        jQuery("#def_add").val(add);
+    }
+
+    function add() {
+        var user=jQuery("#def_user").val();
+        var add=jQuery("#def_add").val();
+        if(add=='' || user==''){
+            alert("请选择地址！");
+            Location.reload();
+        }
+        jQuery.post("/addMenu", {"user_id": user, "add_id": add, "time": "100", "total": total}, function (rst) {
+            //alert(rst);
+            //如果删除成功，重新加载数据
+            if (rst == '付款成功') {
+                //重新加载本页面
+                //location.reload();
+                add2(m2[0],user);
+            }
+        });
+
+    }
+    function add2(name,user) {
+        jQuery.post("/addOrder", {"name": name}, function (rst) {
+            alert(rst);
+            //如果删除成功，重新加载数据
+            if (rst == '付款成功') {
+                //重新加载本页面
+                //location.reload();
+                del(user);
+            }
+        })
+    }
+
+    function del(user) {
+        jQuery.post("/delCart",{"user_id":user},function (rst) {
+            //alert(rst);
+            //如果删除成功，重新加载数据
+            if (rst == '删除成功') {
+                //重新加载本页面
+                location.reload();
+            }
+        });
+    }
+</script>
+</html>
