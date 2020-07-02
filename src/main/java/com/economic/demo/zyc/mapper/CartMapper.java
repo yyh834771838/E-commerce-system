@@ -29,4 +29,14 @@ public interface CartMapper {
 
     @Delete("delete from cart where id=#{id}")
     public int delete(int id);
+
+    @Update("update cart\n" +
+            "set chosen=1\n" +
+            "where id=#{id}")
+    public int chosen1(int id);
+
+    @Update("update cart\n" +
+            "set chosen=0\n" +
+            "where id=#{id}")
+    public int chosen0(int id);
 }

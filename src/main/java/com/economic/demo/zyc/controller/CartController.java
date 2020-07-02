@@ -49,4 +49,24 @@ public class CartController {
         }
         return msg;
     }
+
+    @RequestMapping("/chosen1")
+    public String chosen1(@RequestParam int id){
+        String msg="修改失败";
+        boolean flag=cartService.chosen1(id);
+        if(flag){
+            msg="修改成功";
+        }
+        return msg;
+    }
+
+    @RequestMapping("/chosen0")
+    public String chosen0(@RequestParam int id){
+        String msg="修改失败";
+        boolean flag=cartService.chosen0(id);
+        if(flag){
+            msg="修改成功";
+        }
+        return msg;
+    }
 }

@@ -49,4 +49,10 @@ public class SettlementController {
         }
         return msg;
     }
+
+    @RequestMapping("/totalPrice")
+    public List<Map<String,Object>> totalPrice(@RequestParam String name){
+        List<Map<String,Object>> list=settlementService.totalPrice(name);
+        return list;
+    }
 }

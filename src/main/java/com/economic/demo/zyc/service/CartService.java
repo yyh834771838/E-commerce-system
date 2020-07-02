@@ -76,4 +76,30 @@ public class CartService {
         }
         return tea;
     }
+
+    public boolean chosen1(int id){
+        boolean flag=false;
+        try {
+            int r=cartMapper.chosen1(id);
+            if(r>0){
+                flag=true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
+    public boolean chosen0(int id){
+        boolean flag=false;
+        try {
+            int r=cartMapper.chosen0(id);
+            if(r>0){
+                flag=true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
 }

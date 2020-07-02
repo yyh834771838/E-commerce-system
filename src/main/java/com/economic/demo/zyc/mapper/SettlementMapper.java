@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.*;
 public interface SettlementMapper {
 
     @Select("SELECT\n" +
-            "a.add_id,a.user_id,a.receiver,a.number,a.province,a.city,a.area,a.first\n" +
+            "a.add_id,a.user_id,a.receiver_name,a.number,a.province,a.city_name,a.area_name,a.first\n" +
             "FROM address a\n" +
             "INNER JOIN user b on a.user_id=b.user_id\n" +
             "WHERE b.name=#{n}")
@@ -23,9 +23,16 @@ public interface SettlementMapper {
             "a.pro_id,(SELECT MAX(menu_id) from menu),a.pro_number,a.pro_price\n" +
             "from cart a\n" +
             "INNER JOIN user b on a.user_id = b.user_id\n" +
-            "WHERE b.name=#{name}")
+            "WHERE b.name=#{name} AND a.chosen=1")
     public int addOrder(String name);
 
     @Delete("DELETE FROM cart WHERE user_id=#{user_id}")
     public int delCart(int user_id);
+
+    @Select("SELECT \n" +
+            "a.pro_id,(SELECT MAX(menu_id) from menu),a.pro_number,a.pro_price\n" +
+            "from cart a\n" +
+            "INNER JOIN user b on a.user_id = b.user_id\n" +
+            "WHERE b.name=#{name} AND a.chosen=1")
+    public List<Map<String,Object>> totalPrice(String name);
 }
