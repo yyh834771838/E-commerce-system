@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+        #container{
+            width: 70%;
+            padding: 30px;
+        }
+        td{
+            text-align: center!important;
+        }
+    </style>
+</head>
+<body>
+<!-- 通过div控制内容出现的位置 -->
+<div id="container">
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+        <tr>
+            <td>
+                用户名
+            </td>
+            <td>
+                性别
+            </td>
+            <td>
+                密码
+            </td>
+            <td>
+                手机号
+            </td>
+            <td>
+                邮箱
+            </td>
+            <td>
+                操作
+            </td>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+</div>
+<!-- 删除的模态框 -->
+<div class="modal fade" tabindex="-1" role="dialog" id="delModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="del_id">
+                <p id="del_msg"></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="doDelete()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- 修改的模态框 -->
+<div class="modal fade" tabindex="-1" role="dialog" id="editModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="user_id">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-lg">
+                        <label class="control-label col-lg-2">用户名:</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="name" id="name" />
+                        </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label class="control-label col-lg-2">性别:</label>
+                        <div class="col-lg-8">
+                            <input type="radio" name="sex"  value="男"  />男
+                            <input type="radio" name="sex"  value="女" />女
+                        </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label class="control-label col-lg-2">密码:</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="password" id="password" />
+                        </div>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label class="control-label col-lg-2">手机号:</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="number" id="number" />
+                        </div>
+                    </div>
+
+                    <div class="form-group form-group-lg">
+                        <label class="control-label col-lg-2">邮箱:</label>
+                        <div class="col-lg-8">
+                            <input type="text" name="email" id="email" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="doEdit()">确定</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+</body>
+<script src="/jquery/jquery-3.4.1.min.js"></script>
+<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    jQuery(function(){
+        //页面加载完毕，就去数据库中获取数据
+        //          /all 请求的地址
+        jQuery.post("/user_findManager",function(rst){//处理响应的结果
+            var body="";
+            for(var i=0;i<rst.length;i++)
+            {
+                var json=rst[i];//{"pro_id":,"class2_id":,"name":,"price":"","hot":,"details":,number,photo}
+                body+="<tr>";
+                body+="<td>"+json.name+"</td>";
+                body+="<td>"+json.sex+"</td>";
+                body+="<td>"+json.password+"</td>";
+                body+="<td>"+json.number+"</td>";
+                body+="<td>"+json.email+"</td>";
+                body+="<td>";
+                body+="<a href='#' onclick='showDelModal(\""+json.user_id+"\",\""+json.name+"\")'>删除</a>&nbsp;&nbsp;";
+                body+="<a href='#' onclick='showEditModal(" +
+                    "\""+json.user_id+"\"," +
+                    "\""+json.name+"\"," +
+                    "\""+json.sex+"\"," +
+                    "\""+json.password+"\"," +
+                    "\""+json.number+"\"," +
+                    "\""+json.email+"\")'>修改</a>";
+                body+="</td>"
+                body+="</tr>";
+            }
+            jQuery("#tbody").html(body);
+        },"json");//表示返回数据的格式
+    });
+
+    //如果是通过function定义的方法必须在jquery外面写
+    function showDelModal(id,name)
+    {
+        jQuery("#del_id").val(id);
+        jQuery("#del_msg").html(name);
+        jQuery("#delModal").modal("show");
+    }
+    function doDelete()
+    {
+        jQuery("#delModal").modal("hide");
+        var id=jQuery("#del_id").val();
+        //json格式的属性名称必须与后台对应
+        jQuery.post("/user_delete",{"user_id":id},function(rst){
+            alert(rst);
+            //如果删除成功，重新加载数据
+            if(rst=='删除成功')
+            {
+                //重新加载本页面
+                location.reload();
+            }
+        });
+    }
+    function showEditModal(user_id,name,sex,password,number,email)
+    {
+        jQuery("#user_id").val(user_id)
+        jQuery("#name").val(name);
+        jQuery("input[type='radio'][value=\""+sex+"\"]").attr("checked",true);
+        jQuery("#password").val(password);
+        jQuery("#number").val(number);
+        jQuery("#email").val(email);
+        jQuery("#editModal").modal("show");
+    }
+    function doEdit() {
+        jQuery("#editModal").modal("hide");
+        //获取数据
+        var user_id=jQuery("#user_id").val();
+        var name=jQuery("#name").val();
+        var sex=jQuery("input[type='radio']:checked").val();
+        var password=jQuery("#password").val();
+        var number=jQuery("#number").val();
+        var email=jQuery("#email").val();
+        jQuery.post("/user_update",{"user_id":user_id,"name":name,"sex":sex,"password":password,"number":number,
+            "email":email,"identity":"2"},function (rst) {
+            alert(rst);
+            if(rst=='更新成功')
+            {
+                location.reload();
+            }
+        })
+    }
+</script>
+</html>
