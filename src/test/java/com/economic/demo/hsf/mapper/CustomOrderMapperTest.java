@@ -113,6 +113,7 @@ class CustomOrderMapperTest {
             System.out.println("=================================================");
             System.out.println("the name of the product is: " + key.get("name"));
             System.out.println("the pro_class2 of the product is: " + key.get("name2"));
+            System.out.println("the pro_class1 of the product is: " + key.get("name1"));
             System.out.println("the photo path of the product is: " + key.get("photo"));
         }
     }
