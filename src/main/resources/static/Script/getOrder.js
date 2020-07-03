@@ -185,7 +185,7 @@ function getorderInfo() {
                     body += "<td class='table_product_des'>";
                     //添加商品图片信息
                     body += "<img src='images/iphone.jpg' alt='图片一' class='product_img'>"
-                    body += json.name;
+                    body += json.pname;
                     body += "</td>";
                     //添加商品单价信息
                     body += "<td style='vertical-align: center; text-align: center; background-color: #FFFFFF'>" + json.pro_price + "</td>"
