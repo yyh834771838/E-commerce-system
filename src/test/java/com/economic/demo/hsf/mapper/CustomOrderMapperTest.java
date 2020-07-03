@@ -124,4 +124,5 @@ class CustomOrderMapperTest {
         List<Map<String,  Object>> map = customOrderMapper.getMemuNum();
         System.out.println(map.size());
     }
+
 }

@@ -1,6 +1,6 @@
 jQuery(function () {
-    jQuery("#btn_sch").click(function () {
-        jQuery.post("/AdminFindDetailByMenuid",{"id": jQuery("#name").val()},function (result) {
+    jQuery("#searchbutton").click(function () {
+        jQuery.post("/AdminFindDetailByMenuid",{"id": jQuery("#searchbar").val()},function (result) {
             console.log(result)
             var body = "";
             for(var i = 0; i < result.length; i++)
