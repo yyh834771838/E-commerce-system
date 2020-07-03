@@ -27,14 +27,17 @@
         <div class="content">
         </div>
     </div>
-    <div id="searchbox">
-        <div class="button-search"></div>
+    <div id="searchbox" style="width: 250px;margin-left: 1050px;margin-top: 50px;">
+<!--        <div class="button-search"></div>-->
         <input type="text" name="filter_name" placeholder="input product name " id="searchbar"  onkeydown="this.style.color = '#888';" />
         <button type="button" id="searchbutton"> 订单搜索</button>
     </div>
 </div>
 <!--icon of the website-->
-    <div class="header">
+    <div style="width:1000px;
+	margin:0 auto;
+	margin-top:0px;
+	margin-left: 250px">
             <div class="logo_img">LOVESHOP</div>
     </div>
 
@@ -61,12 +64,19 @@
     </table>
 </div>
 
-<div>
-
+<div class="buttons" id="comment">
+    <div class="center"><textarea cols="25" rows="5" class="center" id="commentArea"></textarea></div>
+    <div class="right"><a href="#" class="button" style="height:30px;width:120px;" onclick="comment()">提交</a></div>
 </div>
-
+<div class="hiddenPlace">
+    <input type="hidden" id="user_id">
+</div>
+<div class="hiddenPlace">
+    <input type="hidden" id="pro_id">
+</div>
 </body>
 <script src="jquery/jquery-3.4.1.min.js"></script>
+<script src="/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="Script/getOrder.js">
     //设置订单表头</script>
 

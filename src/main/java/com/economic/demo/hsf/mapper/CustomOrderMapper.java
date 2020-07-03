@@ -1,5 +1,6 @@
 package com.economic.demo.hsf.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -51,4 +52,8 @@ public interface CustomOrderMapper {
             "INNER JOIN product c ON c.pro_id = b.pro_id " +
             "WHERE a.name = #{username}")
     public List<Map<String, Object>> getOrderByUserName(String username);
+
+    @Insert("insert into text(pro_id,user_id,text_content)" +
+            "value(#{pro_id},#{user_id},#{text_content})")
+    public int comment(int pro_id,int user_id,String text_content);
 }

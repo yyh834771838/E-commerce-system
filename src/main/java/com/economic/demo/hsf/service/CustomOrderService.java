@@ -96,4 +96,20 @@ public class CustomOrderService {
         int length = result.size();
         return length;
     }
+
+    public boolean comment(int pro_id,int user_id,String text_content){
+        boolean flag=false;
+        //选择要添加监控的代码
+        //ctrl+alt+t 打开 surround with窗口 选择 try catch
+        try {
+            int r=customOrderMapper.comment(pro_id,user_id,text_content);
+            if(r>0){
+                flag=true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            //记录日志，写到文件中进行保存
+        }
+        return flag;
+    }
 }

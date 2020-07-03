@@ -103,4 +103,16 @@ class CustomOrderControllerTest {
         String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
         System.out.println(str);
     }
+
+    @Test
+    void comment() throws Exception {
+        MockHttpServletRequestBuilder builder=
+                MockMvcRequestBuilders.post("/comment")
+                        .param("pro_id","1")
+                        .param("user_id","1")
+                        .param("text_content","1");
+        MvcResult rst=mockMvc.perform(builder).andReturn();
+        String str=rst.getResponse().getContentAsString(Charset.forName("UTF-8"));
+        System.out.println(str);
+    }
 }

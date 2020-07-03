@@ -212,7 +212,7 @@
     }
     function add2(name,user) {
         jQuery.post("/addOrder", {"name": name}, function (rst) {
-            //alert(rst);
+            alert(rst);
             //如果删除成功，重新加载数据
             if (rst == '付款成功') {
                 //重新加载本页面

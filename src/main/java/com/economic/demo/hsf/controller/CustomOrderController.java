@@ -68,4 +68,14 @@ public class CustomOrderController {
         int length = customOrderService.getMemuNum();
         return length;
     }
+
+    @RequestMapping("/comment")
+    public String chosen0(@RequestParam int pro_id,int user_id,String text_content){
+        String msg="评论失败";
+        boolean flag=customOrderService.comment(pro_id,user_id,text_content);
+        if(flag){
+            msg="评论成功";
+        }
+        return msg;
+    }
 }
