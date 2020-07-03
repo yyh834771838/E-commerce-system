@@ -32,7 +32,7 @@ function showorder() {
             //添加商品名字和图片信息
             body += "<td class='table_product_des'>";
             //添加商品图片信息
-            body += "<img src='images/iphone.jpg' alt='图片一' class='product_img'>"
+            body += "<img src=" + json.photo +  " alt='图片一' class='product_img'>"
             body += json.name;
             body += "</td>";
             //添加商品单价信息
@@ -99,7 +99,7 @@ function getStatus() {
                         //添加商品名字和图片信息
                         body += "<td class='table_product_des'>";
                         //添加商品图片信息
-                        body += "<img src='images/iphone.jpg' alt='图片一' class='product_img'>"
+                        body += "<img src=" + json.photo +  " alt='图片一' class='product_img'>"
                         body += json.pname;
                         body += "</td>";
                         //添加商品单价信息
@@ -184,7 +184,7 @@ function getorderInfo() {
                     //添加商品名字和图片信息
                     body += "<td class='table_product_des'>";
                     //添加商品图片信息
-                    body += "<img src='images/iphone.jpg' alt='图片一' class='product_img'>"
+                    body += "<img src=" + json.photo +  " alt='图片一' class='product_img'>"
                     body += json.pname;
                     body += "</td>";
                     //添加商品单价信息
@@ -222,7 +222,8 @@ function getorderInfo() {
                         //添加商品名字和图片信息
                         body += "<td class='table_product_des'>";
                         //添加商品图片信息
-                        body += "<img src='images/iphone.jpg' alt='图片一' class='product_img'>"
+                        body += "<img src=" + json.photo +  " alt='图片一' class='product_img'>"
+                        console.log("<img src=" + json.photo +  " alt='图片一' class='product_img'>")
                         body += json.pname;
                         body += "</td>";
                         //添加商品单价信息
