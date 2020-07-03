@@ -8,7 +8,7 @@ function getOrderId() {
         menu_id = menu;
         console.log("the menu id is: " + menu_id);
     });
-    jQuery.post("/getCartInfo",{"menu_id":1},function (CartInfo) {
+    jQuery.post("/getCartInfo",{"menu_id":menu_id},function (CartInfo) {
                 console.log(CartInfo)
                 var json = CartInfo[0]
                 body += "<br/>"

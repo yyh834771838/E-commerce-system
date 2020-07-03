@@ -16,19 +16,20 @@
         <li><a href="wishlist.html" class="wishlist">商城主页</a></li>
         <li><a href="account.html" class="account">我的账户</a></li>
         <li><a href="cat.html" class="cart">购物车</a></li>
-        <li style="float:right;"><a href="login.html" class="login">登录</a></li>
-        <li style="float:right;"><a class="register">注册</a></li>
+        <li  style="float:right;" >
+            <div id="top_page" class="login">
+            </div></li>
     </ul>
 </div>
 <!--the search bar-->
-<div style="width: 700px;margin: 700 auto;">
+<div style="width: 700px;">
     <div id="cart">
         <div class="content">
         </div>
     </div>
-    <div id="searchbox">
-        <div class="button-search"></div>
-        <input type="text" name="filter_name" placeholder="Please input the name of the product" id="searchbar"  onkeydown="this.style.color = '#888';" />
+    <div id="searchbox" style="width: 250px;margin-left: 1050px;margin-top: 50px;">
+        <!--        <div class="button-search"></div>-->
+        <input type="text" name="filter_name" placeholder="input product name " id="searchbar"  onkeydown="this.style.color = '#888';" />
         <button type="button" id="searchbutton"> 订单搜索</button>
     </div>
 </div>
@@ -84,9 +85,10 @@
 </div>
 
 <div style="width: 1000px; margin:0 auto"id="confirmOrder">
-    <p>原来的文字</p>
+
 </div>
 
 </body>
 <script src="Script/confirmOrder.js"></script>
+<script>$("#top_page").load("top.html");</script>
 </html>
