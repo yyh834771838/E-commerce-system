@@ -48,51 +48,6 @@
 <div class="header">
     <div class="logo_img">LOVESHOP</div></div>
 
-<!--&lt;!&ndash; 商品分类 &ndash;&gt;-->
-<!--<div id="menu">-->
-<!--    <ul>-->
-<!--        <li><a href="#">衣装服饰</a>-->
-<!--            <div>-->
-<!--                <ul>-->
-<!--                    <li><a href="default.htm">外套</a></li>-->
-<!--                    <li><a href="default.htm">裤子</a></li>-->
-<!--                    <li><a href="default.htm">鞋子</a></li>-->
-<!--                    <li><a href="default.htm">内衣</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </li>-->
-<!--        <li><a href="#">吃货圣地</a>-->
-<!--            <div>-->
-<!--                <ul>-->
-<!--                    <li><a href="default.htm">酒乳饮品</a></li>-->
-<!--                    <li><a href="default.htm">蔬菜菌类</a></li>-->
-<!--                    <li><a href="default.htm">休闲食品</a></li>-->
-<!--                    <li><a href="default.htm">时令水果</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </li>-->
-<!--        <li><a href="index.html">电子设备</a>-->
-<!--            <div>-->
-<!--                <ul>-->
-<!--                    <li><a href="default.htm">电脑</a></li>-->
-<!--                    <li><a href="default.htm">电视</a></li>-->
-<!--                    <li><a href="default.htm">手机</a></li>-->
-<!--                    <li><a href="default.htm">配件</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </li>-->
-<!--        <li><a href="index.html">生活用品</a>-->
-<!--            <div>-->
-<!--                <ul>-->
-<!--                    <li><a href="default.htm">学习用品</a></li>-->
-<!--                    <li><a href="default.htm">体育用品</a></li>-->
-<!--                    <li><a href="default.htm">厨房用具</a></li>-->
-<!--                    <li><a href="default.htm">客厅摆式</a></li>-->
-<!--                </ul>-->
-<!--            </div>-->
-<!--        </li>-->
-<!--    </ul>-->
-<!--</div>-->
 
 <div style="width:1000px;margin: 0 auto;margin-top:10px;">
     <div class="linktree">
@@ -198,7 +153,7 @@
             location.reload();
         }
         else {
-            jQuery.post("/addMenu", {"user_id": user, "add_id": add, "time": "100", "total": total}, function (rst) {
+            jQuery.post("/addMenu", {"user_id": user, "add_id": add, "time": "2020/07/03", "total": total}, function (rst) {
                 //alert(rst);
                 //如果删除成功，重新加载数据
                 if (rst == '付款成功') {
@@ -228,7 +183,7 @@
             //如果删除成功，重新加载数据
             if (rst == '删除成功') {
 
-                location.href="orderConfirm.html";
+                location.href="index.html";
             }
         });
     }
