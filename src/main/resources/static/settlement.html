@@ -189,24 +189,30 @@
     function add() {
         var user=jQuery("#def_user").val();
         var add=jQuery("#def_add").val();
-        if(add=='' || user==''){
-            alert("请选择地址！");
-            Location.reload();
+        if(total==0){
+            alert("请返回购物车选择商品！");
+            location.href="cart.html";
         }
-        jQuery.post("/addMenu", {"user_id": user, "add_id": add, "time": "100", "total": total}, function (rst) {
-            alert(rst);
-            //如果删除成功，重新加载数据
-            if (rst == '付款成功') {
-                //重新加载本页面
-                //location.reload();
-                add2(m2[0],user);
-            }
-        });
+        else if(add=='' || user==''){
+            alert("请选择地址！");
+            location.reload();
+        }
+        else {
+            jQuery.post("/addMenu", {"user_id": user, "add_id": add, "time": "100", "total": total}, function (rst) {
+                //alert(rst);
+                //如果删除成功，重新加载数据
+                if (rst == '付款成功') {
+                    //重新加载本页面
+                    //location.reload();
+                    add2(m2[0], user);
+                }
+            });
+        }
 
     }
     function add2(name,user) {
         jQuery.post("/addOrder", {"name": name}, function (rst) {
-            alert(rst);
+            //alert(rst);
             //如果删除成功，重新加载数据
             if (rst == '付款成功') {
                 //重新加载本页面
@@ -218,7 +224,7 @@
 
     function del(user) {
         jQuery.post("/delCart",{"user_id":user},function (rst) {
-            alert(rst);
+            //alert(rst);
             //如果删除成功，重新加载数据
             if (rst == '删除成功') {
 
