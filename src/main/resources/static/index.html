@@ -12,8 +12,6 @@
 <li><a href="wishlist.html" class="wishlist">商城主页</a></li>
 <li><a href="account.html" class="account">我的账户</a></li>
 <li><a href="cart.html" class="cart">购物车</a></li>
-<li><a class="checkout">商品结算</a></li>
-
 	<li  style="float:right;" ><div id="top_page" class="login"></div></li>
 </ul>
 </div>
@@ -100,7 +98,7 @@
 			var number_alr=0;
 			for(var i=0;i<rst.length;i++){
 				var json=rst[i];
-				if(json.pro_delete==1 && number_alr<4) {
+				if(json.pro_delete==1 && number_alr<4 && json.hot=="是") {
 					number_alr++;
 					body += "<div>";
 					body += "<div class=\"showhim\">";

@@ -153,6 +153,19 @@ private SearchMapper searchMapper;
         return flag;
     }
 
+    public boolean doUpdateCP(Map<String,String> map){
+        boolean flag=false;
+        try {
+            int r=searchMapper.updateCP(map);
+            if(r>0){
+                flag=true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return flag;
+    }
+
     public boolean doSave(Map<String,String> map){
         boolean flag=false;
         try {

@@ -96,6 +96,16 @@ public class SearchController {
         return msg;
     }
 
+    @RequestMapping("/editCP")
+    public String updateCP(@RequestParam Map<String,String> map){
+        String msg="修改失败";
+        boolean flag=searchService.doUpdateCP(map);
+        if(flag){
+            msg="添加成功";
+        }
+        return msg;
+    }
+
     @RequestMapping("/saveC")
     public String save(@RequestParam Map<String,String> map){
         String msg="保存失败";
