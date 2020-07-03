@@ -1,6 +1,7 @@
 jQuery(function () {
     jQuery("#ProductName").click(function () {
-        jQuery.post("/AdminFindDetailByNameOrClass2",{"id": jQuery("#name").val()},function (result) {
+        console.log("click")
+        jQuery.post("/AdminFindDetailByNameOrClass2",{"id": jQuery("#searchbar").val()},function (result) {
             console.log(result)
             var body = "";
             for(var i = 0; i < result.length; i++)
