@@ -26,7 +26,7 @@ public interface SettlementMapper {
             "WHERE b.name=#{name} AND a.chosen=1")
     public int addOrder(String name);
 
-    @Delete("DELETE FROM cart WHERE user_id=#{user_id}")
+    @Delete("DELETE FROM cart WHERE user_id=#{user_id} AND chosen=1")
     public int delCart(int user_id);
 
     @Select("SELECT \n" +

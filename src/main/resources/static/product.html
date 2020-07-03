@@ -12,7 +12,7 @@
 	<li><a href="wishlist.html" class="wishlist">商城主页</a></li>
 	<li><a href="account.html" class="account">我的账户</a></li>
 	<li><a href="cart.html" class="cart">购物车</a></li>
-	<li><a class="checkout">商品结算</a></li>
+
 		<li  style="float:right;" ><div id="top_page" class="login"></div></li>
 	</ul>
 </div>
@@ -150,7 +150,7 @@
 		jQuery.post("/idProD",{"pro_id": v},function(rst){
 			var body="";
 			var json=rst;
-			body += "<div class=\"image\"><a><img src=\"" + json.photo + "\"  /></a></div>";
+			body += "<div class=\"image\"><a><img src=\"" + json.photo + "\" width=\"140px\" height=\"140px\" /></a></div>";
 			body += "<div class=\"right\" style=\"margin-left: -10px\">";
 			body += "<div id=\"tabs\" class=\"tabs\">";
 			body += "<a  class=\"selected\"><img alt=\"Information\" src=\"images/Info.png\" style=\"margin-top:6px;\" /><div></div></a>";
@@ -183,7 +183,7 @@
 			var number_alr=0;
 			for(var i=0;i<rst.length;i++){
 				var json=rst[i];
-				if(json.pro_delete==1 && number_alr<8) {
+				if(json.pro_delete==1 && number_alr<8 && json.hot=="是") {
 					number_alr++;
 					body += "<li><a href=\"#\" onclick='show(\"" + json.pro_id + "\")'>" + json.name + "</a></li>";
 				}
@@ -250,6 +250,11 @@
 			alert("请登录后操作");
 		}else {
 				var q=parseInt(jQuery("#howmany").val());
+			jQuery.post("/editCP", {
+				"pro_id": id,
+				"user_id": cur_user_id,
+				"chosen": 0
+			}, function (rst2) {
 				jQuery.post("/saveC", {
 						"user_id": cur_user_id,
 						"pro_id": id,
@@ -259,6 +264,7 @@
 					}, function (rst3) {
 					location.href="settlement.html";
 					});
+			});
 		}
 	}
 

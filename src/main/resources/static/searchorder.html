@@ -11,6 +11,7 @@
         #container1{
             width: 70%;
             padding: 30px;
+            margin-top: 30px;
         }
         #container2{
             width: 70%;
@@ -23,18 +24,16 @@
 </head>
 <body>
 <!-- 商标+搜索框 -->
-<div style="width:700px;margin:700 auto;">
+<div style="width: 700px; margin-left: 33px; margin-top: 20px">
     <div id="cart">
-        <div class="content"></div>
+        <div class="content">
+        </div>
     </div>
-    <div id="search">
-        <div class="button-search"><button type="button" id="btn_sch" class="btn-size">搜索</button></div>
-        <input type="text" name="name" id="name" style="height: 33px; width: 270px" placeholder="请输入用户名,订单号或下单时间进行查询">
-        <script src="jquery/jquery-3.4.1.min.js"></script>
-        <script src="Script/AdminfindOrder.js"></script>
+    <div id="searchbox">
+        <div style="left: 100px;display: block;height: 31px;width: 36px;margin-left:150px;position:absolute;"></div>
+        <input type="text" name="filter_name" placeholder="input product name " id="searchbar"  onkeydown="this.style.color = '#888';" />
+        <button type="button" id="searchbutton"> 订单搜索</button>
     </div>
-
-
 </div>
 <div id="container1">
     <table class="table table-bordered table-striped table-hover">
